@@ -3,5 +3,4 @@
 # will inherit these settings.
 [context.production]
   [context.production.environment]
-    API_URL = "https://koeching-backend.herokuapp.com"
-    BACKEND_URL = "https://koeching-backend.herokuapp.com/graphql"
+    STRAPI_URL = "https://koeching-backend.herokuapp.com"

@@ -1,22 +1,10 @@
 export default {
-  apollo: {
-    clientConfigs: {
-      default: {
-        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:1337/graphql'
-      }
-    }
-  },
-  axios: {},
-  build: {
-  },
   buildModules: [
     '@nuxtjs/eslint-module'
   ],
-  css: [
-  ],
   components: true,
   env: {
-    strapiBaseUri: process.env.API_URL || 'http://localhost:1337'
+    STRAPI_URL: process.env.STRAPI_URL || 'http://localhost:1337'
   },
   head: {
     title: 'Koeching',
@@ -30,15 +18,24 @@ export default {
     ]
   },
   modules: [
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/apollo',
-  ],
-  plugins: [
+    '@nuxtjs/strapi',
   ],
   pwa: {
     manifest: {
       lang: 'en'
     }
-  }
+  },
+  strapi: {
+    entities: [
+      'animals',
+      'coaches',
+      'colleagues',
+      'memberships',
+      'messages',
+      'products',
+      'users',
+    ],
+    url: process.env.STRAPI_URL || 'http://localhost:1337',
+  },
 }

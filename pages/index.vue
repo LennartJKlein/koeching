@@ -9,6 +9,7 @@
         v-for="colleague in colleagues"
         :key="colleague.name"
         :href="colleague.website"
+        style="display:block;"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -19,19 +20,18 @@
 </template>
 
 <script>
-import colleaguesQuery from '~/apollo/queries/colleague/colleagues'
-
 export default {
+  async asyncData ({ $strapi: { $colleagues } }) {
+    const colleagues = await $colleagues.find()
+
+    return {
+      colleagues,
+    }
+  },
   data () {
     return {
       colleagues: []
     }
   },
-  apollo: {
-    colleagues: {
-      prefetch: true,
-      query: colleaguesQuery
-    }
-  }
 }
 </script>
