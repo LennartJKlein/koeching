@@ -19,7 +19,7 @@ export default {
     strapiBaseUri: process.env.API_URL || 'http://localhost:1337'
   },
   head: {
-    title: 'koeching',
+    title: 'Koeching',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
