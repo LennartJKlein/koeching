@@ -1,6 +1,0 @@
-# Production context:
-# All deploys from the main repository branch
-# will inherit these settings.
-[context.production]
-  [context.production.environment]
-    STRAPI_URL = "https://koeching-backend.herokuapp.com"
