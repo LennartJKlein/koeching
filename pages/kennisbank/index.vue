@@ -1,0 +1,3 @@
+<template>
+  Kennisbank pagina
+</template>

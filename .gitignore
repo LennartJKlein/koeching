@@ -9,3 +9,5 @@ dist
 
 .idea
 *.code-workspace
+
+.DS_Store

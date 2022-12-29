@@ -1,0 +1,3 @@
+<template>
+  Ontdekken pagina
+</template>
