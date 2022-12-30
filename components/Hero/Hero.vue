@@ -4,6 +4,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  small: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const images = import.meta.glob("./*.(webp)", { as: "url", eager: true });
@@ -15,9 +19,21 @@ const imageUrl = computed(() => {
 </script>
 
 <template>
-  <figure
+  <div
     class="relative -z-10 after:absolute after:bottom-0 after:block after:h-1 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
   >
-    <img class="h-60v max-h-[600px] w-full object-cover" :src="imageUrl" />
-  </figure>
+    <figure>
+      <img
+        :class="{
+          'w-full object-cover': true,
+          'h-60v max-h-[600px]': !small,
+          'h-30v max-h-[400px]': small,
+        }"
+        :src="imageUrl"
+      />
+    </figure>
+    <div class="absolute top-0 left-0 h-full w-full">
+      <slot />
+    </div>
+  </div>
 </template>

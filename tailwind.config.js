@@ -18,7 +18,6 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
-      sky: colors.sky,
     },
     extend: {
       animation: {
@@ -26,7 +25,6 @@ module.exports = {
       },
       backgroundImage: {
         "bottom-nav": "linear-gradient(transparent 24px,#96BF14 24px), url(~/assets/svg/grass-light.svg)",
-        "borreveld": "linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url('/assets/webp/boerderij-borreveld.webp')",
       },
       colors: {
         brown: {
@@ -41,12 +39,25 @@ module.exports = {
           800: '#41301c',
           900: '#302111',
         },
+        sky: {
+          50: '#e9f3f7',
+          100: '#c8e1eb',
+          200: '#a3cdde',
+          300: '#7eb9d0',
+          400: '#62aac6',
+          500: '#469bbc',
+          600: '#3f93b6',
+          700: '#3789ad',
+          800: '#2f7fa5',
+          900: '#206d97',
+        },
       },
       fontFamily: {
         "sans": ["Oxygen", ...defaultTheme.fontFamily.sans],
         "display": ["Berlin Sans", "Oxygen", ...defaultTheme.fontFamily.sans],
       },
       height: {
+        "30v": "30vh",
         "60v": "60vh",
       },
       keyframes: {
@@ -65,7 +76,7 @@ module.exports = {
   },
   safelist: [
     {
-      pattern: /(bg)-(brown|sky|gray)-(200|600)/,
+      pattern: /(bg)-(black|brown|sky|gray)-(200|500|600)/,
     },
     {
       pattern: /border-pencil-/,
