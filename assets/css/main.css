@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 @layer utilities {
   .clip-dot {
     clip-path: circle(0%);
@@ -9,5 +15,23 @@
 
   .clip-circle {
     clip-path: circle(100%);
+  }
+
+  .border-pencil-brown-600 {
+    border-image: url('~/assets/svg/border-brown-600.svg') 33% / 12px / 1px stretch;
+    border-width: 12px;
+    border-radius: 14px;
+  }
+
+  .border-pencil-gray-300 {
+    border-image: url('~/assets/svg/border-gray-300.svg') 33% / 12px / 1px stretch;
+    border-width: 12px;
+    border-radius: 14px;
+  }
+
+  .border-pencil-sky-600 {
+    border-image: url('~/assets/svg/border-sky-600.svg') 33% / 12px / 1px stretch;
+    border-width: 12px;
+    border-radius: 14px;
   }
 }

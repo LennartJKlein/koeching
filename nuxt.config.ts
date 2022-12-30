@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
     '~/assets/css/fonts/oxygen.css',
+    '~/assets/css/fonts/berlin-sans.css',
   ],
   postcss: {
     plugins: {

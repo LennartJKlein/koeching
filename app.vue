@@ -11,7 +11,7 @@ function isPageActive(path: string) {
 <template>
   <IconPack />
   <header
-    class="fixed bottom-0 h-20 w-full bg-[linear-gradient(transparent_24px,#96BF14_24px),url(~/assets/svg/grass-light.svg)] bg-[length:cover,auto_25px] bg-repeat-x pt-2"
+    class="bg-bottom-nav fixed bottom-0 h-20 w-full bg-[length:cover,auto_25px] bg-repeat-x pt-2"
   >
     <nav class="h-full">
       <ul

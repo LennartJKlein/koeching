@@ -1,3 +1,3 @@
 <template>
-  Kennisbank pagina
+  <PageTitle>kennisbank pagina</PageTitle>
 </template>
