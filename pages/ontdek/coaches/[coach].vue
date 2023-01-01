@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect, useAttrs } from "vue";
 import type { ApiCoachCoach } from "~/types/schemas";
+
 const { find } = useStrapi();
 const route = useRoute();
 const {
@@ -19,6 +19,8 @@ const goBack = function () {
   const router = useRouter();
   router.push("/ontdek");
 };
+
+const { $markdown } = useNuxtApp();
 </script>
 
 <template>
@@ -29,11 +31,25 @@ const goBack = function () {
     @close="goBack"
   >
     <section>
-      <h1 class="font-display text-xl" v-if="coach.attributes.name">
+      <h1
+        class="mb-3 font-display text-3xl font-bold text-brown-300"
+        v-if="coach.attributes.name"
+      >
         {{ coach.attributes.name }}
       </h1>
-      <p>{{ coach.attributes.intro }}</p>
-      <p>{{ coach.attributes.bio }}</p>
+      <div
+        v-if="coach.attributes.intro || coach.attributes.bio"
+        :class="[
+          '[&>h2]:mt-4 [&>h2]:font-display [&>h2]:text-xl [&>h2]:leading-tight',
+          '[&>h3]:mt-4 [&>h3]:font-display [&>h3]:text-xl [&>h3]:leading-tight',
+          '[&>h4]:mt-4 [&>h4]:font-display [&>h4]:text-xl [&>h4]:leading-tight',
+          '[&>h5]:mt-4 [&>h5]:font-display [&>h5]:text-xl [&>h5]:leading-tight',
+          '[&>h6]:mt-4 [&>h6]:font-display [&>h6]:text-xl [&>h6]:leading-tight',
+        ]"
+        v-html="
+          $markdown.render(`${coach.attributes.intro}\n${coach.attributes.bio}`)
+        "
+      />
     </section>
   </Modal>
 </template>

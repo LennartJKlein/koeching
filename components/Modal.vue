@@ -118,9 +118,10 @@ onMounted(() => {
       <Button
         wide
         @click="hideModal"
-        class="mx-auto mt-4"
+        class="mx-auto mt-6"
         label="Sluit het detailscherm"
-        color="white"
+        color="black"
+        outlined
         >sluiten</Button
       >
     </div>

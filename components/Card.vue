@@ -12,7 +12,7 @@ const props = defineProps({
 
 <template>
   <div class="relative flex flex-col items-start">
-    <figure v-if="image" class="order-1 mr-6 -mb-8 w-full pr-6">
+    <figure v-if="image" class="order-1 mr-5 -mb-8 w-full pr-5">
       <img
         :src="image"
         class="aspect-video w-full overflow-hidden rounded-3xl object-cover"
