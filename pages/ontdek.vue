@@ -25,7 +25,7 @@ const { data: coaches } = await find<ApiCoachCoach>("coaches", {
       :image="coach.attributes.photos?.data[0]?.attributes.url"
       :title="coach.attributes.name"
       :to="`/ontdek/coaches/${coach.attributes.slug}`"
-      class="mt-24"
+      class="mt-8 mb-16"
       color="brown-200"
       modal="coachModal"
     />

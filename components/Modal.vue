@@ -90,7 +90,7 @@ onMounted(() => {
 <template>
   <dialog
     :class="[
-      'top-0 left-0 m-0 mx-auto h-full max-h-screen w-full max-w-2xl overflow-auto bg-transparent p-0',
+      'top-0 left-0 m-0 mx-auto h-full max-h-screen w-full max-w-2xl overflow-auto bg-transparent p-0 backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm',
       !dragYOffset && 'transition-transform',
     ]"
     :style="`transform: translateY(${isOpen ? dragYOffset + 'px' : '100%'})`"
@@ -107,7 +107,7 @@ onMounted(() => {
       @click.stop
     >
       <button
-        class="mx-auto mb-3 w-full cursor-grab active:cursor-grabbing"
+        class="mx-auto mb-3 w-full cursor-grab touch-none active:cursor-grabbing"
         @mousedown="dragStart"
         @touchstart="dragStart"
       >
