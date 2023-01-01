@@ -3,6 +3,7 @@ import type { ApiCoachCoach } from "~/types/schemas";
 const { find } = useStrapi();
 const { data: coaches } = await find<ApiCoachCoach>("coaches", {
   populate: "*",
+  sort: "id",
 });
 // const coaches: ApiCoachCoach[] = [];
 </script>
