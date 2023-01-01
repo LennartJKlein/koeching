@@ -6,6 +6,10 @@
   html {
     -webkit-tap-highlight-color: transparent;
   }
+
+  body {
+    @apply bg-gray-200;
+  }
 }
 
 @layer utilities {
@@ -17,8 +21,8 @@
     clip-path: circle(100%);
   }
 
-  .border-pencil-brown-600 {
-    border-image: url('~/assets/svg/border-brown-600.svg') 33% / 12px / 1px stretch;
+  .border-pencil-brown-300 {
+    border-image: url('~/assets/svg/border-brown-300.svg') 33% / 12px / 1px stretch;
     border-width: 12px;
     border-radius: 12px;
   }

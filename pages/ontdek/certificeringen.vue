@@ -1,3 +1,1 @@
-<template>
-  Contactpagina
-</template>
+<template>Certificeringen</template>

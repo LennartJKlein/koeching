@@ -26,8 +26,8 @@ const imageUrl = computed(() => {
       <img
         :class="{
           'w-full object-cover': true,
-          'h-60v max-h-[600px]': !small,
           'h-30v max-h-[400px]': small,
+          'h-55v max-h-[600px]': !small,
         }"
         :src="imageUrl"
       />

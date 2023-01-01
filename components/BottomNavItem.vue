@@ -22,9 +22,9 @@ defineProps({
           focusable="false"
           preserveAspectRatio="xMidYMid meet"
           tabindex="-1"
-          viewBox="0 0 16 16"
+          viewBox="0 0 32 32"
         >
-          <use :xlink:href="`#${icon}-line`"></use>
+          <use :xlink:href="`#icon-${icon}-line`"></use>
         </svg>
         <svg
           aria-hidden="true"
@@ -32,9 +32,9 @@ defineProps({
           focusable="false"
           preserveAspectRatio="xMidYMid meet"
           tabindex="-1"
-          viewBox="0 0 16 16"
+          viewBox="0 0 32 32"
         >
-          <use :xlink:href="`#${icon}`"></use>
+          <use :xlink:href="`#icon-${icon}`"></use>
         </svg>
       </div>
     </NuxtLink>

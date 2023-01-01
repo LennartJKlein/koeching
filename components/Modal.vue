@@ -1,0 +1,128 @@
+<script lang="ts" setup>
+import { onMounted, ref, watchEffect, useAttrs } from "vue";
+const props = defineProps({
+  open: Boolean,
+});
+
+const dialog = ref<InstanceType<any> | undefined>(null);
+const isOpen = ref(false);
+const attrs = useAttrs();
+
+function throttle<T>(fn: T, wait: number) {
+  let throttled = false;
+  return (event: Event) => {
+    if (typeof fn === "function") {
+      if (!throttled) {
+        fn(event);
+        throttled = true;
+        setTimeout(() => {
+          throttled = false;
+        }, wait);
+      }
+    }
+  };
+}
+
+function showModal() {
+  if (!dialog?.value) return;
+  dialog.value.showModal();
+}
+
+function hideModal() {
+  if (!dialog?.value) return;
+  dialog.value.close();
+}
+
+const isDragging = ref(false);
+const dragYStart = ref(0);
+const dragYOffset = ref(0);
+
+function dragStart(e: TouchEvent | MouseEvent) {
+  if (!isDragging) return;
+  if (e instanceof TouchEvent) {
+    dragYStart.value = e.changedTouches[0].screenY;
+  }
+  if (e instanceof MouseEvent) {
+    dragYStart.value = e.screenY;
+  }
+}
+
+function dragMove(e: TouchEvent | MouseEvent) {
+  if (!isDragging || dragYStart.value == 0) return;
+  let movement = 0;
+  if (e instanceof TouchEvent) {
+    movement = e.changedTouches[0].screenY;
+  }
+  if (e instanceof MouseEvent) {
+    movement = e.screenY;
+  }
+  dragYOffset.value =
+    movement > dragYStart.value ? movement - dragYStart.value : 0;
+}
+
+function dragEnd(e: TouchEvent | MouseEvent) {
+  if (!isDragging || dragYStart.value == 0) return;
+  let movement = 0;
+  if (e instanceof TouchEvent) {
+    movement = e.changedTouches[0].screenY;
+  }
+  if (e instanceof MouseEvent) {
+    movement = e.screenY;
+  }
+  const diff = movement - dragYStart.value;
+  if (Math.abs(diff) > window.screen.height * 0.3) {
+    dialog.value.close();
+  }
+  dragYStart.value = 0;
+  dragYOffset.value = 0;
+}
+
+onMounted(() => {
+  watchEffect(() => {
+    if (props.open !== isOpen.value) {
+      props.open ? showModal() : hideModal();
+      isOpen.value = props.open;
+    }
+  });
+});
+</script>
+
+<template>
+  <dialog
+    :class="[
+      'top-0 left-0 m-0 mx-auto h-full max-h-screen w-full max-w-2xl overflow-auto bg-transparent p-0',
+      !dragYOffset && 'transition-transform',
+    ]"
+    :style="`transform: translateY(${isOpen ? dragYOffset + 'px' : '100%'})`"
+    ref="dialog"
+    v-bind="attrs"
+    @click="hideModal"
+    @mousemove="throttle(dragMove($event), 100)"
+    @mouseup="dragEnd"
+    @touchend="dragEnd"
+    @touchmove="throttle(dragMove($event), 100)"
+  >
+    <div
+      class="mx-auto mt-[10vh] min-h-[90vh] w-full rounded-t-3xl border-2 border-b-0 border-black bg-white px-5 pb-6"
+      @click.stop
+    >
+      <button
+        class="mx-auto mb-3 w-full cursor-grab active:cursor-grabbing"
+        @mousedown="dragStart"
+        @touchstart="dragStart"
+      >
+        <Icon id="drag-indicator" size="4" class="fill-gray-500" />
+        <span class="sr-only">Sluit het detailscherm</span>
+      </button>
+      <slot />
+      <Button
+        wide
+        @click="hideModal"
+        class="mx-auto mt-4"
+        label="Sluit het detailscherm"
+        color="white"
+        >sluiten</Button
+      >
+    </div>
+  </dialog>
+</template>
