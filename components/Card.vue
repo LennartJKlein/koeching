@@ -8,26 +8,13 @@ const props = defineProps({
   to: String,
   modal: String,
 });
-
-const imageUrl = computed(() => {
-  if (!props.image) return null;
-  const { ssrContext } = useNuxtApp();
-  let location =
-    (process.server
-      ? `http://${ssrContext?.event.node.req.headers.host}`
-      : window.location.origin) || "";
-  location = location.substring(0, location.lastIndexOf(":"));
-  return props.image.startsWith("/")
-    ? `${location}:1337${props.image}`
-    : props.image;
-});
 </script>
 
 <template>
   <div class="relative flex flex-col items-start">
-    <figure v-if="imageUrl" class="order-1 mr-6 -mb-8 w-full pr-6">
+    <figure v-if="image" class="order-1 mr-6 -mb-8 w-full pr-6">
       <img
-        :src="imageUrl"
+        :src="image"
         class="aspect-video w-full overflow-hidden rounded-3xl object-cover"
       />
     </figure>
