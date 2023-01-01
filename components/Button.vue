@@ -29,17 +29,17 @@ const colorClasses: { [key: string]: string } = {
 
 <template>
   <NuxtLink
-    class="border-t-none border-x-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-b-transparent active:border-b-[5px]"
+    class="border-t-none border-x-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-b-transparent active:border-b-[4px]"
     :to="to"
     v-bind="$attrs"
     :aria-label="label"
   >
     <span
       :class="[
-        'relative flex justify-center rounded-3xl border-b-[5px] border-b-transparent py-3 font-bold uppercase group-active:translate-y-[5px] group-active:border-b-0',
+        'relative flex justify-center rounded-3xl border-b-[4px] border-b-transparent py-3 font-bold uppercase group-active:translate-y-[4px] group-active:border-b-0',
         iconOnly ? 'px-3' : 'px-6',
         wide && 'min-w-[150px]',
-        `before:content[''] before:absolute before:left-0 before:top-[6px] before:-z-10 before:h-full before:w-full before:rounded-3xl group-active:before:invisible`,
+        `before:content[''] before:absolute before:left-0 before:top-[5px] before:-z-10 before:h-full before:w-full before:rounded-3xl group-active:before:invisible`,
         `after:content[''] after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full after:rounded-3xl`,
         colorClasses[color],
       ]"
