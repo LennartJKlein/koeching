@@ -29,9 +29,5 @@ const { data: coaches } = await find<ApiCoachCoach>("coaches", {
       modal="coachModal"
     />
   </div>
-
-  <!-- <Teleport to="body">
-    <NuxtPage />
-  </Teleport> -->
   <NuxtPage />
 </template>
