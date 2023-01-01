@@ -30,5 +30,14 @@ const { data: coaches } = await find<ApiCoachCoach>("coaches", {
       modal="coachModal"
     />
   </div>
+  <p class="my-12 mx-3 italic">Todo: de dieren</p>
+  <p class="my-12 mx-3 italic">Todo: over de boerderij</p>
+  <p class="my-12 mx-3 italic">Todo: lidmaatschappen van koeching</p>
+  <p class="my-12 mx-3 italic">
+    Todo: de verschillende methodes die worden toegepast
+  </p>
+  <p class="my-12 mx-3 italic">
+    Todo: footer met linkjes naar voorwaarden, tarieven, andere coaches, etc
+  </p>
   <NuxtPage />
 </template>

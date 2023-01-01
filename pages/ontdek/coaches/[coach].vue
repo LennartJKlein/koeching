@@ -37,6 +37,7 @@ const { $markdown } = useNuxtApp();
       >
         {{ coach.attributes.name }}
       </h1>
+      <p class="my-12 mx-3 italic">Todo: fotos van coach</p>
       <div
         v-if="coach.attributes.intro || coach.attributes.bio"
         :class="[
@@ -50,6 +51,10 @@ const { $markdown } = useNuxtApp();
           $markdown.render(`${coach.attributes.intro}\n${coach.attributes.bio}`)
         "
       />
+      <p class="my-12 mx-3 italic">Todo: methodes die deze coach beheerst</p>
+      <p class="my-12 mx-3 italic">
+        Todo: diensten/producten die deze coach faciliteert
+      </p>
     </section>
   </Modal>
 </template>
