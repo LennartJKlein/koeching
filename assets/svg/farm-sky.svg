@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2012.9 912.9"
+	preserveAspectRatio="none">
+	<style type="text/css">
+		.st0 {
+			fill: #62aac6;
+		}
+
+		.st1 {
+			opacity: 0.5;
+			fill: #7eb9d0;
+			enable-background: new;
+		}
+	</style>
+	<g id="Laag_2_00000094588910378273727590000018416791840853856177_">
+		<g id="Laag_1-2">
+			<g id="lucht">
+				<rect id="lucht-2" class="st0" width="2012.9" height="912.9" />
+				<path class="st1" d="M1518.8,912.9h494.1V664.5L731.6,3.2l0,0L1518.8,912.9z" />
+				<polygon class="st1" points="0,372.4 0,809.4 731.6,3.2 731.6,3.2 			" />
+				<polygon class="st1" points="462.1,912.9 953.3,912.9 731.6,3.2 731.6,3.2 			" />
+				<polygon class="st1" points="2012.9,208.1 2012.9,0 0,0 0,141.2 731.6,3.2 731.6,3.2 731.6,3.2 731.6,3.2 			" />
+				<polygon class="st1" points="731.6,3.2 731.6,3.2 731.6,3.2 			" />
+			</g>
+		</g>
+	</g>
+</svg>

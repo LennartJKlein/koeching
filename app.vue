@@ -15,7 +15,7 @@
       </ul>
     </nav>
   </header>
-  <main class="min-h-screen pb-28">
+  <main class="min-h-screen pb-14">
     <NuxtPage />
   </main>
 </template>

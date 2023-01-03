@@ -38,4 +38,16 @@
     border-width: 12px;
     border-radius: 12px;
   }
+
+  .border-fence {
+    border-image: url('~/assets/svg/border-fence.svg') 70 80 80 65 / 1000px / 0 round;
+    border-width: 2rem;
+  }
+
+  @media screen(md) {
+    .border-fence {
+      border-image-width: 90px;
+      border-width: 90px;
+    }
+  }
 }
