@@ -22,6 +22,7 @@ module.exports = {
     extend: {
       animation: {
         "gelatine": "gelatine 300ms linear forwards",
+        "fly-in": "fly-in 750ms cubic-bezier(.4,1.45,.55,.95) forwards",
       },
       backgroundImage: {
         "bottom-nav": "linear-gradient(transparent 24px,#96BF14 24px), url(~/assets/svg/grass-light.svg)",
@@ -70,6 +71,11 @@ module.exports = {
           "25%": { transform: "scale(0.85, 1.15)" },
           "50%": { transform: "scale(1.15, 0.85)" },
           "75%": { transform: "scale(0.92, 1.02)" },
+        },
+        "fly-in": {
+          "0%": { transform: "translateY(100%) rotate(30deg)" },
+          "30%": { transform: "translateY(100%) rotate(30deg)" },
+          "100%": { transform: "translateY(0%) rotate(0deg)" },
         },
       },
       transitionProperty: {

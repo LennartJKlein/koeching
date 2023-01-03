@@ -1,7 +1,7 @@
 <template>
   <IconPack />
   <header
-    class="fixed bottom-0 z-50 h-20 w-full bg-bottom-nav bg-[length:cover,auto_25px] bg-repeat-x pt-2"
+    class="fixed bottom-0 z-50 h-20 w-full bg-bottom-nav bg-[length:cover,auto_25px] bg-repeat-x pt-2 sm:h-24 md:h-28"
   >
     <nav class="h-full">
       <ul

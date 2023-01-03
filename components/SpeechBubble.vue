@@ -18,7 +18,7 @@ defineProps({
       `after:absolute after:-top-2 after:left-1/4 after:h-0 after:w-0 after:-translate-y-full after:-translate-x-1/2 after:border-x-16 after:border-b-18 after:border-t-0 after:border-x-transparent after:content-['']`,
       color === 'sky-500' && 'before:border-b-sky-500 after:border-b-sky-200',
       color === 'brown-300' &&
-        'before:border-b-brown-300 after:border-b-brown-100',
+        'before:border-b-brown-300 after:border-b-brown-200',
       color === 'white' && 'before:border-b-gray-300 after:border-b-white',
     ]"
   >

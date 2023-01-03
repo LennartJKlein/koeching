@@ -9,12 +9,12 @@ defineProps({
 <template>
   <li class="flex-auto">
     <NuxtLink
-      class="duration-400 group flex h-full flex-col items-center justify-center bg-[url(~/assets/svg/grass-dark.svg)] bg-[length:100%_0] bg-bottom bg-no-repeat text-xs font-bold transition-bg-size [&.router-link-active]:bg-[length:100%_100%]"
+      class="duration-400 group flex h-full flex-col items-center justify-center bg-[url(~/assets/svg/grass-dark.svg)] bg-[length:100%_0] bg-bottom bg-no-repeat text-xs font-bold transition-bg-size sm:text-sm md:text-base [&.router-link-active]:bg-[length:100%_100%]"
       :to="to"
     >
       {{ label }}
       <div
-        class="relative order-first h-9 w-9 group-[&.router-link-active]:animate-gelatine"
+        class="relative order-first h-9 w-9 group-[&.router-link-active]:animate-gelatine md:h-10 md:w-10"
       >
         <svg
           aria-hidden="true"
