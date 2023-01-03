@@ -46,8 +46,7 @@
 
   @media screen(md) {
     .border-fence {
-      border-image-width: 90px;
-      border-width: 90px;
+      border-width: 3.9rem;
     }
   }
 }

@@ -56,22 +56,22 @@ const { data: coaches } = await find<ApiCoachCoach>("coaches", {
             modal="coachModal"
           />
         </div>
-        <div
-          class="-mx-3 mt-8 overflow-hidden bg-bottom-nav bg-[length:cover,auto_25px] px-6 pt-14 pb-12"
-        >
-          <PageH2 class="text-white md:mt-16">De dieren</PageH2>
-          <div class="border-fence -mx-3 mt-3">
-            <p class="my-12 italic">Todo: de dieren</p>
-          </div>
-        </div>
-        <div class="-mx-3 overflow-hidden bg-brown-500 px-3 py-8">
-          <PageH2 class="text-white md:mt-16">Methodes</PageH2>
-          <p class="my-12 mx-3 italic">
-            Todo: de verschillende methodes die worden toegepast
-          </p>
-        </div>
-        <p class="my-12 mx-3 italic">Todo: lidmaatschappen van koeching</p>
       </div>
+      <div
+        class="-mx-3 mt-8 overflow-hidden bg-bottom-nav bg-[length:cover,auto_25px] px-3 pt-14 pb-12 lg:pb-20"
+      >
+        <PageH2 class="mx-auto max-w-4xl text-white md:mt-16">De dieren</PageH2>
+        <div class="border-fence mx-auto mt-3 max-w-7xl lg:mt-8">
+          <p class="my-12 italic">Todo: de dieren</p>
+        </div>
+      </div>
+      <div class="-mx-3 overflow-hidden bg-brown-500 px-3 py-8">
+        <PageH2 class="mx-auto max-w-4xl text-white md:mt-16">Methodes</PageH2>
+        <p class="my-12 mx-auto max-w-4xl italic">
+          Todo: de verschillende methodes die worden toegepast
+        </p>
+      </div>
+      <p class="my-12 mx-3 italic">Todo: lidmaatschappen van koeching</p>
     </div>
     <p class="my-12 mx-3 italic">
       Todo: footer met linkjes naar voorwaarden, tarieven, andere coaches, etc
