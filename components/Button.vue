@@ -20,16 +20,16 @@ const colorClasses: { [key: string]: string } = {
     : "shadow-[0_0_0_2px_#18181b] before:bg-brown-300 after:bg-brown-200 hover:after:bg-brown-100 focus:after:bg-brown-100",
   white: props.outlined
     ? "shadow-[0_0_0_2px_#d4d4d8] text-gray-600 before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-200 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
+    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
   black: props.outlined
     ? "shadow-[0_0_0_2px_#18181b] text-gray-900 before:bg-gray-900 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-200 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
+    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
 };
 </script>
 
 <template>
   <NuxtLink
-    class="border-t-none border-x-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-b-transparent active:border-b-[4px]"
+    class="border-x-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-t-[2px] border-t-transparent border-b-transparent active:border-b-[4px]"
     :to="to"
     v-bind="$attrs"
     :aria-label="label"
