@@ -13,11 +13,11 @@ module.exports = {
   ],
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
       black: colors.black,
-      white: colors.white,
+      current: 'currentColor',
       gray: colors.stone,
+      transparent: 'transparent',
+      white: colors.white,
     },
     extend: {
       animation: {

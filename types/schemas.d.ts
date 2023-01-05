@@ -581,6 +581,42 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   };
 }
 
+export interface ApiAnimalAnimal extends CollectionTypeSchema {
+  bio: RichTextAttribute;
+  name: StringAttribute;
+  photos: MediaAttribute;
+  slug: UIDAttribute<'api::animal.animal', 'name'> & RequiredAttribute;
+  info: {
+    singularName: 'animal';
+    pluralName: 'animals';
+    displayName: 'Animal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bio: RichTextAttribute;
+    name: StringAttribute;
+    photos: MediaAttribute;
+    slug: UIDAttribute<'api::animal.animal', 'name'> & RequiredAttribute;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    publishedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<
+      'api::animal.animal',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<
+      'api::animal.animal',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+  };
+}
+
 export interface ApiCoachCoach extends CollectionTypeSchema {
   bio: RichTextAttribute;
   intro: TextAttribute;
@@ -709,6 +745,7 @@ declare global {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::animal.animal': ApiAnimalAnimal;
       'api::coach.coach': ApiCoachCoach;
       'api::membership.membership': ApiMembershipMembership;
       'api::message.message': ApiMessageMessage;

@@ -124,6 +124,15 @@ onMounted(() => {
     @touchend="dragEnd"
     @touchmove="throttle(dragMove($event), 100)"
   >
+    <Button
+      wide
+      @click="hideModal"
+      class="sr-only mx-auto"
+      label="Sluit het detailscherm"
+      color="black"
+      outlined
+      >sluiten</Button
+    >
     <div
       class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl rounded-t-3xl border-2 border-b-0 border-black bg-white px-5 pb-6"
       @click.stop
@@ -132,6 +141,8 @@ onMounted(() => {
         class="mx-auto mb-3 w-full cursor-grab touch-none active:cursor-grabbing"
         @mousedown="dragStart"
         @touchstart="dragStart"
+        tabindex="-1"
+        aria-hidden="true"
       >
         <Icon id="drag-indicator" size="4" class="fill-gray-500" />
         <span class="sr-only">Sluit het detailscherm</span>

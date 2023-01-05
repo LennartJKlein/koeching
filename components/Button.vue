@@ -13,26 +13,28 @@ const props = defineProps({
 
 const colorClasses: { [key: string]: string } = {
   "sky-400": props.outlined
-    ? "shadow-[0_0_0_2px_#3f93b6] text-sky-700 before:bg-sky-600 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-sky-600 after:bg-sky-400 hover:after:bg-sky-300 focus:after:bg-sky-300",
+    ? "shadow-[0_0_0_2px_#3f93b6] text-sky-700 before:bg-sky-600 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100"
+    : "shadow-[0_0_0_2px_#18181b] before:bg-sky-600 after:bg-sky-400 group-hover:after:bg-sky-300 group-focus:after:bg-sky-300",
   "brown-200": props.outlined
-    ? "shadow-[0_0_0_2px_#866841] text-brown-300 before:bg-brown-200 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-brown-300 after:bg-brown-200 hover:after:bg-brown-100 focus:after:bg-brown-100",
+    ? "shadow-[0_0_0_2px_#866841] text-brown-300 before:bg-brown-200 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100"
+    : "shadow-[0_0_0_2px_#18181b] before:bg-brown-300 after:bg-brown-200 group-hover:after:bg-brown-100 group-focus:after:bg-brown-100",
   white: props.outlined
-    ? "shadow-[0_0_0_2px_#d4d4d8] text-gray-600 before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
+    ? "shadow-[0_0_0_2px_#d4d4d8] text-gray-600 before:bg-gray-300 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100"
+    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100",
   black: props.outlined
-    ? "shadow-[0_0_0_2px_#18181b] text-gray-900 before:bg-gray-900 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100"
-    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white hover:after:bg-gray-100 focus:after:bg-gray-100",
+    ? "shadow-[0_0_0_2px_#18181b] text-gray-900 before:bg-gray-900 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100"
+    : "shadow-[0_0_0_2px_#18181b] before:bg-gray-300 after:bg-white group-hover:after:bg-gray-100 group-focus:after:bg-gray-100",
 };
 </script>
 
 <template>
-  <NuxtLink
-    class="border-x-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-t-[2px] border-t-transparent border-b-transparent active:border-b-[4px]"
+  <component
+    :is="to ? 'nuxt-link' : 'button'"
+    class="border-x-none border-t-none group relative z-10 flex cursor-pointer select-none items-center justify-center rounded-3xl border-b-transparent outline-none focus:outline-dotted focus:outline-black active:border-b-[4px]"
     :to="to"
     v-bind="$attrs"
     :aria-label="label"
+    :tabindex="$attrs.tabindex || 0"
   >
     <span
       :class="[
@@ -46,5 +48,5 @@ const colorClasses: { [key: string]: string } = {
     >
       <slot />
     </span>
-  </NuxtLink>
+  </component>
 </template>

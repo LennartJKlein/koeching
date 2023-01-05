@@ -9,7 +9,7 @@ defineProps({
 <template>
   <li class="flex-auto">
     <NuxtLink
-      class="duration-400 group flex h-full flex-col items-center justify-center bg-[url(~/assets/svg/grass-dark.svg)] bg-[length:100%_0] bg-bottom bg-no-repeat text-xs font-bold transition-bg-size sm:text-sm md:text-base [&.router-link-active]:bg-[length:100%_100%]"
+      class="duration-400 group flex h-full flex-col items-center justify-center bg-[url(~/assets/svg/grass-dark.svg)] bg-[length:100%_0] bg-bottom bg-no-repeat text-xs font-bold transition-bg-size focus:outline-dotted focus:outline-2 focus:outline-black sm:text-sm md:text-base [&.router-link-active]:bg-[length:100%_100%]"
       :to="to"
     >
       {{ label }}
