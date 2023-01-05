@@ -16,23 +16,16 @@
     scrollbar-width: thin;
     scrollbar-color: transparent white;
   }
-
   /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 12px;
-  }
-
   *::-webkit-scrollbar-track {
     background: transparent;
   }
-
   *::-webkit-scrollbar-thumb {
     background-color: white;
     border-radius: 20px;
     border: solid 2px black;
     box-shadow: 0 -2px 0 0 inset #cccccc;
   }
-
 }
 
 @layer utilities {
