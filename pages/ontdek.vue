@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import type { ApiAnimalAnimal, ApiCoachCoach } from "~/types/schemas";
+import type {
+  ApiAnimalAnimal,
+  ApiCoachCoach,
+  ApiMembershipMembership,
+} from "~/types/schemas";
 const { find } = useStrapi();
 const { data: coaches = [] } = await find<ApiCoachCoach>("coaches", {
   populate: "*",
@@ -9,6 +13,13 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>("animals", {
   populate: "*",
   sort: "rank:asc",
 });
+const { data: memberships = [] } = await find<ApiMembershipMembership>(
+  "memberships",
+  {
+    populate: "*",
+    sort: "rank:asc",
+  }
+);
 </script>
 
 <template>
