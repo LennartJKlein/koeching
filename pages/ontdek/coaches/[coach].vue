@@ -38,6 +38,7 @@ const { $markdown } = useNuxtApp();
         {{ coach.attributes.name }}
       </h1>
       <div
+        v-if="coach.attributes.photos.data"
         :class="[
           coach.attributes.photos.data.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
@@ -49,7 +50,7 @@ const { $markdown } = useNuxtApp();
           v-for="photo in coach.attributes.photos.data"
           :class="[
             coach.attributes.photos.data.length > 1
-              ? 'aspect-square w-10/12 flex-shrink-0 snap-start md:aspect-[4/3]'
+              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
           ]"
@@ -65,6 +66,7 @@ const { $markdown } = useNuxtApp();
           '[&>h4]:mt-5 [&>h4]:mb-1 [&>h4]:font-display [&>h4]:text-2xl [&>h4]:leading-none [&>h4]:text-brown-400',
           '[&>h5]:mt-5 [&>h5]:mb-1 [&>h5]:font-display [&>h5]:text-2xl [&>h5]:leading-none [&>h5]:text-brown-400',
           '[&>h6]:mt-5 [&>h6]:mb-1 [&>h6]:font-display [&>h6]:text-2xl [&>h6]:leading-none [&>h6]:text-brown-400',
+          '[&>p]:mt-4',
         ]"
         v-html="
           $markdown.render(`${coach.attributes.intro}\n${coach.attributes.bio}`)

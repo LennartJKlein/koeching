@@ -36,7 +36,27 @@ const { $markdown } = useNuxtApp();
       >
         {{ animal.attributes.name }}
       </h1>
-      <p class="my-12 mx-3 italic">Todo: fotos van dier/dieren</p>
+      <div
+        v-if="animal.attributes.photos.data"
+        :class="[
+          animal.attributes.photos.data.length > 1 &&
+            '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
+          'mb-4',
+        ]"
+        role="list"
+      >
+        <img
+          v-for="photo in animal.attributes.photos.data"
+          :class="[
+            animal.attributes.photos.data.length > 1
+              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
+              : 'aspect-[4/3] w-full',
+            'rounded-xl object-cover',
+          ]"
+          role="listitem"
+          :src="photo.attributes.url"
+        />
+      </div>
       <div
         v-if="animal.attributes.bio"
         :class="[
@@ -45,6 +65,7 @@ const { $markdown } = useNuxtApp();
           '[&>h4]:mt-4 [&>h4]:font-display [&>h4]:text-xl [&>h4]:leading-tight',
           '[&>h5]:mt-4 [&>h5]:font-display [&>h5]:text-xl [&>h5]:leading-tight',
           '[&>h6]:mt-4 [&>h6]:font-display [&>h6]:text-xl [&>h6]:leading-tight',
+          '[&>p]:mt-4',
         ]"
         v-html="$markdown.render(animal.attributes.bio)"
       />
