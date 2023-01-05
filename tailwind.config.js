@@ -82,6 +82,12 @@ module.exports = {
         "clip": "clip-path",
         "bg-size": "background-size",
       },
+      transitionTimingFunction: {
+        "overshoot": "cubic-bezier(.38,1.24,.58,.99)",
+        "anticipate": "cubic-bezier(.81,.02,.95,-0.34)",
+        "out": "cubic-bezier(.25,1,.43,1)",
+        "in": "cubic-bezier(.5,0,.55,0)",
+      },
     },
   },
   safelist: [

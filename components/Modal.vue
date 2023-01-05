@@ -31,7 +31,9 @@ function showModal() {
 function hideModal() {
   if (!dialog?.value) return;
   dialog.value.addEventListener("webkitTransitionEnd", () => {
+    dialog.value.classList.add("ease-out");
     dialog.value.classList.remove(
+      "ease-in",
       "translate-y-full",
       "backdrop\:bg-opacity-0",
       "backdrop\:backdrop-blur-none"
@@ -39,7 +41,9 @@ function hideModal() {
     dialog.value.removeEventListener("webkitTransitionEnd", () => {});
     dialog.value.close();
   });
+  dialog.value.classList.remove("ease-out");
   dialog.value.classList.add(
+    "ease-in",
     "translate-y-full",
     "backdrop\:bg-opacity-0",
     "backdrop\:backdrop-blur-none"
@@ -104,7 +108,7 @@ onMounted(() => {
 <template>
   <dialog
     :class="[
-      'top-0 left-0 right-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-300 backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
+      'top-0 left-0 right-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-[350ms] ease-out backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
       !isDragging && 'transition-transform',
       !isOpen && 'backdrop:bg-opacity-0 backdrop:backdrop-blur-none',
     ]"
