@@ -16,6 +16,7 @@ const goBack = function () {
       <h1 class="mb-3 font-display text-3xl font-bold text-brown-300">
         Boerderij Borreveld
       </h1>
+      <p class="my-12 mx-3 italic">Todo: fotos van de boerderij</p>
       <p class="mt-4">
         We heten je graag van harte welkom op boerderij Borreveld. Borreveld is
         gelegen aan de Lekdijk tussen Amerongen en Wijk bij Duurstede. Deze
