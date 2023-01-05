@@ -10,6 +10,29 @@
   body {
     @apply bg-gray-200;
   }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent white;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: solid 2px black;
+    box-shadow: 0 -2px 0 0 inset #cccccc;
+  }
+
 }
 
 @layer utilities {
@@ -40,13 +63,15 @@
   }
 
   .border-fence {
-    border-image: url('~/assets/svg/border-fence.svg') 70 80 80 65 / 1000px / 0 round;
-    border-width: 2rem;
+    /* doesnt work with svg */
+    border-image: url('~/assets/webp/border-fence.webp') fill 136 132 178 132 / 34px 33px 44px 33px / 0 round;
+    border-width: 40px 2rem 50px 2rem;
   }
 
   @media screen(md) {
     .border-fence {
-      border-width: 3.9rem;
+      border-image-width: 68px 66px 89px 66px;
+      border-width: 80px 60px 90px 60px;
     }
   }
 }
