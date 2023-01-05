@@ -13,7 +13,7 @@
     />
   </Hero>
   <div class="px-3">
-    <SpeechBubble color="white" class="mx-auto -mt-12 max-w-3xl">
+    <SpeechBubble marker color="white" class="mx-auto -mt-12 max-w-3xl">
       <p class="font-display text-2xl leading-tight text-brown-400 md:text-3xl">
         Welkom op de site van Koeching!<br />Leuk dat je er bent.
       </p>
