@@ -6,6 +6,7 @@ const props = defineProps({
 
 const dialog = ref<InstanceType<any> | undefined>(null);
 const isOpen = ref(false);
+const isClosing = ref(false);
 const attrs = useAttrs();
 
 function throttle<T>(fn: T, wait: number) {
@@ -30,24 +31,15 @@ function showModal() {
 
 function hideModal() {
   if (!dialog?.value) return;
+  // After disappearing
   dialog.value.addEventListener("webkitTransitionEnd", () => {
-    dialog.value.classList.add("ease-out");
-    dialog.value.classList.remove(
-      "ease-in",
-      "translate-y-full",
-      "backdrop\:bg-opacity-0",
-      "backdrop\:backdrop-blur-none"
-    );
     dialog.value.removeEventListener("webkitTransitionEnd", () => {});
     dialog.value.close();
+    isClosing.value = false;
   });
-  dialog.value.classList.remove("ease-out");
-  dialog.value.classList.add(
-    "ease-in",
-    "translate-y-full",
-    "backdrop\:bg-opacity-0",
-    "backdrop\:backdrop-blur-none"
-  );
+
+  // Start closing animation
+  isClosing.value = true;
 }
 
 const isDragging = ref(false);
@@ -55,7 +47,8 @@ const dragYStart = ref(0);
 const dragYOffset = ref(0);
 
 function dragStart(e: TouchEvent | MouseEvent) {
-  if (!isDragging) return;
+  if (isDragging.value) return;
+  isDragging.value = true;
   if (e instanceof TouchEvent) {
     dragYStart.value = e.changedTouches[0].screenY;
   }
@@ -65,7 +58,7 @@ function dragStart(e: TouchEvent | MouseEvent) {
 }
 
 function dragMove(e: TouchEvent | MouseEvent) {
-  if (!isDragging || dragYStart.value == 0) return;
+  if (!isDragging.value || dragYStart.value == 0) return;
   let movement = 0;
   if (e instanceof TouchEvent) {
     movement = e.changedTouches[0].screenY;
@@ -74,11 +67,11 @@ function dragMove(e: TouchEvent | MouseEvent) {
     movement = e.screenY;
   }
   dragYOffset.value =
-    movement > dragYStart.value ? movement - dragYStart.value : 0;
+    movement > dragYStart.value ? movement * 1.05 - dragYStart.value : 0;
 }
 
 function dragEnd(e: TouchEvent | MouseEvent) {
-  if (!isDragging || dragYStart.value == 0) return;
+  if (!isDragging.value || dragYStart.value == 0) return;
   let movement = 0;
   if (e instanceof TouchEvent) {
     movement = e.changedTouches[0].screenY;
@@ -87,12 +80,13 @@ function dragEnd(e: TouchEvent | MouseEvent) {
     movement = e.screenY;
   }
   const diff = movement - dragYStart.value;
-  if (Math.abs(diff) > window.screen.height * 0.6) {
+  if (Math.abs(diff) > window.screen.height * 0.4) {
     // Close if dragged down far enough
     hideModal();
   }
   dragYStart.value = 0;
   dragYOffset.value = 0;
+  isDragging.value = false;
 }
 
 onMounted(() => {
@@ -109,13 +103,15 @@ onMounted(() => {
   <dialog
     :class="[
       'top-0 left-0 right-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-[350ms] ease-out backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
-      !isDragging && 'transition-transform',
       !isOpen && 'backdrop:bg-opacity-0 backdrop:backdrop-blur-none',
+      !isDragging && 'transition-transform',
+      isClosing
+        ? 'translate-y-full ease-in backdrop:bg-opacity-0 backdrop:backdrop-blur-none'
+        : 'ease-out',
     ]"
-    :style="
-      (!isOpen || isDragging) &&
-      `transform: translateY(${!isOpen ? '100%' : dragYOffset + 'px'})`
-    "
+    :style="`transform: translateY(${
+      isClosing ? '100%' : !isOpen ? '100%' : dragYOffset + 'px'
+    })`"
     ref="dialog"
     v-bind="attrs"
     @click="hideModal"
