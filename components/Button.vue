@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const NuxtLink = resolveComponent("NuxtLink");
+
 const props = defineProps({
   color: {
     type: String,
@@ -29,7 +31,7 @@ const colorClasses: { [key: string]: string } = {
 
 <template>
   <component
-    :is="to ? 'nuxt-link' : 'button'"
+    :is="to ? NuxtLink : 'button'"
     class="border-x-none border-t-none group relative z-10 flex cursor-pointer select-none items-center justify-center rounded-3xl border-b-transparent outline-none focus-visible:outline-dotted focus-visible:outline-black active:border-b-[4px]"
     :to="to"
     v-bind="$attrs"
