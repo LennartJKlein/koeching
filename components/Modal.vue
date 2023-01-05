@@ -30,7 +30,20 @@ function showModal() {
 
 function hideModal() {
   if (!dialog?.value) return;
-  dialog.value.close();
+  dialog.value.addEventListener("webkitTransitionEnd", () => {
+    dialog.value.classList.remove(
+      "translate-y-full",
+      "backdrop\:bg-opacity-0",
+      "backdrop\:backdrop-blur-none"
+    );
+    dialog.value.removeEventListener("webkitTransitionEnd", () => {});
+    dialog.value.close();
+  });
+  dialog.value.classList.add(
+    "translate-y-full",
+    "backdrop\:bg-opacity-0",
+    "backdrop\:backdrop-blur-none"
+  );
 }
 
 const isDragging = ref(false);
@@ -70,8 +83,9 @@ function dragEnd(e: TouchEvent | MouseEvent) {
     movement = e.screenY;
   }
   const diff = movement - dragYStart.value;
-  if (Math.abs(diff) > window.screen.height * 0.3) {
-    dialog.value.close();
+  if (Math.abs(diff) > window.screen.height * 0.6) {
+    // Close if dragged down far enough
+    hideModal();
   }
   dragYStart.value = 0;
   dragYOffset.value = 0;
@@ -90,10 +104,14 @@ onMounted(() => {
 <template>
   <dialog
     :class="[
-      'top-0 left-0 m-0 mx-auto h-full max-h-screen w-full max-w-2xl overflow-auto bg-transparent p-0 backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm',
-      !dragYOffset && 'transition-transform',
+      'top-0 left-0 right-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-300 backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
+      !isDragging && 'transition-transform',
+      !isOpen && 'backdrop:bg-opacity-0 backdrop:backdrop-blur-none',
     ]"
-    :style="`transform: translateY(${isOpen ? dragYOffset + 'px' : '100%'})`"
+    :style="
+      (!isOpen || isDragging) &&
+      `transform: translateY(${!isOpen ? '100%' : dragYOffset + 'px'})`
+    "
     ref="dialog"
     v-bind="attrs"
     @click="hideModal"
@@ -103,7 +121,7 @@ onMounted(() => {
     @touchmove="throttle(dragMove($event), 100)"
   >
     <div
-      class="mx-auto mt-[10vh] min-h-[90vh] w-full rounded-t-3xl border-2 border-b-0 border-black bg-white px-5 pb-6"
+      class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl rounded-t-3xl border-2 border-b-0 border-black bg-white px-5 pb-6"
       @click.stop
     >
       <button
