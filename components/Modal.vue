@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, watchEffect, useAttrs } from "vue";
+import { throttle } from "lodash-es";
 const props = defineProps({
   open: Boolean,
 });
@@ -8,21 +9,6 @@ const dialog = ref<InstanceType<any> | undefined>(null);
 const isOpen = ref(false);
 const isClosing = ref(false);
 const attrs = useAttrs();
-
-function throttle<T>(fn: T, wait: number) {
-  let throttled = false;
-  return (event: Event) => {
-    if (typeof fn === "function") {
-      if (!throttled) {
-        fn(event);
-        throttled = true;
-        setTimeout(() => {
-          throttled = false;
-        }, wait);
-      }
-    }
-  };
-}
 
 function showModal() {
   if (!dialog?.value) return;
@@ -57,7 +43,7 @@ function dragStart(e: TouchEvent | MouseEvent) {
   }
 }
 
-function dragMove(e: TouchEvent | MouseEvent) {
+const dragMove = throttle((e: TouchEvent | MouseEvent) => {
   if (!isDragging.value || dragYStart.value == 0) return;
   let movement = 0;
   if (e instanceof TouchEvent) {
@@ -67,8 +53,8 @@ function dragMove(e: TouchEvent | MouseEvent) {
     movement = e.screenY;
   }
   dragYOffset.value =
-    movement > dragYStart.value ? movement * 1.05 - dragYStart.value : 0;
-}
+    movement > dragYStart.value ? movement - dragYStart.value : 0;
+}, 50);
 
 function dragEnd(e: TouchEvent | MouseEvent) {
   if (!isDragging.value || dragYStart.value == 0) return;
@@ -115,10 +101,10 @@ onMounted(() => {
     ref="dialog"
     v-bind="attrs"
     @click="hideModal"
-    @mousemove="throttle(dragMove($event), 100)"
+    @mousemove="dragMove($event)"
     @mouseup="dragEnd"
     @touchend="dragEnd"
-    @touchmove="throttle(dragMove($event), 100)"
+    @touchmove="dragMove($event)"
   >
     <Button
       wide
