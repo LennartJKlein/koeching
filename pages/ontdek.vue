@@ -49,9 +49,9 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>(
             >?</span
           >
         </Button>
-        <p class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">
+        <PageH2 class="mt-3 text-white">
           De boerderij
-        </p>
+        </PageH2>
         <template v-if="coaches.length">
           <PageH2 class="mt-[400px] text-white md:mt-[45vw] xl:mt-[35vw]">
             De coaches

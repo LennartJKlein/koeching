@@ -1,7 +1,11 @@
 <template>
   <PageTitle>Kennisbank</PageTitle>
   <p class="my-12 mx-3 italic">
-    Todo: introductie over wat je hier kunt vinden
+    Kom meer te weten over hoe coaching met dieren 
+kan bijdragen aan de ontwikkeling van kinderen.
+  </p>
+  <p class="my-12 mx-3 italic">
+    Todo: interventies
   </p>
   <p class="my-12 mx-3 italic">Todo: linkjes naar artikelen / pdfs</p>
   <p class="my-12 mx-3 italic">

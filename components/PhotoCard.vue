@@ -26,6 +26,7 @@ const props = defineProps({
       >
         {{ title }}
       </h5>
+      <slot />
     </div>
     <div class="absolute top-3 right-3">
       <Button
@@ -54,13 +55,12 @@ const props = defineProps({
       aria-hidden="true"
     >
       <img v-if="image" :src="image" class="aspect-[3/4] w-full object-cover" />
-      <nuxt-link
-        class="absolute left-0 top-0 right-0 bottom-0 rounded-3xl"
-        :to="to"
-        tabindex="-1"
-        aria-hidden="true"
-      />
     </figure>
-    <slot />
+    <nuxt-link
+      class="absolute left-0 top-0 right-0 bottom-0 rounded-3xl"
+      :to="to"
+      tabindex="-1"
+      aria-hidden="true"
+    />
   </div>
 </template>
