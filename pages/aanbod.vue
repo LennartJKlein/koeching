@@ -29,7 +29,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>("trainings", {
 
 <template>
   <div
-    class="overflow-hidden bg-[url(~/assets/svg/grass-with-bushes.svg)] bg-[length:200vw_500px] bg-top bg-no-repeat px-4 md:bg-[length:100vw_45vw]"
+    class="overflow-hidden bg-[url(~/assets/svg/grass-with-bushes.svg)] bg-[length:1200px_500px] bg-right-top bg-no-repeat px-4 md:bg-[length:100vw_45vw]"
   >
     <SpeechBubble class="mx-auto mt-10 max-w-2xl md:mt-20" color="white">
       <PageTitle class="text-center">Vind jouw aanpak</PageTitle>
@@ -38,7 +38,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>("trainings", {
       </p>
     </SpeechBubble>
     <div
-      class="relative -mx-4 pt-[260px] md:pt-[30vw] xl:pt-[25vw] overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:center_3rem,center_20vw] bg-no-repeat md:bg-[length:100%_auto,cover]"
+      class="relative -mx-4 pt-[260px] md:pt-[30vw] xl:pt-[25vw] overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:left_3rem,center_20vw] bg-no-repeat md:bg-[length:100%_auto,cover]"
     >
       <div class="relative mx-auto max-w-4xl px-4">
         <template v-if="therapies.length">
