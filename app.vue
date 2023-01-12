@@ -1,3 +1,11 @@
+<script setup lang="ts">
+useHead({
+  htmlAttrs: {
+    lang: 'nl',
+  }
+})
+</script>
+
 <template>
   <IconPack />
   <header

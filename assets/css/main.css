@@ -11,6 +11,10 @@
     @apply bg-gray-200;
   }
 
+  * {
+    hyphens: auto;
+  }
+
   /* Firefox */
   * {
     scrollbar-width: thin;

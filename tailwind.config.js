@@ -56,6 +56,18 @@ module.exports = {
           800: '#2f7fa5',
           900: '#206d97',
         },
+        green: {
+          50: '#d7e98d',
+          100: '#bfd858',
+          200: '#a7cc09',
+          300: '#96ba00',
+          400: '#85a500',
+          500: '#7b9c00',
+          600: '#7b9c00',
+          700: '#5f7800',
+          800: '#5c7200',
+          900: '#415100',
+        },
       },
       fontFamily: {
         "sans": ["Oxygen", ...defaultTheme.fontFamily.sans],
