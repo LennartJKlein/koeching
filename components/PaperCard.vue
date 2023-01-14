@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { random } from 'lodash';
+import { random } from 'lodash'
 
 const props = defineProps({
   color: String,
@@ -11,10 +11,19 @@ const props = defineProps({
   titleSmall: Boolean,
   to: String,
   modal: String,
-});
+})
 
 const random = Math.floor(Math.random() * 8)
-const rotations = ['rotate-0', 'rotate-1', 'rotate-2', 'rotate-3', '-rotate-0', '-rotate-1', '-rotate-2', '-rotate-3']
+const rotations = [
+  'rotate-0',
+  'rotate-1',
+  'rotate-2',
+  'rotate-3',
+  '-rotate-0',
+  '-rotate-1',
+  '-rotate-2',
+  '-rotate-3',
+]
 const rotationClass = rotations[random]
 
 const shadows = [
@@ -28,21 +37,24 @@ const shadows = [
   'before:right-[16px] before:skew-y-6 before:skew-x-6 before:rotate-3',
 ]
 const shadowClass = shadows[random]
-
 </script>
 
 <template>
-  <div :class="[
-      'relative, rounded-xl bg-gradient-to-br from-[rgb(255_255_255/60%)] via-[rgb(255_255_255/35%)] to-[rgb(255_255_255/50%)] p-2 aspect-[7/10] max-w-[250px] shadow-sm',
+  <div
+    :class="[
+      'relative, aspect-[7/10] max-w-[250px] rounded-xl bg-gradient-to-br from-[rgb(255_255_255/60%)] via-[rgb(255_255_255/35%)] to-[rgb(255_255_255/50%)] p-2 shadow-sm',
       rotationClass,
-      'before:absolute before:w-3/4 before:bg-black before:shadow-[0_0_15px_8px_#5a5041] before:top-3/4 before:bottom-6 before:-z-1 before:opacity-30',
+      'before:-z-1 before:absolute before:top-3/4 before:bottom-6 before:w-3/4 before:bg-black before:opacity-30 before:shadow-[0_0_15px_8px_#5a5041]',
       shadowClass,
-    ]">
-    <div class="relative h-full flex flex-col items-center bg-gray-50 rounded-sm p-5 shadow-[inset_-1px_-2px_0_#ccc,inset_2px_2px_0_white]">
+    ]"
+  >
+    <div
+      class="relative flex h-full flex-col items-center rounded-sm bg-gray-50 py-5 px-3 shadow-[inset_-1px_-2px_0_#ccc,inset_2px_2px_0_white]"
+    >
       <h5
         v-if="title"
         :class="[
-          'font-display font-bold leading-none text-center text-green-600',
+          'w-full text-center font-display font-bold leading-none text-green-600',
           titleSmall ? 'text-2xl' : ' text-3xl',
         ]"
       >
@@ -65,16 +77,18 @@ const shadowClass = shadows[random]
       </div>
       <figure
         :class="[
-          'aspect-square w-4/5 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center my-auto',
-          placeholder == 'animal' &&
-            'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
-          placeholder == 'person' &&
-            'bg-[url(~/assets/webp/person-thumbnail.webp)]',
+          'my-auto aspect-square w-4/5 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center',
+          placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
+          placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
         ]"
         tabindex="-1"
         aria-hidden="true"
       >
-        <img v-if="image" :src="image" class="aspect-square w-full object-cover" />
+        <img
+          v-if="image"
+          :src="image"
+          class="aspect-square w-full object-cover"
+        />
       </figure>
       <slot />
       <nuxt-link
