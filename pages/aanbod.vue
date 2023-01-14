@@ -43,7 +43,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
     >
       <div class="relative mx-auto max-w-4xl px-4">
         <template v-if="therapies.length">
-          <PageH2> Therapie </PageH2>
+          <PageH2>Therapie</PageH2>
           <div
             class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
             role="list"
@@ -67,7 +67,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </template>
         <template v-if="coachings.length">
-          <PageH2> Begeleiding </PageH2>
+          <PageH2>Begeleiding</PageH2>
           <div
             class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
             role="list"
@@ -91,7 +91,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </template>
         <template v-if="trainings.length">
-          <PageH2> Trainingen </PageH2>
+          <PageH2>Trainingen</PageH2>
           <div
             class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
             role="list"
