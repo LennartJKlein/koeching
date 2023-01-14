@@ -57,6 +57,7 @@ const shadowClass = shadows[random]
           'w-full text-center font-display font-bold leading-none text-green-600',
           titleSmall ? 'text-2xl' : ' text-3xl',
         ]"
+        style="hyphens: auto"
       >
         {{ title }}
       </h5>

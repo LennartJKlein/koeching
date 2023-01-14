@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import type { ApiCoachCoach } from "~/types/schemas";
+import type { ApiCoachCoach } from '~/types/schemas'
 
-const { find } = useStrapi();
-const route = useRoute();
+const { find } = useStrapi()
+const route = useRoute()
 const {
   data: [coach],
-} = await find<ApiCoachCoach>("coaches", {
+} = await find<ApiCoachCoach>('coaches', {
   filters: {
     slug: {
       $eq: route.params.coach,
     },
   },
-  populate: "*",
-});
+  populate: '*',
+})
 // const coach = { attributes: { name: "Annet" } };
 
 const goBack = function () {
-  const router = useRouter();
-  router.push("/ontdek");
-};
+  const router = useRouter()
+  router.push('/ontdek')
+}
 
-const { $markdown } = useNuxtApp();
+const { $markdown } = useNuxtApp()
+const { classes: mdClasses } = useMdStyles()
 </script>
 
 <template>
@@ -30,19 +31,27 @@ const { $markdown } = useNuxtApp();
     open
     @close="goBack"
   >
-    <section>
+    <template v-slot:heading>
       <h1
-        class="mb-3 font-display text-3xl font-bold text-brown-300"
         v-if="coach.attributes.name"
+        class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
         {{ coach.attributes.name }}
       </h1>
+      <p
+        v-if="coach.attributes.intro"
+        class="text-lg font-bold text-sky-500"
+      >
+        {{ coach.attributes.intro }}
+      </p>
+    </template>
+    <section>
       <div
         v-if="coach.attributes.photos.data"
         :class="[
+          'my-5',
           coach.attributes.photos.data.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
-          'mb-4',
         ]"
         role="list"
       >
@@ -59,23 +68,12 @@ const { $markdown } = useNuxtApp();
         />
       </div>
       <div
-        v-if="coach.attributes.intro || coach.attributes.bio"
-        :class="[
-          '[&>h2]:mt-5 [&>h2]:mb-1 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:leading-none [&>h2]:text-brown-400',
-          '[&>h3]:mt-5 [&>h3]:mb-1 [&>h3]:font-display [&>h3]:text-2xl [&>h3]:leading-none [&>h3]:text-brown-400',
-          '[&>h4]:mt-5 [&>h4]:mb-1 [&>h4]:font-display [&>h4]:text-2xl [&>h4]:leading-none [&>h4]:text-brown-400',
-          '[&>h5]:mt-5 [&>h5]:mb-1 [&>h5]:font-display [&>h5]:text-2xl [&>h5]:leading-none [&>h5]:text-brown-400',
-          '[&>h6]:mt-5 [&>h6]:mb-1 [&>h6]:font-display [&>h6]:text-2xl [&>h6]:leading-none [&>h6]:text-brown-400',
-          '[&>p]:mt-4',
-        ]"
-        v-html="
-          $markdown.render(`${coach.attributes.intro}\n${coach.attributes.bio}`)
-        "
+        v-if="coach.attributes.bio"
+        :class="mdClasses"
+        v-html="$markdown.render(coach.attributes.bio)"
       />
       <p class="my-12 mx-3 italic">Todo: methodes die deze coach beheerst</p>
-      <p class="my-12 mx-3 italic">
-        Todo: diensten/producten die deze coach faciliteert
-      </p>
+      <p class="my-12 mx-3 italic">Todo: diensten/producten die deze coach faciliteert</p>
     </section>
   </Modal>
 </template>

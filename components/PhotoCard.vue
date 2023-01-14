@@ -9,7 +9,7 @@ const props = defineProps({
   titleSmall: Boolean,
   to: String,
   modal: String,
-});
+})
 </script>
 
 <template>
@@ -23,6 +23,7 @@ const props = defineProps({
           'font-display font-bold leading-none text-white ',
           titleSmall ? 'text-2xl' : ' text-3xl',
         ]"
+        style="hyphens: auto"
       >
         {{ title }}
       </h5>
@@ -46,15 +47,17 @@ const props = defineProps({
     <figure
       :class="[
         'aspect-[3/4] w-full overflow-hidden rounded-3xl bg-gray-800 bg-cover bg-center',
-        placeholder == 'animal' &&
-          'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
-        placeholder == 'person' &&
-          'bg-[url(~/assets/webp/person-thumbnail.webp)]',
+        placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
+        placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
       ]"
       tabindex="-1"
       aria-hidden="true"
     >
-      <img v-if="image" :src="image" class="aspect-[3/4] w-full object-cover" />
+      <img
+        v-if="image"
+        :src="image"
+        class="aspect-[3/4] w-full object-cover"
+      />
     </figure>
     <nuxt-link
       class="absolute left-0 top-0 right-0 bottom-0 rounded-3xl"

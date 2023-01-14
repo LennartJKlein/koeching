@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import type { ApiAnimalAnimal } from "~/types/schemas";
+import type { ApiAnimalAnimal } from '~/types/schemas'
 
-const { find } = useStrapi();
-const route = useRoute();
+const { find } = useStrapi()
+const route = useRoute()
 const {
   data: [animal],
-} = await find<ApiAnimalAnimal>("animals", {
+} = await find<ApiAnimalAnimal>('animals', {
   filters: {
     slug: {
       $eq: route.params.animal,
     },
   },
-  populate: "*",
-});
+  populate: '*',
+})
 
 const goBack = function () {
-  const router = useRouter();
-  router.push("/ontdek");
-};
+  const router = useRouter()
+  router.push('/ontdek')
+}
 
-const { $markdown } = useNuxtApp();
+const { $markdown } = useNuxtApp()
+const { classes: mdClasses } = useMdStyles()
 </script>
 
 <template>
@@ -29,19 +30,21 @@ const { $markdown } = useNuxtApp();
     open
     @close="goBack"
   >
-    <section>
+    <template v-slot:heading>
       <h1
-        class="mb-3 font-display text-3xl font-bold text-brown-300"
         v-if="animal.attributes.name"
+        class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
         {{ animal.attributes.name }}
       </h1>
+    </template>
+    <section>
       <div
         v-if="animal.attributes.photos.data"
         :class="[
+          'my-5',
           animal.attributes.photos.data.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
-          'mb-4',
         ]"
         role="list"
       >
@@ -59,14 +62,7 @@ const { $markdown } = useNuxtApp();
       </div>
       <div
         v-if="animal.attributes.bio"
-        :class="[
-          '[&>h2]:mt-4 [&>h2]:font-display [&>h2]:text-xl [&>h2]:leading-tight',
-          '[&>h3]:mt-4 [&>h3]:font-display [&>h3]:text-xl [&>h3]:leading-tight',
-          '[&>h4]:mt-4 [&>h4]:font-display [&>h4]:text-xl [&>h4]:leading-tight',
-          '[&>h5]:mt-4 [&>h5]:font-display [&>h5]:text-xl [&>h5]:leading-tight',
-          '[&>h6]:mt-4 [&>h6]:font-display [&>h6]:text-xl [&>h6]:leading-tight',
-          '[&>p]:mt-4',
-        ]"
+        :class="mdClasses"
         v-html="$markdown.render(animal.attributes.bio)"
       />
       <p class="my-12 mx-3 italic">

@@ -3,16 +3,17 @@ defineProps({
   id: String,
   size: {
     type: String,
-    default: "4",
+    default: '4',
   },
-});
+})
 
 const sizesClasses: { [key: string]: string } = {
-  4: "w-4 h-4",
-  6: "w-6 h-6",
-  8: "w-8 h-8",
-  10: "w-10 h-10",
-};
+  4: 'w-4 h-4',
+  5: 'w-5 h-5',
+  6: 'w-6 h-6',
+  8: 'w-8 h-8',
+  10: 'w-10 h-10',
+}
 </script>
 
 <template>

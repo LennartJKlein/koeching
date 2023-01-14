@@ -1,88 +1,87 @@
 <script lang="ts" setup>
-import { onMounted, ref, watchEffect, useAttrs } from "vue";
-import { throttle } from "lodash-es";
+import { onMounted, ref, watchEffect, useAttrs } from 'vue'
+import { throttle } from 'lodash-es'
 const props = defineProps({
   open: Boolean,
-});
+})
 
-const dialog = ref<InstanceType<any> | undefined>(null);
-const isOpen = ref(false);
-const isClosing = ref(false);
-const attrs = useAttrs();
+const dialog = ref<InstanceType<any> | undefined>(null)
+const isOpen = ref(false)
+const isClosing = ref(false)
+const attrs = useAttrs()
 
 function showModal() {
-  if (!dialog?.value) return;
-  dialog.value.showModal();
+  if (!dialog?.value) return
+  dialog.value.showModal()
 }
 
 function hideModal() {
-  if (!dialog?.value) return;
+  if (!dialog?.value) return
   // After disappearing
-  dialog.value.addEventListener("webkitTransitionEnd", () => {
-    dialog.value.removeEventListener("webkitTransitionEnd", () => {});
-    dialog.value.close();
-    isClosing.value = false;
-  });
+  dialog.value.addEventListener('webkitTransitionEnd', () => {
+    dialog.value.removeEventListener('webkitTransitionEnd', () => {})
+    dialog.value.close()
+    isClosing.value = false
+  })
 
   // Start closing animation
-  isClosing.value = true;
+  isClosing.value = true
 }
 
-const isDragging = ref(false);
-const dragYStart = ref(0);
-const dragYOffset = ref(0);
+const isDragging = ref(false)
+const dragYStart = ref(0)
+const dragYOffset = ref(0)
 
 function dragStart(e: TouchEvent | MouseEvent) {
-  if (isDragging.value) return;
-  isDragging.value = true;
+  if (isDragging.value) return
+  isDragging.value = true
   if (e instanceof TouchEvent) {
-    dragYStart.value = e.changedTouches[0].screenY;
+    dragYStart.value = e.changedTouches[0].screenY
   }
   if (e instanceof MouseEvent) {
-    dragYStart.value = e.screenY;
+    dragYStart.value = e.screenY
   }
 }
 
 const dragMove = throttle((e: TouchEvent | MouseEvent) => {
-  if (!isDragging.value || dragYStart.value == 0) return;
-  let movement = 0;
+  if (!isDragging.value || dragYStart.value == 0) return
+  let movement = 0
   if (e instanceof TouchEvent) {
-    movement = e.changedTouches[0].screenY;
+    movement = e.changedTouches[0].screenY
   }
   if (e instanceof MouseEvent) {
-    movement = e.screenY;
+    movement = e.screenY
   }
-  dragYOffset.value =
-    movement > dragYStart.value ? movement - dragYStart.value : 0;
-}, 50);
+  dragYOffset.value = movement > dragYStart.value ? movement - dragYStart.value : 0
+}, 50)
 
 function dragEnd(e: TouchEvent | MouseEvent) {
-  if (!isDragging.value || dragYStart.value == 0) return;
-  let movement = 0;
+  if (!isDragging.value || dragYStart.value == 0) return
+  let movement = 0
   if (e instanceof TouchEvent) {
-    movement = e.changedTouches[0].screenY;
+    movement = e.changedTouches[0].screenY
   }
   if (e instanceof MouseEvent) {
-    movement = e.screenY;
+    movement = e.screenY
   }
-  const diff = movement - dragYStart.value;
+  const diff = movement - dragYStart.value
   if (Math.abs(diff) > window.screen.height * 0.4) {
     // Close if dragged down far enough
-    hideModal();
+    hideModal()
   }
-  dragYStart.value = 0;
-  dragYOffset.value = 0;
-  isDragging.value = false;
+  dragYStart.value = 0
+  dragYOffset.value = 0
+  isDragging.value = false
 }
 
 onMounted(() => {
   watchEffect(() => {
     if (props.open !== isOpen.value) {
-      props.open ? showModal() : hideModal();
-      isOpen.value = props.open;
+      props.open ? showModal() : hideModal()
+      isOpen.value = props.open
     }
-  });
-});
+  })
+})
 </script>
 
 <template>
@@ -113,32 +112,49 @@ onMounted(() => {
       label="Sluit het detailscherm"
       color="black"
       outlined
-      >sluiten</Button
+      >scherm sluiten</Button
     >
     <div
-      class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl rounded-t-3xl border-2 border-b-0 border-black bg-white px-5 pb-6"
+      class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl overflow-hidden rounded-t-3xl border-2 border-b-0 border-black bg-white px-5"
       @click.stop
     >
-      <button
-        class="mx-auto mb-3 w-full cursor-grab touch-none active:cursor-grabbing"
-        @mousedown="dragStart"
-        @touchstart="dragStart"
-        tabindex="-1"
-        aria-hidden="true"
-      >
-        <Icon id="drag-indicator" size="4" class="fill-gray-500" />
-        <span class="sr-only">Sluit het detailscherm</span>
-      </button>
+      <header class="-mx-5 -mb-32 bg-sky-100 px-5 pb-32">
+        <button
+          class="mx-auto mb-6 w-full cursor-grab touch-none active:cursor-grabbing"
+          @mousedown="dragStart"
+          @touchstart="dragStart"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <Icon
+            id="drag-indicator"
+            size="4"
+            class="fill-sky-400"
+          />
+          <Icon
+            id="drag-indicator"
+            size="4"
+            class="ml-[3px] fill-sky-400"
+          />
+          <span class="sr-only">Sluit het detailscherm</span>
+        </button>
+        <slot name="heading" />
+      </header>
       <slot />
-      <Button
-        wide
-        @click="hideModal"
-        class="mx-auto mt-6"
-        label="Sluit het detailscherm"
-        color="black"
-        outlined
-        >sluiten</Button
-      >
+      <div class="-mx-5 bg-gray-100 py-6">
+        <Button
+          wide
+          @click="hideModal"
+          class="mx-auto"
+          label="Sluit het detailscherm"
+          color="white"
+          small
+          squared
+          outlined
+        >
+          scherm sluiten
+        </Button>
+      </div>
     </div>
   </dialog>
 </template>
