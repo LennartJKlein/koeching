@@ -33,11 +33,11 @@ switch (props.accentColor) {
 
 <template>
   <li
-    class="border-b-divider relative flex flex-wrap items-center gap-3 py-2 last:border-b-0 lg:gap-5"
+    class="border-b-divider relative flex flex-wrap items-center gap-3 py-2 last:border-b-0 md:gap-5"
   >
     <figure
       :class="[
-        'my-auto aspect-square w-12 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center md:w-20',
+        'my-auto aspect-square w-12 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center md:w-16 lg:w-20',
         placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
         placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
         placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
