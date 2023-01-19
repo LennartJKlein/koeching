@@ -54,7 +54,7 @@ switch (props.accentColor) {
     <h5
       v-if="title"
       :class="[
-        `flex-grow basis-0 font-display text-lg font-bold leading-none`,
+        `flex-grow basis-0 font-display text-lg font-bold leading-none lg:text-xl`,
         accentColorDark,
       ]"
       style="hyphens: auto"

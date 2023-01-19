@@ -37,7 +37,10 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${intervention.attributes.name}`"
     id="interventionModal"
     open
-    :overflow-header="intervention.attributes.photos.data.length > 0"
+    :overflow-header="
+      intervention.attributes.photos.data &&
+      intervention.attributes.photos.data.length > 0
+    "
     @close="goBack"
   >
     <template v-slot:heading>
