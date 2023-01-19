@@ -11,9 +11,14 @@ const {
       $eq: route.params.coach,
     },
   },
-  populate: '*',
+  populate: {
+    interventions: '*',
+    photos: '*',
+    programs: '*',
+    seminars: '*',
+    trainings: '*',
+  },
 })
-// const coach = { attributes: { name: "Annet" } };
 
 const goBack = function () {
   const router = useRouter()
@@ -29,7 +34,7 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${coach.attributes.name}`"
     id="coachModal"
     open
-    :overflow-header="coach.attributes.photos.data"
+    :overflow-header="coach.attributes.photos.data.length > 0"
     @close="goBack"
   >
     <template v-slot:heading>
@@ -60,8 +65,8 @@ const { classes: mdClasses } = useMdStyles()
           v-for="photo in coach.attributes.photos.data"
           :class="[
             coach.attributes.photos.data.length > 1
-              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
-              : 'aspect-[4/3] w-full',
+              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[5/3]'
+              : 'aspect-[5/3] w-full',
             'rounded-xl object-cover',
           ]"
           role="listitem"
@@ -70,11 +75,81 @@ const { classes: mdClasses } = useMdStyles()
       </div>
       <div
         v-if="coach.attributes.bio"
-        :class="mdClasses"
+        :class="[...mdClasses, 'mb-14']"
         v-html="$markdown.render(coach.attributes.bio)"
       />
-      <p class="my-12 mx-3 italic">Todo: methodes die deze coach beheerst</p>
-      <p class="my-12 mx-3 italic">Todo: diensten/producten die deze coach faciliteert</p>
+      <template v-if="coach.attributes.programs.data.length">
+        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+          Trajecten met deze coach
+        </h4>
+        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+          <Button
+            v-for="program in coach.attributes.programs.data"
+            class="text-white"
+            :label="`Meer info over ${program.attributes.name}`"
+            small
+            squared
+            color="brown-200"
+            :to="`/aanbod/trajecten/${program.attributes.slug}`"
+          >
+            {{ program.attributes.name }}
+          </Button>
+        </div>
+      </template>
+      <template v-if="coach.attributes.trainings.data.length">
+        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+          Trainingen door deze coach
+        </h4>
+        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+          <Button
+            v-for="training in coach.attributes.trainings.data"
+            class="text-white"
+            color="brown-200"
+            :label="`Meer info over ${training.attributes.name}`"
+            small
+            squared
+            :to="`/aanbod/trajecten/${training.attributes.slug}`"
+          >
+            {{ training.attributes.name }}
+          </Button>
+        </div>
+      </template>
+      <template v-if="coach.attributes.seminars.data.length">
+        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+          Informatieavonden met deze coach
+        </h4>
+        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+          <Button
+            v-for="seminar in coach.attributes.seminars.data"
+            class="text-white"
+            color="brown-200"
+            :label="`Meer info over ${seminar.attributes.name}`"
+            small
+            squared
+            :to="`/aanbod/informatieavonden/${seminar.attributes.slug}`"
+          >
+            {{ seminar.attributes.name }}
+          </Button>
+        </div>
+      </template>
+      <Divider color="sky-100" />
+      <template v-if="coach.attributes.interventions.data.length">
+        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+          Interventies met deze coach
+        </h4>
+        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+          <Button
+            v-for="intervention in coach.attributes.interventions.data"
+            class="text-white"
+            :label="`Meer info over ${intervention.attributes.name}`"
+            small
+            squared
+            :to="`/aanbod/interventies/${intervention.attributes.slug}`"
+          >
+            {{ intervention.attributes.name }}
+          </Button>
+        </div>
+      </template>
     </section>
   </Modal>
 </template>
