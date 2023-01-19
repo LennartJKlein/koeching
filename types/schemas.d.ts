@@ -695,6 +695,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
   name: StringAttribute & RequiredAttribute;
   content: RichTextAttribute;
   photos: MediaAttribute;
+  intro: TextAttribute;
   seo_title: StringAttribute;
   seo_description: StringAttribute;
   pricings: ComponentAttribute<'details.price', true>;
@@ -734,6 +735,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     slug: UIDAttribute<'api::intervention.intervention', 'name'> &
       RequiredAttribute;
     content: RichTextAttribute;
+    intro: TextAttribute;
     photos: MediaAttribute;
     seo_title: StringAttribute;
     seo_description: StringAttribute;
