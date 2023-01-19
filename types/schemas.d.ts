@@ -627,20 +627,15 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
   name: StringAttribute & RequiredAttribute;
   photos: MediaAttribute & RequiredAttribute;
   slug: UIDAttribute<'api::coach.coach', 'name'> & RequiredAttribute;
-  coachings: RelationAttribute<
+  programs: RelationAttribute<
     'api::coach.coach',
     'manyToMany',
-    'api::coaching.coaching'
+    'api::program.program'
   >;
   seminars: RelationAttribute<
     'api::coach.coach',
     'manyToMany',
     'api::seminar.seminar'
-  >;
-  therapies: RelationAttribute<
-    'api::coach.coach',
-    'manyToMany',
-    'api::therapy.therapy'
   >;
   trainings: RelationAttribute<
     'api::coach.coach',
@@ -663,20 +658,15 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
     intro: TextAttribute;
     slug: UIDAttribute<'api::coach.coach', 'name'> & RequiredAttribute;
     rank: IntegerAttribute;
-    coachings: RelationAttribute<
+    programs: RelationAttribute<
       'api::coach.coach',
       'manyToMany',
-      'api::coaching.coaching'
+      'api::program.program'
     >;
     seminars: RelationAttribute<
       'api::coach.coach',
       'manyToMany',
       'api::seminar.seminar'
-    >;
-    therapies: RelationAttribute<
-      'api::coach.coach',
-      'manyToMany',
-      'api::therapy.therapy'
     >;
     trainings: RelationAttribute<
       'api::coach.coach',
@@ -700,102 +690,30 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
       PrivateAttribute;
   };
 }
-export interface ApiCoachingCoaching extends CollectionTypeSchema {
-  name: StringAttribute;
-  intro: TextAttribute;
+
+export interface ApiInterventionIntervention extends CollectionTypeSchema {
+  name: StringAttribute & RequiredAttribute;
   content: RichTextAttribute;
-  seo_description: StringAttribute;
+  photos: MediaAttribute;
   seo_title: StringAttribute;
-  coaches: RelationAttribute<
-    'api::coaching.coaching',
-    'manyToMany',
-    'api::coach.coach'
-  >;
-  interventions: RelationAttribute<
-    'api::coaching.coaching',
-    'manyToMany',
-    'api::intervention.intervention'
-  >;
+  seo_description: StringAttribute;
   pricing: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
-  slug: UIDAttribute<'api::coaching.coaching', 'name'> & RequiredAttribute;
-  photos: MediaAttribute;
+  thumbnail: MediaAttribute & RequiredAttribute;
+  slug: UIDAttribute<'api::intervention.intervention', 'name'> & RequiredAttribute;
   seo_keywords: ComponentAttribute<'details.keywords', true> &
     SetMinMax<{
       max: 5;
     }>;
-  thumbnail: MediaAttribute & RequiredAttribute;
-  info: {
-    singularName: 'coaching';
-    pluralName: 'coachings';
-    displayName: 'Begeleiding';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: StringAttribute;
-    intro: TextAttribute;
-    content: RichTextAttribute;
-    seo_description: StringAttribute;
-    seo_title: StringAttribute;
-    coaches: RelationAttribute<
-      'api::coaching.coaching',
-      'manyToMany',
-      'api::coach.coach'
-    >;
-    interventions: RelationAttribute<
-      'api::coaching.coaching',
-      'manyToMany',
-      'api::intervention.intervention'
-    >;
-    pricing: ComponentAttribute<'details.price', true>;
-    location: StringAttribute;
-    slug: UIDAttribute<'api::coaching.coaching', 'name'> & RequiredAttribute;
-    photos: MediaAttribute;
-    seo_keywords: ComponentAttribute<'details.keywords', true> &
-      SetMinMax<{
-        max: 5;
-      }>;
-    rank: IntegerAttribute;
-    thumbnail: MediaAttribute & RequiredAttribute;
-    createdAt: DateTimeAttribute;
-    updatedAt: DateTimeAttribute;
-    publishedAt: DateTimeAttribute;
-    createdBy: RelationAttribute<
-      'api::coaching.coaching',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute;
-    updatedBy: RelationAttribute<
-      'api::coaching.coaching',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute;
-  };
-}
-
-export interface ApiInterventionIntervention extends CollectionTypeSchema {
-  name: StringAttribute & RequiredAttribute;
-  slug: UIDAttribute<'api::intervention.intervention', 'name'> &
-    RequiredAttribute;
-  coachings: RelationAttribute<
+  programs: RelationAttribute<
     'api::intervention.intervention',
     'manyToMany',
-    'api::coaching.coaching'
+    'api::program.program'
   >;
   seminars: RelationAttribute<
     'api::intervention.intervention',
     'manyToMany',
     'api::seminar.seminar'
-  >;
-  therapies: RelationAttribute<
-    'api::intervention.intervention',
-    'manyToMany',
-    'api::therapy.therapy'
   >;
   trainings: RelationAttribute<
     'api::intervention.intervention',
@@ -815,20 +733,26 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     name: StringAttribute & RequiredAttribute;
     slug: UIDAttribute<'api::intervention.intervention', 'name'> &
       RequiredAttribute;
-    coachings: RelationAttribute<
+    content: RichTextAttribute;
+    photos: MediaAttribute;
+    seo_title: StringAttribute;
+    seo_description: StringAttribute;
+    pricing: ComponentAttribute<'details.price', true>;
+    location: StringAttribute;
+    thumbnail: MediaAttribute & RequiredAttribute;
+    seo_keywords: ComponentAttribute<'details.keywords', true> &
+      SetMinMax<{
+        max: 5;
+      }>;
+    programs: RelationAttribute<
       'api::intervention.intervention',
       'manyToMany',
-      'api::coaching.coaching'
+      'api::program.program'
     >;
     seminars: RelationAttribute<
       'api::intervention.intervention',
       'manyToMany',
       'api::seminar.seminar'
-    >;
-    therapies: RelationAttribute<
-      'api::intervention.intervention',
-      'manyToMany',
-      'api::therapy.therapy'
     >;
     trainings: RelationAttribute<
       'api::intervention.intervention',
@@ -1010,15 +934,15 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
   };
 }
 
-export interface ApiTherapyTherapy extends CollectionTypeSchema {
+export interface ApiProgramProgram extends CollectionTypeSchema {
   name: StringAttribute & RequiredAttribute;
   coaches: RelationAttribute<
-    'api::therapy.therapy',
+    'api::program.program',
     'manyToMany',
     'api::coach.coach'
   >;
   interventions: RelationAttribute<
-    'api::therapy.therapy',
+    'api::program.program',
     'manyToMany',
     'api::intervention.intervention'
   >;
@@ -1030,15 +954,15 @@ export interface ApiTherapyTherapy extends CollectionTypeSchema {
   pricing: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
   thumbnail: MediaAttribute & RequiredAttribute;
-  slug: UIDAttribute<'api::therapy.therapy', 'name'> & RequiredAttribute;
+  slug: UIDAttribute<'api::program.program', 'name'> & RequiredAttribute;
   seo_keywords: ComponentAttribute<'details.keywords', true> &
     SetMinMax<{
       max: 5;
     }>;
   info: {
-    singularName: 'therapy';
-    pluralName: 'therapies';
-    displayName: 'Therapie';
+    singularName: 'program';
+    pluralName: 'programs';
+    displayName: 'Traject';
     description: '';
   };
   options: {
@@ -1047,12 +971,12 @@ export interface ApiTherapyTherapy extends CollectionTypeSchema {
   attributes: {
     name: StringAttribute & RequiredAttribute;
     coaches: RelationAttribute<
-      'api::therapy.therapy',
+      'api::program.program',
       'manyToMany',
       'api::coach.coach'
     >;
     interventions: RelationAttribute<
-      'api::therapy.therapy',
+      'api::program.program',
       'manyToMany',
       'api::intervention.intervention'
     >;
@@ -1064,7 +988,7 @@ export interface ApiTherapyTherapy extends CollectionTypeSchema {
     pricing: ComponentAttribute<'details.price', true>;
     location: StringAttribute;
     thumbnail: MediaAttribute & RequiredAttribute;
-    slug: UIDAttribute<'api::therapy.therapy', 'name'> & RequiredAttribute;
+    slug: UIDAttribute<'api::program.program', 'name'> & RequiredAttribute;
     seo_keywords: ComponentAttribute<'details.keywords', true> &
       SetMinMax<{
         max: 5;
@@ -1074,13 +998,13 @@ export interface ApiTherapyTherapy extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute;
     publishedAt: DateTimeAttribute;
     createdBy: RelationAttribute<
-      'api::therapy.therapy',
+      'api::program.program',
       'oneToOne',
       'admin::user'
     > &
       PrivateAttribute;
     updatedBy: RelationAttribute<
-      'api::therapy.therapy',
+      'api::program.program',
       'oneToOne',
       'admin::user'
     > &

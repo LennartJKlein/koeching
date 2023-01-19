@@ -49,6 +49,7 @@ const props = defineProps({
         'aspect-[3/4] w-full overflow-hidden rounded-3xl bg-gray-800 bg-cover bg-center',
         placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
         placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
+        placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
       ]"
       tabindex="-1"
       aria-hidden="true"

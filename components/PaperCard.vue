@@ -3,6 +3,10 @@ import { random } from 'lodash'
 
 const props = defineProps({
   color: String,
+  accentColor: {
+    default: 'green',
+    type: String,
+  },
   description: String,
   image: String,
   placeholder: String,
@@ -37,6 +41,22 @@ const shadows = [
   'before:right-[16px] before:skew-y-6 before:skew-x-6 before:rotate-3',
 ]
 const shadowClass = shadows[random]
+
+let accentColor: string, accentColorDark: string
+switch (props.accentColor) {
+  case 'sky':
+    accentColor = 'text-sky-400'
+    accentColorDark = 'text-sky-500'
+    break
+  case 'brown':
+    accentColor = 'text-brown-400'
+    accentColorDark = 'text-brown-600'
+    break
+  case 'green':
+  default:
+    accentColor = 'text-green-400'
+    accentColorDark = 'text-green-600'
+}
 </script>
 
 <template>
@@ -54,7 +74,8 @@ const shadowClass = shadows[random]
       <h5
         v-if="title"
         :class="[
-          'w-full text-center font-display font-bold leading-none text-green-600',
+          'w-full text-center font-display font-bold leading-none',
+          accentColorDark,
           titleSmall ? 'text-2xl' : ' text-3xl',
         ]"
         style="hyphens: auto"
@@ -71,7 +92,10 @@ const shadowClass = shadows[random]
           icon-only
         >
           <span
-            class="flex h-4 w-4 items-center justify-center font-display text-2xl font-bold text-green-400"
+            :class="[
+              'flex h-4 w-4 items-center justify-center font-display text-2xl font-bold',
+              accentColor,
+            ]"
             >?</span
           >
         </Button>
@@ -81,6 +105,7 @@ const shadowClass = shadows[random]
           'my-auto aspect-square w-4/5 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center',
           placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
           placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
+          placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
         ]"
         tabindex="-1"
         aria-hidden="true"

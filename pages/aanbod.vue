@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import type {
-  ApiCoachingCoaching,
+  ApiInterventionIntervention,
+  ApiProgramProgram,
   ApiSeminarSeminar,
-  ApiTherapyTherapy,
   ApiTrainingTraining,
 } from '~/types/schemas'
 const { find } = useStrapi()
-const { data: coachings = [] } = await find<ApiCoachingCoaching>('coachings', {
+const { data: interventions = [] } = await find<ApiInterventionIntervention>(
+  'interventions',
+  {
+    populate: '*',
+    sort: 'rank:asc',
+  }
+)
+const { data: programs = [] } = await find<ApiProgramProgram>('programs', {
   populate: '*',
   sort: 'rank:asc',
 })
 const { data: seminars = [] } = await find<ApiSeminarSeminar>('seminars', {
-  populate: '*',
-  sort: 'rank:asc',
-})
-const { data: therapies = [] } = await find<ApiTherapyTherapy>('therapies', {
   populate: '*',
   sort: 'rank:asc',
 })
@@ -42,51 +45,27 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
       class="relative -mx-4 overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:left_3rem,center_20vw] bg-no-repeat pt-[260px] md:bg-[length:100%_auto,cover] md:pt-[30vw] xl:pt-[25vw]"
     >
       <div class="relative mx-auto max-w-4xl px-4">
-        <template v-if="therapies.length">
-          <PageH2>Therapie</PageH2>
+        <template v-if="programs.length">
+          <PageH2>Trajecten</PageH2>
           <div
             class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
             role="list"
           >
             <PaperCard
-              v-for="therapy in therapies"
-              :description="therapy.attributes.intro"
-              :label="`Lees meer over ${therapy.attributes.name}`"
+              v-for="program in programs"
+              :description="program.attributes.intro"
+              :label="`Lees meer over ${program.attributes.name}`"
               :image="
-                therapy.attributes.thumbnail.data &&
-                therapy.attributes.thumbnail.data.attributes.url
+                program.attributes.thumbnail.data &&
+                program.attributes.thumbnail.data.attributes.url
               "
-              placeholder="person"
+              placeholder="method"
               role="listitem"
-              :title="therapy.attributes.name"
-              :to="`/aanbod/therapie/${therapy.attributes.slug}`"
+              :title="program.attributes.name"
+              :to="`/aanbod/begeleiding/${program.attributes.slug}`"
               class="w-9/12 flex-shrink-0 snap-start md:w-auto"
               color="white"
-              modal="therapyModal"
-            />
-          </div>
-        </template>
-        <template v-if="coachings.length">
-          <PageH2>Begeleiding</PageH2>
-          <div
-            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
-            role="list"
-          >
-            <PaperCard
-              v-for="coaching in coachings"
-              :description="coaching.attributes.intro"
-              :label="`Lees meer over ${coaching.attributes.name}`"
-              :image="
-                coaching.attributes.thumbnail.data &&
-                coaching.attributes.thumbnail.data.attributes.url
-              "
-              placeholder="person"
-              role="listitem"
-              :title="coaching.attributes.name"
-              :to="`/aanbod/begeleiding/${coaching.attributes.slug}`"
-              class="w-9/12 flex-shrink-0 snap-start md:w-auto"
-              color="white"
-              modal="coachingModal"
+              modal="programModal"
             />
           </div>
         </template>
@@ -104,7 +83,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 training.attributes.thumbnail.data &&
                 training.attributes.thumbnail.data.attributes.url
               "
-              placeholder="person"
+              placeholder="method"
               role="listitem"
               :title="training.attributes.name"
               :to="`/aanbod/trainingen/${training.attributes.slug}`"
@@ -115,7 +94,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </template>
         <template v-if="seminars.length">
-          <PageH2> Informatieavonden </PageH2>
+          <PageH2>Informatieavonden</PageH2>
           <div
             class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
             role="list"
@@ -128,7 +107,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 seminar.attributes.thumbnail.data &&
                 seminar.attributes.thumbnail.data.attributes.url
               "
-              placeholder="person"
+              placeholder="method"
               role="listitem"
               :title="seminar.attributes.name"
               :to="`/aanbod/informatieavonden/${seminar.attributes.slug}`"
@@ -138,11 +117,58 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
             />
           </div>
         </template>
+        <div
+          :class="`-mx-4
+          max-w-3xl
+          bg-[url(~/assets/svg/paper-top.svg),url(~/assets/svg/paper-middle.svg),url(~/assets/svg/paper-bottom.svg)]
+          bg-[length:100%_auto,100%_calc(100%-52vw),100%_auto]
+          bg-[position:center_top,center_38vw,center_bottom]
+          bg-no-repeat
+          px-[10vw] pt-[9vw] pb-[8vw] drop-shadow-2xl
+          lg:bg-[length:100%_auto,100%_calc(100%-390px),100%_auto] lg:bg-[position:center_top,center_290px,center_bottom]
+          lg:px-20 lg:pt-20 lg:pb-10`"
+          v-if="interventions.length"
+        >
+          <div>
+            <h2 class="font-display text-3xl font-bold text-gray-500 md:text-4xl">
+              Interventies
+            </h2>
+            <p class="max-w-2xl text-sm text-gray-500 md:text-base lg:my-4">
+              Dit zijn alle methodes die we toepassen in de trajecten, trainingen en
+              informatieavonden. Als een bepaalde interventie je aanspreekt, is het ook
+              mogelijk ze als losse sessies te boeken!
+            </p>
+            <ul class="mt-5 lg:mt-6">
+              <PaperRow
+                v-for="intervention in interventions"
+                placeholder="method"
+                accent-color="sky"
+                class="w-full"
+                color="white"
+                :image="
+                  intervention.attributes.thumbnail.data &&
+                  intervention.attributes.thumbnail.data.attributes.url
+                "
+                :label="`Lees meer over ${intervention.attributes.name}`"
+                modal="interventionModal"
+                role="listitem"
+                :title="intervention.attributes.name"
+                :to="`/aanbod/interventies/${intervention.attributes.slug}`"
+              />
+            </ul>
+          </div>
+        </div>
       </div>
+      <p class="my-12 mx-auto max-w-xs text-center text-black md:text-lg lg:my-16">
+        Geen idee hoe we jou kunnen helpen? Vraag gratis advies aan onze coaches!
+        <Button
+          label="Neem contact op"
+          class="mx-auto mt-5"
+          color="sky-400"
+          >Vraag advies</Button
+        >
+      </p>
     </div>
-    <p class="my-12 mx-3 italic">
-      Todo: call to action om contact op te nemen als je niet weet wat je wil
-    </p>
     <p class="my-12 mx-3 italic">
       Todo: footer met linkjes naar voorwaarden, tarieven, andere coaches, etc
     </p>
