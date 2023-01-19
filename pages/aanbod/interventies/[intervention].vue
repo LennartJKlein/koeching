@@ -66,12 +66,7 @@ const { classes: mdClasses } = useMdStyles()
       >
         <img
           v-for="photo in intervention.attributes.photos.data"
-          :class="[
-            intervention.attributes.photos.data.length > 1
-              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
-              : 'aspect-[4/3] w-full',
-            'rounded-xl object-cover',
-          ]"
+          class="w-[80vw] flex-shrink-0 snap-start rounded-xl object-cover sm:h-60 sm:w-auto md:h-80"
           role="listitem"
           :src="photo.attributes.url"
         />
@@ -92,7 +87,7 @@ const { classes: mdClasses } = useMdStyles()
             :label="`Meer info over ${program.attributes.name}`"
             small
             squared
-            :to="`/aanbod/interventies/${program.attributes.slug}`"
+            :to="`/aanbod/trajecten/${program.attributes.slug}`"
           >
             {{ program.attributes.name }}
           </Button>

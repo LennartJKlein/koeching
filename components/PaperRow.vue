@@ -37,7 +37,7 @@ switch (props.accentColor) {
   >
     <figure
       :class="[
-        'my-auto aspect-square w-12 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center md:w-16 lg:w-20',
+        'my-auto aspect-square w-12 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center md:w-16',
         placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
         placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
         placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
@@ -54,7 +54,7 @@ switch (props.accentColor) {
     <h5
       v-if="title"
       :class="[
-        `font-display text-xl font-bold leading-none md:text-2xl`,
+        `flex-grow basis-0 font-display text-lg font-bold leading-none`,
         accentColorDark,
       ]"
       style="hyphens: auto"
