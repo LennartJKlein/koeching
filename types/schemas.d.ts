@@ -642,6 +642,11 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
     'manyToMany',
     'api::training.training'
   >;
+  interventions: RelationAttribute<
+    'api::coach.coach',
+    'manyToMany',
+    'api::intervention.intervention'
+  >;
   info: {
     singularName: 'coach';
     pluralName: 'coaches';
@@ -672,6 +677,11 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
       'api::coach.coach',
       'manyToMany',
       'api::training.training'
+    >;
+    interventions: RelationAttribute<
+      'api::coach.coach',
+      'manyToMany',
+      'api::intervention.intervention'
     >;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
@@ -721,6 +731,11 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     'manyToMany',
     'api::training.training'
   >;
+  coaches: RelationAttribute<
+    'api::intervention.intervention',
+    'manyToMany',
+    'api::coach.coach'
+  >;
   info: {
     singularName: 'intervention';
     pluralName: 'interventions';
@@ -760,6 +775,11 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
       'api::intervention.intervention',
       'manyToMany',
       'api::training.training'
+    >;
+    coaches: RelationAttribute<
+      'api::intervention.intervention',
+      'manyToMany',
+      'api::coach.coach'
     >;
     rank: IntegerAttribute;
     createdAt: DateTimeAttribute;
