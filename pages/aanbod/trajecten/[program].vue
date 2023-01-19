@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { ApiCoachingCoaching } from '~/types/schemas'
+import type { ApiProgramProgram } from '~/types/schemas'
 
 const { find } = useStrapi()
 const route = useRoute()
 const {
-  data: [coaching],
-} = await find<ApiCoachingCoaching>('coachings', {
+  data: [program],
+} = await find<ApiProgramProgram>('programs', {
   filters: {
     slug: {
-      $eq: route.params.coaching,
+      $eq: route.params.program,
     },
   },
   populate: {
@@ -17,7 +17,7 @@ const {
     },
     interventions: '*',
     photos: '*',
-    pricing: '*',
+    pricings: '*',
   },
 })
 
@@ -32,39 +32,40 @@ const { classes: mdClasses } = useMdStyles()
 
 <template>
   <Modal
-    :aria-label="`Meer over ${coaching.attributes.name}`"
-    id="coachingModal"
+    :aria-label="`Meer over ${program.attributes.name}`"
+    id="programModal"
     open
+    :overflow-header="program.attributes.photos.data"
     @close="goBack"
   >
     <template v-slot:heading>
       <h1
-        v-if="coaching.attributes.name"
+        v-if="program.attributes.name"
         class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
-        {{ coaching.attributes.name }}
+        {{ program.attributes.name }}
       </h1>
       <p
-        v-if="coaching.attributes.intro"
+        v-if="program.attributes.intro"
         class="text-lg font-bold text-sky-500"
       >
-        {{ coaching.attributes.intro }}
+        {{ program.attributes.intro }}
       </p>
     </template>
     <section>
       <div
-        v-if="coaching.attributes.photos.data"
+        v-if="program.attributes.photos.data"
         :class="[
           'my-5',
-          coaching.attributes.photos.data.length > 1 &&
+          program.attributes.photos.data.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
         ]"
         role="list"
       >
         <img
-          v-for="photo in coaching.attributes.photos.data"
+          v-for="photo in program.attributes.photos.data"
           :class="[
-            coaching.attributes.photos.data.length > 1
+            program.attributes.photos.data.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
@@ -74,17 +75,17 @@ const { classes: mdClasses } = useMdStyles()
         />
       </div>
       <div
-        v-if="coaching.attributes.content"
+        v-if="program.attributes.content"
         :class="mdClasses"
-        v-html="$markdown.render(coaching.attributes.content)"
+        v-html="$markdown.render(program.attributes.content)"
       />
-      <template v-if="coaching.attributes.interventions.data.length">
+      <!-- <template v-if="program.attributes.interventions.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies bij deze therapie
         </h4>
         <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
           <Button
-            v-for="intervention in coaching.attributes.interventions.data"
+            v-for="intervention in program.attributes.interventions.data"
             class="text-white"
             :label="`Meer info over ${intervention.attributes.name}`"
             small
@@ -94,8 +95,8 @@ const { classes: mdClasses } = useMdStyles()
             {{ intervention.attributes.name }}
           </Button>
         </div>
-      </template>
-      <template v-if="coaching.attributes.coaches.data.length">
+      </template> -->
+      <template v-if="program.attributes.coaches.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
           Coaches die deze therapie geven
         </h4>
@@ -104,7 +105,7 @@ const { classes: mdClasses } = useMdStyles()
           role="list"
         >
           <PhotoCard
-            v-for="coach in coaching.attributes.coaches.data"
+            v-for="coach in program.attributes.coaches.data"
             :label="`Lees meer over ${coach.attributes.name}`"
             :image="
               coach.attributes.photos.data &&
@@ -122,24 +123,24 @@ const { classes: mdClasses } = useMdStyles()
         </div>
       </template>
       <dl
-        v-if="coaching.attributes.pricing || coaching.attributes.location"
+        v-if="program.attributes.pricings.data || program.attributes.location"
         class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
       >
         <div
-          v-if="coaching.attributes.pricing"
+          v-if="program.attributes.pricings.data"
           class="border-pencil-sky-500 flex-1"
         >
           <dt
             class="flex items-center gap-1 font-bold before:block before:h-4 before:w-4 before:bg-euro before:bg-contain before:bg-center before:bg-no-repeat before:content-['']"
           >
-            {{ coaching.attributes.pricing.length > 1 ? 'Tarieven' : 'Tarief' }}
+            {{ program.attributes.pricings.data.length > 1 ? 'Tarieven' : 'Tarief' }}
           </dt>
-          <template v-for="price in coaching.attributes.pricing">
-            <dd class="ml-5 mt-1 leading-snug">{{ price.price }}</dd>
+          <template v-for="price in program.attributes.pricings.data">
+            <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
           </template>
         </div>
         <div
-          v-if="coaching.attributes.location"
+          v-if="program.attributes.location"
           class="border-pencil-brown-300 flex-1"
         >
           <dt
@@ -147,14 +148,14 @@ const { classes: mdClasses } = useMdStyles()
           >
             Locatie
           </dt>
-          <dd class="ml-5 mt-1 leading-snug">{{ coaching.attributes.location }}</dd>
+          <dd class="ml-5 mt-1 leading-snug">{{ program.attributes.location }}</dd>
         </div>
       </dl>
       <div
-        class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:gap-3 md:px-4"
+        class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:px-4"
       >
         <span class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
-          >Is deze aanpak wat voor jou?</span
+          >Past dit traject bij jouw vraag?</span
         >
         <Button
           color="brown-200"
@@ -166,7 +167,7 @@ const { classes: mdClasses } = useMdStyles()
             size="5"
             class="mr-2 fill-white"
           />
-          Contact opnemen
+          Neem contact op
         </Button>
       </div>
     </section>

@@ -51,7 +51,7 @@ const colorClasses: { [key: string]: string } = {
         'relative flex items-center justify-center border-b-[4px] border-b-transparent font-bold group-active:translate-y-[4px] group-active:border-b-0',
         small ? 'py-2' : 'py-3',
         small ? (iconOnly ? 'px-2' : 'px-4') : iconOnly ? 'px-3' : 'px-6',
-        small ? 'text-sm' : 'uppercase',
+        small ? 'text-sm' : 'text-lg',
         squared ? 'rounded-lg' : 'rounded-3xl',
         wide && 'min-w-[150px]',
         `before:content[''] before:absolute before:left-0 before:top-[5px] before:-z-10 before:h-full before:w-full group-active:before:invisible`,

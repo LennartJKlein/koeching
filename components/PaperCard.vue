@@ -12,7 +12,6 @@ const props = defineProps({
   placeholder: String,
   label: String,
   title: String,
-  titleSmall: Boolean,
   to: String,
   modal: String,
 })
@@ -74,9 +73,8 @@ switch (props.accentColor) {
       <h5
         v-if="title"
         :class="[
-          'w-full text-center font-display font-bold leading-none',
+          'w-full text-center font-display text-3xl font-bold leading-none lg:text-2xl lg:leading-none',
           accentColorDark,
-          titleSmall ? 'text-2xl' : ' text-3xl',
         ]"
         style="hyphens: auto"
       >

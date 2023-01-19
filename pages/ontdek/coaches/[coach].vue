@@ -29,6 +29,7 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${coach.attributes.name}`"
     id="coachModal"
     open
+    :overflow-header="coach.attributes.photos.data"
     @close="goBack"
   >
     <template v-slot:heading>

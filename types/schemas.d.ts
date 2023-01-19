@@ -697,7 +697,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
   photos: MediaAttribute;
   seo_title: StringAttribute;
   seo_description: StringAttribute;
-  pricing: ComponentAttribute<'details.price', true>;
+  pricings: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
   thumbnail: MediaAttribute & RequiredAttribute;
   slug: UIDAttribute<'api::intervention.intervention', 'name'> & RequiredAttribute;
@@ -737,7 +737,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     photos: MediaAttribute;
     seo_title: StringAttribute;
     seo_description: StringAttribute;
-    pricing: ComponentAttribute<'details.price', true>;
+    pricings: ComponentAttribute<'details.price', true>;
     location: StringAttribute;
     thumbnail: MediaAttribute & RequiredAttribute;
     seo_keywords: ComponentAttribute<'details.keywords', true> &
@@ -872,12 +872,13 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
     'api::intervention.intervention'
   >;
   intro: TextAttribute;
+  location: StringAttribute;
   seo_description: StringAttribute;
   seo_title: StringAttribute;
   slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute;
   thumbnail: MediaAttribute & RequiredAttribute;
   photos: MediaAttribute;
-  pricing: ComponentAttribute<'details.price', true>;
+  pricings: ComponentAttribute<'details.price', true>;
   seo_keywords: ComponentAttribute<'details.keywords', true> &
     SetMinMax<{
       max: 5;
@@ -905,12 +906,13 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
       'api::intervention.intervention'
     >;
     intro: TextAttribute;
+    location: StringAttribute;
     seo_description: StringAttribute;
     seo_title: StringAttribute;
     slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute;
     thumbnail: MediaAttribute & RequiredAttribute;
     photos: MediaAttribute;
-    pricing: ComponentAttribute<'details.price', true>;
+    pricings: ComponentAttribute<'details.price', true>;
     seo_keywords: ComponentAttribute<'details.keywords', true> &
       SetMinMax<{
         max: 5;
@@ -951,7 +953,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
   seo_title: StringAttribute;
   seo_description: StringAttribute;
   intro: TextAttribute;
-  pricing: ComponentAttribute<'details.price', true>;
+  pricings: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
   thumbnail: MediaAttribute & RequiredAttribute;
   slug: UIDAttribute<'api::program.program', 'name'> & RequiredAttribute;
@@ -985,7 +987,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
     seo_title: StringAttribute;
     seo_description: StringAttribute;
     intro: TextAttribute;
-    pricing: ComponentAttribute<'details.price', true>;
+    pricings: ComponentAttribute<'details.price', true>;
     location: StringAttribute;
     thumbnail: MediaAttribute & RequiredAttribute;
     slug: UIDAttribute<'api::program.program', 'name'> & RequiredAttribute;
@@ -1026,7 +1028,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
     'api::intervention.intervention'
   >;
   photos: MediaAttribute;
-  pricing: ComponentAttribute<'details.price', true>;
+  pricings: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
   slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute;
   seo_description: StringAttribute;
@@ -1060,7 +1062,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
       'api::intervention.intervention'
     >;
     photos: MediaAttribute;
-    pricing: ComponentAttribute<'details.price', true>;
+    pricings: ComponentAttribute<'details.price', true>;
     location: StringAttribute;
     slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute;
     seo_description: StringAttribute;

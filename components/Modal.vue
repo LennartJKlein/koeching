@@ -3,6 +3,7 @@ import { onMounted, ref, watchEffect, useAttrs } from 'vue'
 import { throttle } from 'lodash-es'
 const props = defineProps({
   open: Boolean,
+  overflowHeader: Boolean,
 })
 
 const dialog = ref<InstanceType<any> | undefined>(null)
@@ -118,7 +119,9 @@ onMounted(() => {
       class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl overflow-hidden rounded-t-3xl border-2 border-b-0 border-black bg-white px-5"
       @click.stop
     >
-      <header class="-mx-5 -mb-32 bg-sky-100 px-5 pb-32">
+      <header
+        :class="['-mx-5  bg-sky-100 px-5', overflowHeader ? '-mb-32 pb-32' : 'pb-6']"
+      >
         <button
           class="mx-auto mb-6 w-full cursor-grab touch-none active:cursor-grabbing"
           @mousedown="dragStart"

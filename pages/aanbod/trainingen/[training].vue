@@ -17,7 +17,7 @@ const {
     },
     interventions: '*',
     photos: '*',
-    pricing: '*',
+    pricings: '*',
   },
 })
 
@@ -35,6 +35,7 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${training.attributes.name}`"
     id="trainingModal"
     open
+    :overflow-header="training.attributes.photos.data"
     @close="goBack"
   >
     <template v-slot:heading>
@@ -122,20 +123,20 @@ const { classes: mdClasses } = useMdStyles()
         </div>
       </template>
       <dl
-        v-if="training.attributes.pricing || training.attributes.location"
+        v-if="training.attributes.pricings || training.attributes.location"
         class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
       >
         <div
-          v-if="training.attributes.pricing"
+          v-if="training.attributes.pricings"
           class="border-pencil-sky-500 flex-1"
         >
           <dt
             class="flex items-center gap-1 font-bold before:block before:h-4 before:w-4 before:bg-euro before:bg-contain before:bg-center before:bg-no-repeat before:content-['']"
           >
-            {{ training.attributes.pricing.length > 1 ? 'Tarieven' : 'Tarief' }}
+            {{ training.attributes.pricings.length > 1 ? 'Tarieven' : 'Tarief' }}
           </dt>
-          <template v-for="price in training.attributes.pricing">
-            <dd class="ml-5 mt-1 leading-snug">{{ price.price }}</dd>
+          <template v-for="price in training.attributes.pricings.data">
+            <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
           </template>
         </div>
         <div

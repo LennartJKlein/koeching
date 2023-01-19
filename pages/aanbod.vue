@@ -48,7 +48,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         <template v-if="programs.length">
           <PageH2>Trajecten</PageH2>
           <div
-            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-4"
+            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
             role="list"
           >
             <PaperCard
@@ -62,7 +62,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               placeholder="method"
               role="listitem"
               :title="program.attributes.name"
-              :to="`/aanbod/begeleiding/${program.attributes.slug}`"
+              :to="`/aanbod/trajecten/${program.attributes.slug}`"
               class="w-9/12 flex-shrink-0 snap-start md:w-auto"
               color="white"
               modal="programModal"
