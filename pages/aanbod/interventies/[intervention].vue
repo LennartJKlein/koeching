@@ -37,7 +37,7 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${intervention.attributes.name}`"
     id="interventionModal"
     open
-    :overflow-header="intervention.attributes.photos.data"
+    :overflow-header="intervention.attributes.photos.data.length > 0"
     @close="goBack"
   >
     <template v-slot:heading>
@@ -98,7 +98,13 @@ const { classes: mdClasses } = useMdStyles()
           Coaches die dit faciliteren
         </h4>
         <div
-          class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
+          :class="[
+            '-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid',
+            intervention.attributes.coaches.data.length > 4 ||
+            intervention.attributes.coaches.data.length < 4
+              ? 'md:grid-cols-3'
+              : 'md:grid-cols-4',
+          ]"
           role="list"
         >
           <PhotoCard
