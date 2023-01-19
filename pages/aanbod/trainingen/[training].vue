@@ -81,7 +81,7 @@ const { classes: mdClasses } = useMdStyles()
       />
       <template v-if="training.attributes.interventions.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
-          Interventies bij deze therapie
+          Interventies in deze training
         </h4>
         <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
           <Button
@@ -98,7 +98,7 @@ const { classes: mdClasses } = useMdStyles()
       </template>
       <template v-if="training.attributes.coaches.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
-          Coaches die deze therapie geven
+          Coaches die deze training geven
         </h4>
         <div
           class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"

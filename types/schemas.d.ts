@@ -895,6 +895,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
   >;
   intro: TextAttribute;
   location: StringAttribute;
+  content: RichTextAttribute;
   seo_description: StringAttribute;
   seo_title: StringAttribute;
   slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute;
@@ -931,6 +932,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
     location: StringAttribute;
     seo_description: StringAttribute;
     seo_title: StringAttribute;
+    content: RichTextAttribute;
     slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute;
     thumbnail: MediaAttribute & RequiredAttribute;
     photos: MediaAttribute;
@@ -1050,6 +1052,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
     'api::intervention.intervention'
   >;
   photos: MediaAttribute;
+  content: RichTextAttribute;
   pricings: ComponentAttribute<'details.price', true>;
   location: StringAttribute;
   slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute;
@@ -1085,6 +1088,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
     >;
     photos: MediaAttribute;
     pricings: ComponentAttribute<'details.price', true>;
+    content: RichTextAttribute;
     location: StringAttribute;
     slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute;
     seo_description: StringAttribute;
