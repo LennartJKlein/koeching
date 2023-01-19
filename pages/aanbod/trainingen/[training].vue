@@ -90,7 +90,7 @@ const { classes: mdClasses } = useMdStyles()
             :label="`Meer info over ${intervention.attributes.name}`"
             small
             squared
-            :to="`/kennis/interventies/${intervention.attributes.slug}`"
+            :to="`/aanbod/interventies/${intervention.attributes.slug}`"
           >
             {{ intervention.attributes.name }}
           </Button>

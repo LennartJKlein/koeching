@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import type { ApiProgramProgram } from '~/types/schemas'
+import type { ApiInterventionIntervention } from '~/types/schemas'
 
 const { find } = useStrapi()
 const route = useRoute()
 const {
-  data: [program],
-} = await find<ApiProgramProgram>('programs', {
+  data: [intervention],
+} = await find<ApiInterventionIntervention>('interventions', {
   filters: {
     slug: {
-      $eq: route.params.program,
+      $eq: route.params.intervention,
     },
   },
   populate: {
     coaches: {
       populate: '*',
     },
-    interventions: '*',
+    programs: '*',
+    trainings: '*',
+    seminars: '*',
     photos: '*',
     pricings: '*',
   },
@@ -32,40 +34,40 @@ const { classes: mdClasses } = useMdStyles()
 
 <template>
   <Modal
-    :aria-label="`Meer over ${program.attributes.name}`"
-    id="programModal"
+    :aria-label="`Meer over ${intervention.attributes.name}`"
+    id="interventionModal"
     open
-    :overflow-header="program.attributes.photos.data"
+    :overflow-header="intervention.attributes.photos.data"
     @close="goBack"
   >
     <template v-slot:heading>
       <h1
-        v-if="program.attributes.name"
+        v-if="intervention.attributes.name"
         class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
-        {{ program.attributes.name }}
+        {{ intervention.attributes.name }}
       </h1>
       <p
-        v-if="program.attributes.intro"
+        v-if="intervention.attributes.intro"
         class="text-lg font-bold text-sky-500"
       >
-        {{ program.attributes.intro }}
+        {{ intervention.attributes.intro }}
       </p>
     </template>
     <section>
       <div
-        v-if="program.attributes.photos.data"
+        v-if="intervention.attributes.photos.data"
         :class="[
           'my-5',
-          program.attributes.photos.data.length > 1 &&
+          intervention.attributes.photos.data.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
         ]"
         role="list"
       >
         <img
-          v-for="photo in program.attributes.photos.data"
+          v-for="photo in intervention.attributes.photos.data"
           :class="[
-            program.attributes.photos.data.length > 1
+            intervention.attributes.photos.data.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
@@ -75,37 +77,37 @@ const { classes: mdClasses } = useMdStyles()
         />
       </div>
       <div
-        v-if="program.attributes.content"
+        v-if="intervention.attributes.content"
         :class="mdClasses"
-        v-html="$markdown.render(program.attributes.content)"
+        v-html="$markdown.render(intervention.attributes.content)"
       />
-      <template v-if="program.attributes.interventions.data.length">
+      <template v-if="intervention.attributes.programs.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
-          Interventies bij deze therapie
+          Trajecten met deze interventie
         </h4>
         <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
           <Button
-            v-for="intervention in program.attributes.interventions.data"
+            v-for="program in intervention.attributes.programs.data"
             class="text-white"
-            :label="`Meer info over ${intervention.attributes.name}`"
+            :label="`Meer info over ${program.attributes.name}`"
             small
             squared
-            :to="`/aanbod/interventies/${intervention.attributes.slug}`"
+            :to="`/aanbod/interventies/${program.attributes.slug}`"
           >
-            {{ intervention.attributes.name }}
+            {{ program.attributes.name }}
           </Button>
         </div>
       </template>
-      <template v-if="program.attributes.coaches.data.length">
+      <template v-if="intervention.attributes.coaches.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
-          Coaches die deze therapie geven
+          Coaches die dit faciliteren
         </h4>
         <div
           class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
           role="list"
         >
           <PhotoCard
-            v-for="coach in program.attributes.coaches.data"
+            v-for="coach in intervention.attributes.coaches.data"
             :label="`Lees meer over ${coach.attributes.name}`"
             :image="
               coach.attributes.photos.data &&
@@ -123,24 +125,24 @@ const { classes: mdClasses } = useMdStyles()
         </div>
       </template>
       <dl
-        v-if="program.attributes.pricings.data || program.attributes.location"
+        v-if="intervention.attributes.pricings.data || intervention.attributes.location"
         class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
       >
         <div
-          v-if="program.attributes.pricings.data"
+          v-if="intervention.attributes.pricings.data"
           class="border-pencil-sky-500 flex-1"
         >
           <dt
             class="flex items-center gap-1 font-bold before:block before:h-4 before:w-4 before:bg-euro before:bg-contain before:bg-center before:bg-no-repeat before:content-['']"
           >
-            {{ program.attributes.pricings.data.length > 1 ? 'Tarieven' : 'Tarief' }}
+            {{ intervention.attributes.pricings.data.length > 1 ? 'Tarieven' : 'Tarief' }}
           </dt>
-          <template v-for="price in program.attributes.pricings.data">
+          <template v-for="price in intervention.attributes.pricings.data">
             <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
           </template>
         </div>
         <div
-          v-if="program.attributes.location"
+          v-if="intervention.attributes.location"
           class="border-pencil-brown-300 flex-1"
         >
           <dt
@@ -148,14 +150,14 @@ const { classes: mdClasses } = useMdStyles()
           >
             Locatie
           </dt>
-          <dd class="ml-5 mt-1 leading-snug">{{ program.attributes.location }}</dd>
+          <dd class="ml-5 mt-1 leading-snug">{{ intervention.attributes.location }}</dd>
         </div>
       </dl>
       <div
         class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:px-4"
       >
         <span class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
-          >Past dit traject bij jouw vraag?</span
+          >Past deze interventie bij jouw vraag?</span
         >
         <Button
           color="brown-200"
