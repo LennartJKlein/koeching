@@ -8,6 +8,7 @@ defineProps({
 })
 
 const sizesClasses: { [key: string]: string } = {
+  3: 'w-3 h-3',
   4: 'w-4 h-4',
   5: 'w-5 h-5',
   6: 'w-6 h-6',
