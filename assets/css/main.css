@@ -67,6 +67,11 @@
     border-bottom-width: 0.25rem;
   }
 
+  .border-t-divider {
+    border-image: url('~/assets/svg/line-black.svg') 33% / 0.25rem 0 0 0 / 0 stretch;
+    border-top-width: 0.25rem;
+  }
+
   .border-fence {
     /* doesnt work with svg */
     border-image: url('~/assets/webp/border-fence.webp') fill 136 132 178 132 / 34px 33px 44px 33px / 0 round;

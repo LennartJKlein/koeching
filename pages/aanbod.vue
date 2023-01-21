@@ -171,9 +171,6 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         >
       </p>
     </div>
-    <p class="my-12 mx-3 italic">
-      Todo: footer met linkjes naar voorwaarden, tarieven, andere coaches, etc
-    </p>
   </div>
   <NuxtPage />
 </template>

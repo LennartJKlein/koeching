@@ -54,8 +54,8 @@ const colorClasses: { [key: string]: string } = {
         small ? 'text-sm' : 'text-lg',
         squared ? 'rounded-lg' : 'rounded-3xl',
         wide && 'min-w-[150px]',
-        `before:content[''] before:absolute before:left-0 before:top-[5px] before:-z-10 before:h-full before:w-full group-active:before:invisible`,
-        `after:content[''] after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full`,
+        `before:absolute before:left-0 before:top-[5px] before:-z-10 before:h-full before:w-full before:content-[''] group-active:before:invisible`,
+        `after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full after:content-['']`,
         squared
           ? 'before:rounded-lg after:rounded-lg'
           : 'before:rounded-3xl after:rounded-3xl',

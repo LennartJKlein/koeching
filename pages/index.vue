@@ -49,7 +49,4 @@
   </p>
   <p class="my-12 mx-3 italic">Todo: introductievideos</p>
   <p class="my-12 mx-3 italic">Todo: agenda / kalender</p>
-  <p class="my-12 mx-3 italic">
-    Todo: footer met linkjes naar voorwaarden, tarieven, andere coaches, etc
-  </p>
 </template>
