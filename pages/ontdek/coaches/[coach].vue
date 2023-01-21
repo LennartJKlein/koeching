@@ -84,10 +84,12 @@ const { classes: mdClasses } = useMdStyles()
         <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
           Trajecten met deze coach
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="program in coach.attributes.programs.data"
-            class="text-white"
+            class="min-w-fit"
             :label="`Meer info over ${program.attributes.name}`"
             small
             squared
@@ -102,10 +104,12 @@ const { classes: mdClasses } = useMdStyles()
         <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
           Trainingen door deze coach
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="training in coach.attributes.trainings.data"
-            class="text-white"
+            class="min-w-fit"
             color="brown-200"
             :label="`Meer info over ${training.attributes.name}`"
             small
@@ -120,10 +124,12 @@ const { classes: mdClasses } = useMdStyles()
         <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
           Informatieavonden met deze coach
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="seminar in coach.attributes.seminars.data"
-            class="text-white"
+            class="min-w-fit"
             color="brown-200"
             :label="`Meer info over ${seminar.attributes.name}`"
             small
@@ -139,10 +145,12 @@ const { classes: mdClasses } = useMdStyles()
         <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies met deze coach
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="intervention in coach.attributes.interventions.data"
-            class="text-white"
+            class="min-w-fit"
             :label="`Meer info over ${intervention.attributes.name}`"
             small
             squared

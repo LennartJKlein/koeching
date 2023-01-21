@@ -132,7 +132,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           v-if="interventions.length"
         >
           <div>
-            <h2 class="font-display text-3xl font-bold text-gray-500 md:text-4xl">
+            <h2 class="font-display text-3xl font-bold text-gray-600 md:text-4xl">
               Interventies
             </h2>
             <p class="max-w-2xl text-sm text-gray-500 md:text-base lg:my-4">

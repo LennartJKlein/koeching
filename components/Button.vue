@@ -48,7 +48,7 @@ const colorClasses: { [key: string]: string } = {
   >
     <span
       :class="[
-        'relative flex items-center justify-center border-b-[4px] border-b-transparent font-bold group-active:translate-y-[4px] group-active:border-b-0',
+        'relative flex items-center justify-center border-b-[4px] border-b-transparent text-center font-bold group-active:translate-y-[4px] group-active:border-b-0',
         small ? 'py-2' : 'py-3',
         small ? (iconOnly ? 'px-2' : 'px-4') : iconOnly ? 'px-3' : 'px-6',
         small ? 'text-sm' : 'text-lg',

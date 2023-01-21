@@ -85,10 +85,12 @@ const { classes: mdClasses } = useMdStyles()
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies in deze training
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="intervention in training.attributes.interventions.data"
-            class="text-white"
+            class="min-w-fit"
             :label="`Meer info over ${intervention.attributes.name}`"
             small
             squared
