@@ -58,7 +58,7 @@ const subfooterLinks = [
     <NuxtPage />
   </main>
   <footer
-    class="relative mt-8 bg-brown-500 bg-[url(~/assets/svg/cow-spots.svg)] bg-cover pt-8 text-white before:absolute before:-top-4 before:left-0 before:-z-20 before:h-[5vw] before:w-full before:-rotate-1 before:bg-brown-500 before:content-[''] after:absolute after:left-0 after:-top-4 after:-z-10 after:h-2 after:w-full after:-translate-y-1/2 after:-rotate-1 after:bg-[url(~/assets/svg/line-black.svg)] after:bg-cover after:content-['']"
+    class="relative z-10 mt-2 bg-brown-500 bg-[url(~/assets/svg/cow-spots.svg)] bg-cover pt-8 text-white before:absolute before:-top-4 before:left-0 before:-z-20 before:h-[5vw] before:w-full before:-rotate-1 before:bg-brown-500 before:content-[''] after:absolute after:left-0 after:-top-4 after:-z-10 after:h-2 after:w-full after:-translate-y-1/2 after:-rotate-1 after:bg-[url(~/assets/svg/line-black.svg)] after:bg-cover after:content-['']"
   >
     <img
       src="~/assets/svg/logo-full.svg"
@@ -68,7 +68,7 @@ const subfooterLinks = [
       <ul class="mx-auto max-w-3xl px-3 text-center">
         <li v-for="link in footerLinks">
           <NuxtLink
-            class="my-1 inline-block w-fit rounded-xl bg-brown-300 bg-opacity-0 p-1 px-0 font-display text-xl transition-all duration-100 hover:bg-opacity-50 hover:px-4 focus-visible:bg-opacity-50 focus-visible:px-4 active:bg-opacity-100 active:px-5 lg:text-2xl xl:text-3xl"
+            class="my-1 inline-block w-fit rounded-xl bg-brown-300 bg-opacity-0 p-1 px-0 font-display text-xl transition-all duration-100 hover:bg-opacity-50 hover:px-4 focus-visible:bg-opacity-50 focus-visible:px-4 active:bg-opacity-100 active:px-5 md:text-2xl lg:text-3xl"
             :to="link.path"
             >{{ link.label }}</NuxtLink
           >

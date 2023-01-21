@@ -161,14 +161,17 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </div>
       </div>
-      <p class="my-12 mx-auto max-w-xs text-center text-black md:text-lg lg:my-16">
+      <p
+        class="my-12 mx-auto max-w-xs text-center text-black md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
+      >
         Geen idee hoe we jou kunnen helpen? Vraag gratis advies aan onze coaches!
         <Button
           label="Neem contact op"
           class="mx-auto mt-5"
           color="sky-400"
-          >Vraag advies</Button
         >
+          Vraag advies
+        </Button>
       </p>
     </div>
   </div>

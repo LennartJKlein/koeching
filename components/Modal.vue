@@ -116,7 +116,7 @@ onMounted(() => {
       >scherm sluiten</Button
     >
     <div
-      class="mx-auto mt-[10vh] min-h-[90vh] w-full max-w-2xl overflow-hidden rounded-t-3xl border-2 border-b-0 border-black bg-white px-5"
+      class="mx-auto mt-[10vh] flex min-h-[90vh] w-full max-w-2xl flex-col items-stretch justify-start overflow-hidden rounded-t-3xl border-2 border-b-0 border-black bg-white px-5"
       @click.stop
     >
       <header
@@ -144,7 +144,7 @@ onMounted(() => {
         <slot name="heading" />
       </header>
       <slot />
-      <div class="-mx-5 bg-gray-100 py-6">
+      <div class="-mx-5 mt-auto bg-gray-100 py-6">
         <Button
           wide
           @click="hideModal"

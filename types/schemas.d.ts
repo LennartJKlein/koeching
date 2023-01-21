@@ -701,6 +701,34 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
   };
 }
 
+export interface ApiFarmFarm extends SingleTypeSchema {
+  name: StringAttribute;
+  content: RichTextAttribute;
+  photos: MediaAttribute;
+  intro: TextAttribute;
+  info: {
+    singularName: 'farm';
+    pluralName: 'farms';
+    displayName: 'Boerderij';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: StringAttribute;
+    content: RichTextAttribute;
+    photos: MediaAttribute;
+    intro: TextAttribute;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    publishedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<'api::farm.farm', 'oneToOne', 'admin::user'> &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<'api::farm.farm', 'oneToOne', 'admin::user'> &
+      PrivateAttribute;
+  };
+}
+
 export interface ApiInterventionIntervention extends CollectionTypeSchema {
   name: StringAttribute & RequiredAttribute;
   content: RichTextAttribute;
@@ -1170,8 +1198,17 @@ declare global {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::animal.animal': ApiAnimalAnimal;
       'api::coach.coach': ApiCoachCoach;
+      'api::farm.farm': ApiFarmFarm;
+      'api::intervention.intervention': ApiInterventionIntervention;
       'api::membership.membership': ApiMembershipMembership;
       'api::message.message': ApiMessageMessage;
+      'api::pricing.pricing': ApiPricingPricing;
+      'api::program.program': ApiProgramProgram;
+      'api::seminar.seminar': ApiSeminarSeminar;
+      'api::training.training': ApiTrainingTraining;
+      'details.keywords': DetailsKeywords;
+      'details.moment': DetailsMoment;
+      'details.price': DetailsPrice;
     }
   }
 }

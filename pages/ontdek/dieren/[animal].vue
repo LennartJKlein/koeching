@@ -68,12 +68,6 @@ const { classes: mdClasses } = useMdStyles()
         :class="mdClasses"
         v-html="$markdown.render(animal.attributes.bio)"
       />
-      <p class="my-12 mx-3 italic">
-        Todo: diensten/producten waarbij deze dieren worden ingezet
-      </p>
-      <p class="my-12 mx-3 italic">
-        Todo: diensten/producten waarbij deze dieren worden ingezet
-      </p>
     </section>
   </Modal>
 </template>

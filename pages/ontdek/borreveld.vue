@@ -1,8 +1,19 @@
 <script setup lang="ts">
+import type { ApiFarmFarm } from '~/types/schemas'
+
+const { find } = useStrapi()
+const { data } = (await find<ApiFarmFarm>('farm', {
+  populate: '*',
+})) as any
+const farm: ApiFarmFarm = data
+
 const goBack = function () {
   const router = useRouter()
   router.push('/ontdek')
 }
+
+const { $markdown } = useNuxtApp()
+const { classes: mdClasses } = useMdStyles()
 </script>
 
 <template>
@@ -13,26 +24,47 @@ const goBack = function () {
     overflow-header
     @close="goBack"
   >
-    <section>
-      <h1 class="mb-3 font-display text-3xl font-bold text-brown-300">
-        Boerderij Borreveld
+    <template v-slot:heading>
+      <h1
+        v-if="farm.attributes.name"
+        class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
+      >
+        {{ farm.attributes.name }}
       </h1>
-      <p class="my-12 mx-3 italic">Todo: fotos van de boerderij</p>
-      <p class="mt-4">
-        We heten je graag van harte welkom op boerderij Borreveld. Borreveld is gelegen
-        aan de Lekdijk tussen Amerongen en Wijk bij Duurstede. Deze boerderij is gebouwd
-        in het jaar 1842 en wordt sinds 1900 bewoond door de familie Lekkerkerker.
+      <p
+        v-if="farm.attributes.intro"
+        class="text-lg font-bold text-sky-500"
+      >
+        {{ farm.attributes.intro }}
       </p>
-      <p class="mt-4">
-        Lang geleden was deze boerderij een gemengd bedrijf met melkvee, varkens, kippen,
-        akkerbouw en fruitteelt. Nu is Borreveld een boerderij met zo'n 130 melkkoeien en
-        ongeveer 70 stuks jongvee. Er zijn vooral stukken grasland te vinden op onze
-        boerderij en een paar percelen maïs.
-      </p>
-      <p class="mt-4">
-        Naast de melkkoeien is er nu ook de mogelijkheid van therapie op de boerderij. De
-        omgeving van natuur, dieren en rust geven een positieve impuls aan het traject.
-      </p>
+    </template>
+    <section>
+      <div
+        v-if="farm.attributes.photos.data"
+        :class="[
+          'my-5',
+          farm.attributes.photos.data.length > 1 &&
+            '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
+        ]"
+        role="list"
+      >
+        <img
+          v-for="photo in farm.attributes.photos.data"
+          :class="[
+            farm.attributes.photos.data.length > 1
+              ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
+              : 'aspect-[4/3] w-full',
+            'rounded-xl object-cover',
+          ]"
+          role="listitem"
+          :src="photo.attributes.url"
+        />
+      </div>
+      <div
+        v-if="farm.attributes.content"
+        :class="[...mdClasses, 'mb-10']"
+        v-html="$markdown.render(farm.attributes.content)"
+      />
     </section>
   </Modal>
 </template>
