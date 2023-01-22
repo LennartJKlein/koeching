@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref } from 'Vue'
+import { Ref, ref } from 'vue'
 import type { ApiPricingPricing } from '~/types/schemas'
 const { find } = useStrapi()
 const { data: pricings = [] } = await find<ApiPricingPricing>('pricings', {
