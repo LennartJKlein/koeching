@@ -7,15 +7,14 @@ useHead({
 
 const footerLinks = [
   { path: '/contact', label: 'Contact' },
-  { path: '/tarieven', label: 'Tarieven' },
-  { path: '/vergoedingen', label: 'Vergoedingen' },
-  { path: '/certificeringen', label: 'Certificeringen' },
+  { path: '/tarieven', label: 'Tarieven en vergoedingen' },
+  { path: '/ontdek/certificeringen', label: 'Certificeringen' },
 ]
 
 const subfooterLinks = [
   { path: '/algemene-voorwaarden', label: 'Algemene voorwaarden' },
   { path: '/privacyreglement', label: 'Privacyregelement' },
-  { path: '/privacy-policy-website', label: 'Privacy Policy website' },
+  { path: '/privacyverklaring', label: 'Privacyverklaring website' },
 ]
 </script>
 
@@ -54,9 +53,7 @@ const subfooterLinks = [
       </ul>
     </nav>
   </header>
-  <main class="min-h-screen">
-    <NuxtPage />
-  </main>
+  <NuxtPage />
   <footer
     class="relative z-10 mt-1 bg-brown-500 pt-8 text-white before:absolute before:-top-4 before:left-0 before:-z-20 before:h-8 before:w-full before:-rotate-1 before:bg-brown-500 before:content-[''] after:absolute after:left-0 after:-top-4 after:-z-10 after:h-2 after:w-full after:-translate-y-1/2 after:-rotate-1 after:bg-[url(~/assets/svg/line-black.svg)] after:bg-cover after:content-['']"
   >
@@ -99,3 +96,17 @@ const subfooterLinks = [
     </div>
   </footer>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 300ms ease-in;
+  clip-path: circle(71% at 50% 50vh);
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+  clip-path: circle(0% at 50% 50vh);
+}
+</style>

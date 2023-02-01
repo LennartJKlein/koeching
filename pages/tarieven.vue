@@ -16,7 +16,7 @@ const toggleDetails = (description: string) => {
 </script>
 
 <template>
-  <div
+  <main
     class="min-h-screen bg-brown-600 bg-[url(~/assets/svg/wood-pattern.svg)] bg-[length:450px_auto] bg-blend-soft-light"
   >
     <div
@@ -103,5 +103,5 @@ const toggleDetails = (description: string) => {
         </li>
       </ul>
     </div>
-  </div>
+  </main>
 </template>

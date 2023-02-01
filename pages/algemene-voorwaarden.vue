@@ -1,0 +1,1 @@
+<template>Algemene voorwaarden</template>

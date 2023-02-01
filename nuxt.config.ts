@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+    },
+  },
   css: [
     '~/assets/css/main.css',
     '~/assets/css/fonts/oxygen.css',
@@ -11,10 +17,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: [
-    '@nuxt/image-edge',
-    '@nuxtjs/strapi',
-  ],
+  modules: ['@nuxt/image-edge', '@nuxtjs/strapi'],
   strapi: {
     url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
   },
