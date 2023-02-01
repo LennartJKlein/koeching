@@ -46,8 +46,13 @@ const { classes: mdClasses } = useMdStyles()
     <template v-slot:heading>
       <h1
         v-if="intervention.attributes.name"
-        class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
+        class="mb-3 flex flex-col font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
+        <span
+          class="order-1 block font-sans text-sm uppercase tracking-wide text-sky-300"
+        >
+          Interventie
+        </span>
         {{ intervention.attributes.name }}
       </h1>
       <p

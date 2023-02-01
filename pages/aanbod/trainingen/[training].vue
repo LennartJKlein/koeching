@@ -17,6 +17,7 @@ const {
     },
     interventions: '*',
     photos: '*',
+    thumbnail: '*',
     pricings: '*',
   },
 })
@@ -25,6 +26,11 @@ const goBack = function () {
   const router = useRouter()
   router.push('/aanbod')
 }
+const media = [
+  training.attributes.thumbnail.data ? training.attributes.thumbnail.data : [],
+  ...(training.attributes.photos.data ? training.attributes.photos.data : []),
+]
+console.log(media)
 
 const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
@@ -35,16 +41,19 @@ const { classes: mdClasses } = useMdStyles()
     :aria-label="`Meer over ${training.attributes.name}`"
     id="trainingModal"
     open
-    :overflow-header="
-      training.attributes.photos.data && training.attributes.photos.data.length > 0
-    "
+    :overflow-header="media && media.length > 0"
     @close="goBack"
   >
     <template v-slot:heading>
       <h1
         v-if="training.attributes.name"
-        class="mb-3 font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
+        class="mb-3 flex flex-col font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
       >
+        <span
+          class="order-1 block font-sans text-sm uppercase tracking-wide text-sky-300"
+        >
+          Groepstraining
+        </span>
         {{ training.attributes.name }}
       </h1>
       <p
@@ -56,18 +65,18 @@ const { classes: mdClasses } = useMdStyles()
     </template>
     <section>
       <div
-        v-if="training.attributes.photos.data"
+        v-if="media"
         :class="[
           'my-5',
-          training.attributes.photos.data.length > 1 &&
+          media.length > 1 &&
             '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
         ]"
         role="list"
       >
         <img
-          v-for="photo in training.attributes.photos.data"
+          v-for="photo in media"
           :class="[
-            training.attributes.photos.data.length > 1
+            media.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
@@ -158,9 +167,11 @@ const { classes: mdClasses } = useMdStyles()
       <div
         class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:gap-3 md:px-4"
       >
-        <span class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
-          >Is deze aanpak wat voor jou?</span
+        <span
+          class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
         >
+          Vragen over deze groepstraining?
+        </span>
         <Button
           color="brown-200"
           class="flex-shrink-0"
