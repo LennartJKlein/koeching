@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['@nuxt/image-edge', '@nuxtjs/strapi'],
+  modules: ['@nuxt/image-edge', '@nuxtjs/strapi', '@vueuse/nuxt'],
   strapi: {
     url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
   },

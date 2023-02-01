@@ -1085,16 +1085,17 @@ export interface DetailsKeywords extends ComponentSchema {
 
 export interface DetailsMoment extends ComponentSchema {
   info: {
-    displayName: 'Groep';
-    icon: 'chart-bubble';
-    description: '';
-  };
+    displayName: 'Gebeurtenis'
+    icon: 'chart-bubble'
+    description: ''
+  }
   attributes: {
-    start_date: DateTimeAttribute;
-    end_date: DateTimeAttribute;
-    title: StringAttribute;
-    description: RichTextAttribute;
-  };
+    description: RichTextAttribute
+    end_date: DateTimeAttribute
+    open: BooleanAttribute & DefaultTo<true>
+    start_date: DateTimeAttribute
+    title: StringAttribute
+  }
 }
 
 export interface DetailsPrice extends ComponentSchema {

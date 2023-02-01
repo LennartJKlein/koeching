@@ -2,23 +2,21 @@
 const props = defineProps({
   image: {
     type: String,
-    default: "",
+    default: '',
   },
   small: Boolean,
   blurImage: Boolean,
-});
+})
 
-const images = import.meta.glob("./*.(webp)", { as: "url", eager: true });
+const images = import.meta.glob('./*.(webp)', { as: 'url', eager: true })
 const imageUrl = computed(() => {
-  return String(
-    Object.values(images).find((path) => String(path).includes(props.image))
-  );
-});
+  return String(Object.values(images).find((path) => String(path).includes(props.image)))
+})
 </script>
 
 <template>
   <div
-    class="relative -z-10 overflow-hidden after:absolute after:bottom-0 after:block after:h-1 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+    class="relative overflow-hidden after:absolute after:bottom-0 after:block after:h-1 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
   >
     <figure class="bg-gray-700">
       <img
@@ -31,9 +29,7 @@ const imageUrl = computed(() => {
         :src="imageUrl"
       />
     </figure>
-    <div
-      class="absolute top-0 left-0 flex h-full w-full flex-col justify-start"
-    >
+    <div class="absolute top-0 left-0 flex h-full w-full flex-col justify-start">
       <slot />
     </div>
   </div>

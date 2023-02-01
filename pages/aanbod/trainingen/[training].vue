@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { Ref, ref } from 'vue'
 import type { ApiTrainingTraining } from '~/types/schemas'
+import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
 const route = useRoute()
@@ -18,19 +20,31 @@ const {
     interventions: '*',
     photos: '*',
     thumbnail: '*',
+    moments: '*',
     pricings: '*',
   },
 })
+
+const media = [
+  training.attributes.thumbnail.data ? training.attributes.thumbnail.data : [],
+  ...(training.attributes.photos.data ? training.attributes.photos.data : []),
+]
 
 const goBack = function () {
   const router = useRouter()
   router.push('/aanbod')
 }
-const media = [
-  training.attributes.thumbnail.data ? training.attributes.thumbnail.data : [],
-  ...(training.attributes.photos.data ? training.attributes.photos.data : []),
-]
-console.log(media)
+
+const openDetails: Ref<string[]> = ref([])
+const toggleDetails = (description: string) => {
+  openDetails.value.indexOf(description) >= 0
+    ? openDetails.value.splice(openDetails.value.indexOf(description))
+    : openDetails.value.push(description)
+}
+
+const readableDate = function (date: string) {
+  return useDateFormat(date, 'D MMMM YYYY, HH:mm uur').value.replaceAll('"', '')
+}
 
 const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
@@ -164,6 +178,81 @@ const { classes: mdClasses } = useMdStyles()
           <dd class="ml-5 mt-1 leading-snug">{{ training.attributes.location }}</dd>
         </div>
       </dl>
+      <div
+        class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-sky-300 pt-7 pb-10 md:gap-3 md:px-4"
+      >
+        <h3 class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl">
+          Aanmelden en meedoen
+        </h3>
+        <ul>
+          <li
+            v-for="moment in training.attributes.moments.filter((moment: any) => moment.open)"
+            class="border-pencil-sky-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
+            @click="toggleDetails(moment.title)"
+          >
+            <span class="pl-2 text-lg font-bold text-sky-900">
+              {{ moment.title }}
+            </span>
+            <Button
+              class="mx-auto sm:ml-auto sm:mr-0"
+              color="white"
+              icon-only
+              label="Toon informatie over deze groep"
+              small
+              outlined
+              @click.stop="toggleDetails(moment.title)"
+            >
+              <Icon
+                id="arrow-down"
+                :class="[
+                  openDetails.indexOf(moment.title) >= 0 && 'rotate-180',
+                  'transition-all',
+                ]"
+                size="4"
+              />
+            </Button>
+            <Transition>
+              <div
+                v-show="openDetails.indexOf(moment.title) >= 0"
+                class="col-span-2 -mx-2 -mb-2 bg-gray-100 p-3"
+              >
+                <div v-if="moment.start_date">
+                  <dt class="mr-2 inline font-bold">Van:</dt>
+                  <dd class="inline leading-snug">
+                    {{ readableDate(moment.start_date) }}
+                  </dd>
+                </div>
+                <div v-if="moment.end_date">
+                  <dt class="mr-2 inline font-bold">Tot:</dt>
+                  <dd class="inline leading-snug">
+                    {{ readableDate(moment.end_date) }}
+                  </dd>
+                </div>
+                <h4 class="mt-3 mb-0 font-bold">Meer info:</h4>
+                <div
+                  v-if="moment.description"
+                  :class="mdClasses"
+                  v-html="$markdown.render(moment.description)"
+                />
+                <Button
+                  class="ml-auto mr-0 w-min"
+                  small
+                  color="black"
+                  label="Toon aanbod met dit tarief"
+                  :to="`${$route.fullPath}/aanmelden?group=${moment.id}`"
+                >
+                  aanmelden
+                  <Icon
+                    id="send"
+                    class="ml-2"
+                    size="4"
+                  />
+                </Button>
+              </div>
+            </Transition>
+          </li>
+        </ul>
+      </div>
       <div
         class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:gap-3 md:px-4"
       >

@@ -66,10 +66,11 @@ const subfooterLinks = [
         <ul class="mx-auto max-w-3xl px-3 text-center">
           <li v-for="link in footerLinks">
             <NuxtLink
-              class="my-1 inline-block w-fit rounded-xl bg-brown-300 bg-opacity-0 p-1 px-0 font-display text-xl transition-all duration-100 hover:bg-opacity-50 hover:px-4 focus-visible:bg-opacity-50 focus-visible:px-4 active:bg-opacity-100 active:px-5 md:text-2xl lg:text-3xl"
+              class="my-1 inline-block w-fit rounded-xl bg-brown-300 bg-opacity-0 p-1 px-0 font-display text-2xl transition-all duration-100 hover:bg-opacity-50 hover:px-4 focus-visible:bg-opacity-50 focus-visible:px-4 active:bg-opacity-100 active:px-5 lg:text-3xl"
               :to="link.path"
-              >{{ link.label }}</NuxtLink
             >
+              {{ link.label }}
+            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -84,8 +85,9 @@ const subfooterLinks = [
             <NuxtLink
               class="relative inline-block w-max p-2 text-brown-200 before:absolute before:top-0 before:left-0 before:h-full before:w-full before:scale-y-0 before:rounded-xl before:bg-brown-600 before:bg-opacity-0 before:transition-all before:duration-100 before:content-[''] hover:before:scale-y-75 hover:before:bg-opacity-70 focus-visible:before:scale-y-75 focus-visible:before:bg-opacity-50 active:before:scale-y-100 active:before:bg-opacity-100"
               :to="link.path"
-              ><span class="relative">{{ link.label }}</span></NuxtLink
             >
+              <span class="relative">{{ link.label }}</span>
+            </NuxtLink>
           </li>
         </ul>
       </nav>
