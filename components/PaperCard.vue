@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { random } from 'lodash'
-
 const props = defineProps({
   color: String,
   accentColor: {
@@ -61,7 +59,7 @@ switch (props.accentColor) {
 <template>
   <div
     :class="[
-      'relative, aspect-[7/10] max-w-[250px] rounded-xl bg-gradient-to-br from-[rgb(255_255_255/60%)] via-[rgb(255_255_255/35%)] to-[rgb(255_255_255/50%)] p-2 shadow-sm',
+      'relative aspect-[7/10] max-w-[250px] rounded-xl bg-gradient-to-br from-[rgb(255_255_255/60%)] via-[rgb(255_255_255/35%)] to-[rgb(255_255_255/50%)] p-2 shadow-sm',
       rotationClass,
       'before:-z-1 before:absolute before:top-3/4 before:bottom-6 before:w-3/4 before:bg-black before:opacity-30 before:shadow-[0_0_15px_8px_#5a5041]',
       shadowClass,
@@ -80,6 +78,12 @@ switch (props.accentColor) {
       >
         {{ title }}
       </h5>
+      <p
+        v-if="description"
+        class="w-full text-center"
+      >
+        {{ description }}
+      </p>
       <div class="absolute bottom-3 right-3">
         <Button
           v-if="to"

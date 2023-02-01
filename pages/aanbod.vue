@@ -53,7 +53,6 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           >
             <PaperCard
               v-for="program in programs"
-              :description="program.attributes.intro"
               :label="`Lees meer over ${program.attributes.name}`"
               :image="
                 program.attributes.thumbnail.data &&
@@ -70,13 +69,14 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </template>
         <template v-if="trainings.length">
-          <PageH2>Trainingen</PageH2>
+          <PageH2 class="text-center">Groepstrainingen</PageH2>
           <div
-            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
+            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-2"
             role="list"
           >
-            <PaperCard
+            <PaperCardWide
               v-for="training in trainings"
+              accent-color="sky"
               :description="training.attributes.intro"
               :label="`Lees meer over ${training.attributes.name}`"
               :image="
@@ -87,7 +87,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               role="listitem"
               :title="training.attributes.name"
               :to="`/aanbod/trainingen/${training.attributes.slug}`"
-              class="w-9/12 flex-shrink-0 snap-start md:w-auto"
+              class="w-11/12 flex-shrink-0 snap-start"
               color="white"
               modal="trainingModal"
             />
@@ -96,10 +96,10 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         <template v-if="seminars.length">
           <PageH2>Informatieavonden</PageH2>
           <div
-            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-3"
+            class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
             role="list"
           >
-            <PaperCard
+            <PaperCardWide
               v-for="seminar in seminars"
               :description="seminar.attributes.intro"
               :label="`Lees meer over ${seminar.attributes.name}`"
@@ -111,14 +111,15 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               role="listitem"
               :title="seminar.attributes.name"
               :to="`/aanbod/informatieavonden/${seminar.attributes.slug}`"
-              class="w-9/12 flex-shrink-0 snap-start md:w-auto"
+              class="w-11/12 flex-shrink-0 snap-start md:w-auto"
               color="white"
               modal="seminarModal"
             />
           </div>
         </template>
         <div
-          :class="`-mx-4
+          :class="`
+          -mx-4
           max-w-3xl
           bg-[url(~/assets/svg/paper-top.svg),url(~/assets/svg/paper-middle.svg),url(~/assets/svg/paper-bottom.svg)]
           bg-[length:100%_auto,100%_calc(100%-52vw),100%_auto]
