@@ -20,26 +20,27 @@ const toggleDetails = (description: string) => {
     class="min-h-screen bg-brown-600 bg-[url(~/assets/svg/wood-pattern.svg)] bg-[length:450px_auto] bg-blend-soft-light"
   >
     <div
-      class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-[16vw]"
+      class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"
     >
-      <div class="mx-auto max-w-xl pt-[8vw] pb-[6vw]">
+      <div class="mx-auto max-w-xl pl-[13vw] pt-[8vw] pb-[10vw] md:pb-[6vw] md:pl-0">
         <PageTitle class="text-white">Tarieven</PageTitle>
       </div>
       <ul class="mx-auto max-w-xl">
         <li
           v-for="pricing in pricings"
-          class="flex flex-wrap items-center justify-between text-xl text-white"
+          class="grid grid-cols-[auto_110px] items-center justify-between gap-3 text-xl text-white sm:grid-cols-[auto_145px]"
         >
-          <h3 class="font-bold">
+          <h3 class="text-lg font-bold md:text-xl">
             {{ pricing.attributes.description }}
           </h3>
           <Button
+            class="mx-auto sm:ml-auto sm:mr-0"
             small
             color="black"
             label="Toon aanbod met dit tarief"
             @click="toggleDetails(pricing.attributes.description)"
           >
-            Bekijk aanbod
+            <span class="mr-1 hidden sm:inline">Bekijk</span> aanbod
             <Icon
               id="arrow-down"
               :class="[
@@ -84,6 +85,20 @@ const toggleDetails = (description: string) => {
                 </li>
               </ul>
               <h4
+                v-if="pricing.attributes.trainings.data.length"
+                class="mt-3 text-sm font-bold leading-tight text-brown-100"
+              >
+                Trainingen
+              </h4>
+              <ul>
+                <li
+                  v-for="training in pricing.attributes.trainings.data"
+                  class="text-sm leading-tight"
+                >
+                  {{ training.attributes.name }}
+                </li>
+              </ul>
+              <h4
                 v-if="pricing.attributes.seminars.data.length"
                 class="mt-3 text-sm font-bold leading-tight text-brown-100"
               >
@@ -99,7 +114,7 @@ const toggleDetails = (description: string) => {
               </ul>
             </div>
           </Transition>
-          <Divider class="my-10 w-full" />
+          <Divider class="col-span-2 mt-6 mb-10 w-full" />
         </li>
       </ul>
     </div>

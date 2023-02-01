@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen">
+  <main class="min-h-screen bg-white">
     <PageTitle class="sr-only">(Kinder)coaching op de boerderij</PageTitle>
     <Hero
       image="borreveld"
