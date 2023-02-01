@@ -103,12 +103,6 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
         </template>
       </div>
     </div>
-    <div class="-mx-4 bg-brown-300 px-4 py-8 md:pt-20">
-      <PageH2 class="mx-auto max-w-4xl text-white">Lidmaatschappen</PageH2>
-      <p class="my-12 mx-auto max-w-4xl italic">
-        Todo: de verschillende lidmaatschappen van koeching
-      </p>
-    </div>
   </div>
   <NuxtPage />
 </template>
