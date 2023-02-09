@@ -60,7 +60,7 @@ const { classes: mdClasses } = useMdStyles()
             'rounded-xl object-cover',
           ]"
           role="listitem"
-          :src="photo.attributes.url"
+          :src="photo.attributes.url && photo.attributes.url.replace('/upload/', '/upload/w_300/')"
         />
       </div>
       <div

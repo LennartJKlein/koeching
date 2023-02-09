@@ -86,7 +86,7 @@ switch (props.accentColor) {
         >
           <img
             v-if="image"
-            :src="image"
+            :src="image && image.replace('/upload/', '/upload/w_300/')"
             class="aspect-square w-full object-cover"
           />
         </figure>

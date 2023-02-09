@@ -26,7 +26,7 @@ const imageUrl = computed(() => {
           'h-55v max-h-[600px]': !small,
           'blur-[3px]': blurImage,
         }"
-        :src="imageUrl"
+        :src="imageUrl && imageUrl.replace('/upload/', '/upload/w_900/')"
       />
     </figure>
     <div class="absolute top-0 left-0 flex h-full w-full flex-col justify-start">

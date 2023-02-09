@@ -56,7 +56,7 @@ const props = defineProps({
     >
       <img
         v-if="image"
-        :src="image"
+        :src="image && image.replace('/upload/', '/upload/w_300/')"
         class="aspect-[3/4] w-full object-cover"
       />
     </figure>

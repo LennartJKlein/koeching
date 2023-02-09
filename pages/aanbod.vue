@@ -88,7 +88,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 role="listitem"
                 :title="training.attributes.name"
                 :to="`/aanbod/trainingen/${training.attributes.slug}`"
-                class="w-11/12 flex-shrink-0 snap-start"
+                class="w-11/12 md:w-7/12 lg:w-full flex-shrink-0 snap-start"
                 color="white"
                 modal="trainingModal"
               />

@@ -76,7 +76,7 @@ const { classes: mdClasses } = useMdStyles()
           v-for="photo in intervention.attributes.photos.data"
           class="w-[80vw] flex-shrink-0 snap-start rounded-xl object-cover sm:h-60 sm:w-auto md:h-80"
           role="listitem"
-          :src="photo.attributes.url"
+          :src="photo.attributes.url && photo.attributes.url.replace('/upload/', '/upload/w_300/')"
         />
       </div>
       <div
