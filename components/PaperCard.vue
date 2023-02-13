@@ -54,6 +54,8 @@ switch (props.accentColor) {
     accentColor = 'text-green-400'
     accentColorDark = 'text-green-600'
 }
+
+const { trimImgSrc } = useImgUtils()
 </script>
 
 <template>
@@ -112,10 +114,14 @@ switch (props.accentColor) {
         tabindex="-1"
         aria-hidden="true"
       >
-        <img
+        <NuxtImg
           v-if="image"
-          :src="image && image.replace('/upload/', '/upload/w_300/')"
+          provider="cloudinary"
+          :placeholder="[300, 300, 10]"
+          :src="trimImgSrc(image)"
           class="aspect-square w-full object-cover"
+          height="300"
+          width="300"
         />
       </figure>
       <slot />

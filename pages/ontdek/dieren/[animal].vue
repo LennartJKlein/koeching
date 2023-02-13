@@ -21,6 +21,7 @@ const goBack = function () {
 
 const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
+const { trimImgSrc } = useImgUtils()
 </script>
 
 <template>
@@ -51,7 +52,7 @@ const { classes: mdClasses } = useMdStyles()
         ]"
         role="list"
       >
-        <img
+        <NuxtImg
           v-for="photo in animal.attributes.photos.data"
           :class="[
             animal.attributes.photos.data.length > 1
@@ -59,8 +60,12 @@ const { classes: mdClasses } = useMdStyles()
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
           ]"
+          :placeholder="[800, 600, 10]"
+          :src="trimImgSrc(photo.attributes.url)"
+          height="600"
+          provider="cloudinary"
           role="listitem"
-          :src="photo.attributes.url && photo.attributes.url.replace('/upload/', '/upload/w_300/')"
+          width="800"
         />
       </div>
       <div

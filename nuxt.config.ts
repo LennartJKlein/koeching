@@ -11,13 +11,27 @@ export default defineNuxtConfig({
     '~/assets/css/fonts/oxygen.css',
     '~/assets/css/fonts/berlin-sans.css',
   ],
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/deppvwtko/image/upload/',
+      modifiers: {
+        fit: 'cover',
+        quality: 'auto:best',
+      },
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  modules: ['@nuxt/image-edge', '@nuxtjs/strapi', '@vueuse/nuxt'],
+  modules: [
+    '@formkit/nuxt',
+    '@nuxt/image-edge',
+    '@nuxtjs/strapi',
+    '@vueuse/nuxt',
+  ],
   strapi: {
     url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
   },

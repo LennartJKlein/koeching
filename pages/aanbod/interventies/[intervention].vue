@@ -30,6 +30,7 @@ const goBack = function () {
 
 const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
+const { trimImgSrc } = useImgUtils()
 </script>
 
 <template>
@@ -72,11 +73,15 @@ const { classes: mdClasses } = useMdStyles()
         ]"
         role="list"
       >
-        <img
+        <NuxtImg
           v-for="photo in intervention.attributes.photos.data"
+          :placeholder="[800, 600, 10]"
+          :src="trimImgSrc(photo.attributes.url)"
           class="w-[80vw] flex-shrink-0 snap-start rounded-xl object-cover sm:h-60 sm:w-auto md:h-80"
+          height="600"
+          provider="cloudinary"
           role="listitem"
-          :src="photo.attributes.url && photo.attributes.url.replace('/upload/', '/upload/w_300/')"
+          width="800"
         />
       </div>
       <div

@@ -10,6 +10,8 @@ const props = defineProps({
   to: String,
   modal: String,
 })
+
+const { trimImgSrc } = useImgUtils()
 </script>
 
 <template>
@@ -54,10 +56,16 @@ const props = defineProps({
       tabindex="-1"
       aria-hidden="true"
     >
-      <img
+      <NuxtImg
         v-if="image"
-        :src="image && image.replace('/upload/', '/upload/w_300/')"
+        :placeholder="[300, 600, 10]"
+        :src="trimImgSrc(image)"
         class="aspect-[3/4] w-full object-cover"
+        fit="cover"
+        height="1200"
+        provider="cloudinary"
+        quality="100"
+        width="600"
       />
     </figure>
     <nuxt-link

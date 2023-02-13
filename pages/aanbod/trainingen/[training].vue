@@ -48,6 +48,7 @@ const readableDate = function (date: string) {
 
 const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
+const { trimImgSrc } = useImgUtils()
 </script>
 
 <template>
@@ -87,7 +88,7 @@ const { classes: mdClasses } = useMdStyles()
         ]"
         role="list"
       >
-        <img
+        <NuxtImg
           v-for="photo in media"
           :class="[
             media.length > 1
@@ -95,8 +96,13 @@ const { classes: mdClasses } = useMdStyles()
               : 'aspect-[4/3] w-full',
             'rounded-xl object-cover',
           ]"
+          :placeholder="[800, 600, 10]"
+          :src="trimImgSrc(photo.attributes.url)"
+          fit="inside"
+          height="600"
+          provider="cloudinary"
           role="listitem"
-          :src="photo.attributes.url && photo.attributes.url.replace('/upload/', '/upload/w_300/')"
+          width="800"
         />
       </div>
       <div
@@ -239,7 +245,8 @@ const { classes: mdClasses } = useMdStyles()
                   small
                   color="black"
                   label="Toon aanbod met dit tarief"
-                  :to="`${$route.fullPath}/aanmelden?group=${moment.id}`"
+                  aria-controls="trainingParticipateModal"
+                  :to="`${$route.fullPath}/aanmelden/${moment.id}`"
                 >
                   aanmelden
                   <Icon
@@ -276,4 +283,5 @@ const { classes: mdClasses } = useMdStyles()
       </div>
     </section>
   </Modal>
+  <NuxtPage />
 </template>
