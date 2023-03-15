@@ -4,6 +4,7 @@ import type {
   ApiCoachCoach,
   ApiMembershipMembership,
 } from '~/types/schemas'
+
 const { find } = useStrapi()
 const { data: coaches = [] } = await find<ApiCoachCoach>('coaches', {
   populate: '*',
@@ -35,7 +36,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
         </p>
       </SpeechBubble>
       <div
-        class="relative -mx-4 mt-8 overflow-hidden bg-[url(~/assets/svg/farm-from-distance.svg),linear-gradient(#83A500,#83A500)] bg-[length:auto_1140px,cover] bg-[position:center_3rem,center_20vw] bg-no-repeat md:mt-12 md:bg-[length:100%_auto,cover]"
+        class="relative -mx-4 mt-8 overflow-hidden bg-[url(~/assets/svg/farm-from-distance.svg),linear-gradient(#83A500,#83A500)] bg-[length:auto_1140px,cover] bg-[position:center_3rem,center_20vw] bg-no-repeat pb-10 md:mt-12 md:bg-[length:100%_auto,cover]"
       >
         <div class="relative mx-auto max-w-4xl px-4">
           <Button

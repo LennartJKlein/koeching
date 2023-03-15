@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
 import type { ApiPricingPricing } from '~/types/schemas'
+
 const { find } = useStrapi()
 const { data: pricings = [] } = await find<ApiPricingPricing>('pricings', {
   populate: '*',
@@ -17,7 +18,7 @@ const toggleDetails = (description: string) => {
 
 <template>
   <main
-    class="min-h-screen bg-brown-600 bg-[url(~/assets/svg/wood-pattern.svg)] bg-[length:450px_auto] bg-blend-soft-light"
+    class="min-h-screen bg-brown-600 bg-[url(~/assets/svg/wood-pattern.svg)] bg-[length:450px_auto] pb-10 bg-blend-soft-light"
   >
     <div
       class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"

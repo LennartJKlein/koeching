@@ -35,7 +35,7 @@ const { trimImgSrc } = useImgUtils()
 
 <template>
   <li
-    class="border-b-divider relative flex flex-wrap items-center gap-3 py-2 last:border-b-0 md:gap-5"
+    class="border-b-divider-sky-100 relative flex flex-wrap items-center gap-3 py-2 last:border-b-0 md:gap-5"
   >
     <figure
       :class="[

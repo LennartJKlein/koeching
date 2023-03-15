@@ -63,12 +63,22 @@
     border-radius: 12px;
   }
 
-  .border-b-divider {
+  .border-b-divider-sky-100 {
     border-image: url('~/assets/svg/line-sky-100.svg') 33% / 0 0 0.25rem 0 / 0 stretch;
     border-bottom-width: 0.25rem;
   }
 
-  .border-t-divider {
+  .border-b-divider-sky-300 {
+    border-image: url('~/assets/svg/line-sky-300.svg') 33% / 0 0 0.25rem 0 / 0 stretch;
+    border-bottom-width: 0.25rem;
+  }
+
+  .border-b-divider-black {
+    border-image: url('~/assets/svg/line-black.svg') 33% / 0 0 0.25rem 0 / 0 stretch;
+    border-bottom-width: 0.25rem;
+  }
+
+  .border-t-divider-black {
     border-image: url('~/assets/svg/line-black.svg') 33% / 0.25rem 0 0 0 / 0 stretch;
     border-top-width: 0.25rem;
   }

@@ -5,6 +5,7 @@ import type {
   ApiSeminarSeminar,
   ApiTrainingTraining,
 } from '~/types/schemas'
+
 const { find } = useStrapi()
 const { data: interventions = [] } = await find<ApiInterventionIntervention>(
   'interventions',
@@ -43,7 +44,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         </p>
       </SpeechBubble>
       <div
-        class="relative -mx-4 overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:left_3rem,center_20vw] bg-no-repeat pt-[260px] md:bg-[length:100%_auto,cover] md:pt-[30vw] lg:pt-[25vw]"
+        class="relative -mx-4 overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:left_3rem,center_20vw] bg-no-repeat pb-10 pt-[260px] md:bg-[length:100%_auto,cover] md:pt-[30vw] lg:pt-[25vw]"
       >
         <div class="relative mx-auto max-w-5xl px-4">
           <template v-if="programs.length">
@@ -88,7 +89,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 role="listitem"
                 :title="training.attributes.name"
                 :to="`/aanbod/trainingen/${training.attributes.slug}`"
-                class="w-11/12 md:w-7/12 lg:w-full flex-shrink-0 snap-start"
+                class="w-11/12 flex-shrink-0 snap-start md:w-7/12 lg:w-full"
                 color="white"
                 modal="trainingModal"
               />

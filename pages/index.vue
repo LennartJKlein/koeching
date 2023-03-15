@@ -1,5 +1,7 @@
+<script setup lang="ts"></script>
+
 <template>
-  <main class="min-h-screen bg-white">
+  <main class="min-h-screen bg-white pb-10">
     <PageTitle class="sr-only">(Kinder)coaching op de boerderij</PageTitle>
     <Hero
       image="borreveld"

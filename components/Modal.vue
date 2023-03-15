@@ -4,6 +4,10 @@ import { throttle } from 'lodash-es'
 const props = defineProps({
   open: Boolean,
   overflowHeader: Boolean,
+  narrow: Boolean,
+  bgClasses: String,
+  headingClasses: String,
+  draggableClasses: String,
 })
 
 const dialog = ref<InstanceType<any> | undefined>(null)
@@ -30,6 +34,7 @@ function hideModal() {
 }
 
 const isDragging = ref(false)
+const isInteractionInModal = ref(false)
 const dragYStart = ref(0)
 const dragYOffset = ref(0)
 
@@ -74,6 +79,12 @@ function dragEnd(e: TouchEvent | MouseEvent) {
   dragYOffset.value = 0
   isDragging.value = false
 }
+function clickAnywhere(e: TouchEvent | MouseEvent) {
+  if (!isInteractionInModal.value) {
+    hideModal()
+  }
+  isInteractionInModal.value = false
+}
 
 onMounted(() => {
   watchEffect(() => {
@@ -100,7 +111,7 @@ onMounted(() => {
     })`"
     ref="dialog"
     v-bind="attrs"
-    @click="hideModal"
+    @click="clickAnywhere"
     @mousemove="dragMove($event)"
     @mouseup="dragEnd"
     @touchend="dragEnd"
@@ -116,11 +127,21 @@ onMounted(() => {
       >scherm sluiten</Button
     >
     <div
-      class="mx-auto mt-[10vh] flex min-h-[90vh] w-full max-w-2xl flex-col items-stretch justify-start overflow-hidden rounded-t-3xl border-2 border-b-0 border-black bg-white px-5"
+      :class="[
+        'mx-auto mt-[10vh] flex min-h-[90vh] w-full flex-col items-stretch justify-start overflow-hidden rounded-t-3xl border-2 border-b-0 border-black px-5',
+        narrow ? 'max-w-md' : 'max-w-2xl',
+        bgClasses || 'bg-white',
+      ]"
+      @mousedown="isInteractionInModal = true"
+      @touchstart="isInteractionInModal = true"
       @click.stop
     >
       <header
-        :class="['-mx-5  bg-sky-100 px-5', overflowHeader ? '-mb-32 pb-32' : 'pb-6']"
+        :class="[
+          '-mx-5  px-5',
+          overflowHeader ? '-mb-32 pb-32' : 'pb-6',
+          headingClasses || 'bg-sky-100',
+        ]"
       >
         <button
           class="mx-auto mb-6 w-full cursor-grab touch-none active:cursor-grabbing"
@@ -132,12 +153,12 @@ onMounted(() => {
           <Icon
             id="drag-indicator"
             size="4"
-            class="fill-sky-400"
+            :class="draggableClasses || 'fill-sky-400'"
           />
           <Icon
             id="drag-indicator"
             size="4"
-            class="ml-[3px] fill-sky-400"
+            :class="['ml-[3px]', draggableClasses || 'fill-sky-400']"
           />
           <span class="sr-only">Sluit het detailscherm</span>
         </button>

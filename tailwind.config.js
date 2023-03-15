@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
+const FormKitVariants = require('@formkit/themes/tailwindcss')
 
 module.exports = {
   content: [
@@ -11,6 +12,7 @@ module.exports = {
     "./nuxt.config.{js,ts}",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
+    './node_modules/@formkit/themes/dist/tailwindcss/genesis/index.cjs',
   ],
   theme: {
     colors: {
@@ -19,6 +21,7 @@ module.exports = {
       gray: colors.stone,
       transparent: 'transparent',
       white: colors.white,
+      red: colors.red,
     },
     extend: {
       animation: {
@@ -113,5 +116,5 @@ module.exports = {
       pattern: /border-pencil-/,
     },
   ],
-  plugins: [],
+  plugins: [FormKitVariants],
 }
