@@ -536,6 +536,7 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
 }
 
 export interface ApiAnimalAnimal extends CollectionTypeSchema {
+  id: Number
   bio: RichTextAttribute
   name: StringAttribute
   photos: MediaAttribute
@@ -566,6 +567,7 @@ export interface ApiAnimalAnimal extends CollectionTypeSchema {
 }
 
 export interface ApiCoachCoach extends CollectionTypeSchema {
+  id: Number
   bio: RichTextAttribute
   intro: TextAttribute
   name: StringAttribute & RequiredAttribute
@@ -646,6 +648,7 @@ export interface ApiFarmFarm extends SingleTypeSchema {
 }
 
 export interface ApiInterventionIntervention extends CollectionTypeSchema {
+  id: Number
   name: StringAttribute & RequiredAttribute
   content: RichTextAttribute
   photos: MediaAttribute
@@ -744,6 +747,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
 }
 
 export interface ApiMembershipMembership extends CollectionTypeSchema {
+  id: Number
   info: {
     singularName: 'membership'
     pluralName: 'memberships'
@@ -811,7 +815,68 @@ export interface ApiMessageMessage extends CollectionTypeSchema {
   }
 }
 
+export interface ApiParticipantParticipant extends CollectionTypeSchema {
+  id: Number
+  seminar: RelationAttribute<
+    'api::participant.participant',
+    'oneToOne',
+    'api::seminar.seminar'
+  >
+  training: RelationAttribute<
+    'api::participant.participant',
+    'oneToOne',
+    'api::training.training'
+  >
+  moment: ComponentAttribute<'details.moment'>
+  payment: BooleanAttribute
+  comments: TextAttribute
+  contact: ComponentAttribute<'details.contact'>
+  participants: ComponentAttribute<'details.participants', true>
+  info: {
+    singularName: 'participant'
+    pluralName: 'participants'
+    displayName: 'Aanmelding'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    informatieavond: RelationAttribute<
+      'api::participant.participant',
+      'oneToOne',
+      'api::seminar.seminar'
+    >
+    training: RelationAttribute<
+      'api::participant.participant',
+      'oneToOne',
+      'api::training.training'
+    >
+    moment: ComponentAttribute<'details.moment'>
+    payment: BooleanAttribute
+    comments: TextAttribute
+    contact: ComponentAttribute<'details.contact'>
+    participants: ComponentAttribute<'details.participants', true>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::participant.participant',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::participant.participant',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+  }
+}
+
 export interface ApiPricingPricing extends CollectionTypeSchema {
+  id: Number
   description: StringAttribute &
     RequiredAttribute &
     UniqueAttribute &
@@ -894,6 +959,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
   location: StringAttribute
   content: RichTextAttribute
   seo_description: StringAttribute
+  id: Number
   seo_title: StringAttribute
   slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute
   thumbnail: MediaAttribute & RequiredAttribute
@@ -958,6 +1024,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
   seo_title: StringAttribute
   seo_description: StringAttribute
   intro: TextAttribute
+  id: Number
   pricings: ComponentAttribute<'details.price', true>
   location: StringAttribute
   thumbnail: MediaAttribute & RequiredAttribute
@@ -1016,6 +1083,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
     'manyToMany',
     'api::intervention.intervention'
   >
+  id: Number
   photos: MediaAttribute
   content: RichTextAttribute
   pricings: ComponentAttribute<'details.price', true>
@@ -1071,6 +1139,38 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
   }
 }
 
+export interface DetailsAddress extends ComponentSchema {
+  street: StringAttribute
+  streetNr: StringAttribute
+  postalCode: StringAttribute
+  city: StringAttribute
+  info: {
+    displayName: 'address'
+  }
+  attributes: {
+    street: StringAttribute
+    streetNr: StringAttribute
+    postalCode: StringAttribute
+    city: StringAttribute
+  }
+}
+
+export interface DetailsContact extends ComponentSchema {
+  name: StringAttribute
+  phone: StringAttribute
+  address: ComponentAttribute<'details.address'>
+  email: EmailAttribute
+  info: {
+    displayName: 'contact'
+  }
+  attributes: {
+    name: StringAttribute
+    phone: StringAttribute
+    address: ComponentAttribute<'details.address'>
+    email: EmailAttribute
+  }
+}
+
 export interface DetailsKeywords extends ComponentSchema {
   keyword: StringAttribute
   info: {
@@ -1084,17 +1184,35 @@ export interface DetailsKeywords extends ComponentSchema {
 }
 
 export interface DetailsMoment extends ComponentSchema {
+  start_date: DateTimeAttribute
+  end_date: DateTimeAttribute
+  title: StringAttribute
+  description: RichTextAttribute
+  open: BooleanAttribute & DefaultTo<true>
+  id: Number
   info: {
-    displayName: 'Gebeurtenis'
+    displayName: 'Groep'
     icon: 'chart-bubble'
     description: ''
   }
   attributes: {
-    description: RichTextAttribute
-    end_date: DateTimeAttribute
-    open: BooleanAttribute & DefaultTo<true>
     start_date: DateTimeAttribute
+    end_date: DateTimeAttribute
     title: StringAttribute
+    description: RichTextAttribute
+    open: BooleanAttribute & DefaultTo<true>
+  }
+}
+
+export interface DetailsParticipants extends ComponentSchema {
+  name: StringAttribute
+  age: IntegerAttribute
+  info: {
+    displayName: 'participants'
+  }
+  attributes: {
+    name: StringAttribute
+    age: IntegerAttribute
   }
 }
 
@@ -1113,30 +1231,32 @@ export interface DetailsPrice extends ComponentSchema {
 declare global {
   namespace Strapi {
     interface Schemas {
-      'admin::permission': AdminPermission
-      'admin::user': AdminUser
-      'admin::role': AdminRole
-      'admin::api-token': AdminApiToken
       'admin::api-token-permission': AdminApiTokenPermission
-      'plugin::upload.file': PluginUploadFile
-      'plugin::upload.folder': PluginUploadFolder
-      'plugin::i18n.locale': PluginI18NLocale
-      'plugin::users-permissions.permission': PluginUsersPermissionsPermission
-      'plugin::users-permissions.role': PluginUsersPermissionsRole
-      'plugin::users-permissions.user': PluginUsersPermissionsUser
+      'admin::api-token': AdminApiToken
+      'admin::permission': AdminPermission
+      'admin::role': AdminRole
+      'admin::user': AdminUser
       'api::animal.animal': ApiAnimalAnimal
       'api::coach.coach': ApiCoachCoach
       'api::farm.farm': ApiFarmFarm
       'api::intervention.intervention': ApiInterventionIntervention
       'api::membership.membership': ApiMembershipMembership
       'api::message.message': ApiMessageMessage
+      'api::participant.participant': ApiParticipantParticipant
       'api::pricing.pricing': ApiPricingPricing
       'api::program.program': ApiProgramProgram
       'api::seminar.seminar': ApiSeminarSeminar
       'api::training.training': ApiTrainingTraining
       'details.keywords': DetailsKeywords
       'details.moment': DetailsMoment
+      'details.participants': DetailsParticipants
       'details.price': DetailsPrice
+      'plugin::i18n.locale': PluginI18NLocale
+      'plugin::upload.file': PluginUploadFile
+      'plugin::upload.folder': PluginUploadFolder
+      'plugin::users-permissions.permission': PluginUsersPermissionsPermission
+      'plugin::users-permissions.role': PluginUsersPermissionsRole
+      'plugin::users-permissions.user': PluginUsersPermissionsUser
     }
   }
 }

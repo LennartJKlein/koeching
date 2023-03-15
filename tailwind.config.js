@@ -19,9 +19,9 @@ module.exports = {
       black: colors.black,
       current: 'currentColor',
       gray: colors.stone,
+      red: colors.red,
       transparent: 'transparent',
       white: colors.white,
-      red: colors.red,
     },
     extend: {
       animation: {

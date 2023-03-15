@@ -192,7 +192,7 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </dl>
         <div
-          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-sky-300 pt-7 pb-10 md:gap-3 md:px-4"
+          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 pt-7 pb-10 md:gap-3 md:px-4"
         >
           <h3
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
@@ -202,10 +202,10 @@ const { trimImgSrc } = useImgUtils()
           <ul>
             <li
               v-for="moment in training.attributes.moments.filter((moment: any) => moment.open)"
-              class="border-pencil-sky-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
+              class="border-pencil-brown-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
               @click="toggleDetails(moment.title)"
             >
-              <span class="pl-2 text-lg font-bold text-sky-900">
+              <span class="pl-2 text-lg font-bold text-brown-500">
                 {{ moment.title }}
               </span>
               <Button
@@ -270,7 +270,7 @@ const { trimImgSrc } = useImgUtils()
           </ul>
         </div>
         <div
-          class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:gap-3 md:px-4"
+          class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-sky-500 py-10 md:flex-row md:gap-3 md:px-4"
         >
           <span
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
@@ -278,7 +278,7 @@ const { trimImgSrc } = useImgUtils()
             Vragen over deze groepstraining?
           </span>
           <Button
-            color="brown-200"
+            color="sky-400"
             class="flex-shrink-0"
             label="Contact opnemen"
           >

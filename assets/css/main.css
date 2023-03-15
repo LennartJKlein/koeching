@@ -45,6 +45,12 @@
     border-radius: 12px;
   }
 
+  .border-pencil-brown-500 {
+    border-image: url('~/assets/svg/border-brown-500.svg') 33% / 12px / 1px stretch;
+    border-width: 12px;
+    border-radius: 12px;
+  }
+
   .border-pencil-black {
     border-image: url('~/assets/svg/border-black.svg') 33% / 12px / 1px stretch;
     border-width: 12px;
