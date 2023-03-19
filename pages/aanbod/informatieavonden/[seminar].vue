@@ -198,7 +198,9 @@ const { trimImgSrc } = useImgUtils()
           >
             Aanmelden en meedoen
           </h3>
-          <ul>
+          <ul
+            v-if="seminar.attributes.moments.filter((moment: any) => moment.open).length > 0"
+          >
             <li
               v-for="moment in seminar.attributes.moments.filter((moment: any) => moment.open)"
               class="border-pencil-brown-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
@@ -267,6 +269,11 @@ const { trimImgSrc } = useImgUtils()
               </Transition>
             </li>
           </ul>
+          <p v-else>
+            Er zijn nog geen data ingepland voor deze informatieavond. Houd deze pagina in
+            de gaten voor updates of neem contact op om te laten weten dat je
+            geïnteresseerd bent.
+          </p>
         </div>
         <div
           class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-sky-500 py-10 md:flex-row md:gap-3 md:px-4"
