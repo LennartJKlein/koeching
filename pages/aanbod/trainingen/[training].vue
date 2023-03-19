@@ -48,7 +48,6 @@ const readableDate = function (date: string) {
   }).value.replaceAll('"', '')
 }
 
-const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -97,7 +96,7 @@ const { trimImgSrc } = useImgUtils()
               media.length > 1
                 ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
                 : 'aspect-[4/3] w-full',
-              'rounded-xl object-cover',
+              'overflow-hidden rounded-xl object-cover',
             ]"
             :placeholder="[800, 600, 10]"
             :src="trimImgSrc(photo.attributes.url)"
@@ -111,7 +110,7 @@ const { trimImgSrc } = useImgUtils()
         <div
           v-if="training.attributes.content"
           :class="mdClasses"
-          v-html="$markdown.render(training.attributes.content)"
+          v-html="$sanitize(training.attributes.content)"
         />
         <template v-if="training.attributes.interventions.data.length">
           <h4
@@ -247,7 +246,7 @@ const { trimImgSrc } = useImgUtils()
                   <div
                     v-if="moment.description"
                     :class="mdClasses"
-                    v-html="$markdown.render(moment.description)"
+                    v-html="$sanitize(moment.description)"
                   />
                   <Button
                     class="ml-auto mr-0 w-min"

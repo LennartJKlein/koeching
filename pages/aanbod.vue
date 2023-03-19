@@ -96,7 +96,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
             </div>
           </template>
           <template v-if="seminars.length">
-            <PageH2>Informatieavonden</PageH2>
+            <PageH2 class="text-center">Informatieavonden</PageH2>
             <div
               class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
               role="list"

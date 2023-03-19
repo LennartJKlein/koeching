@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { Ref, ref } from 'vue'
 import type { ApiSeminarSeminar } from '~/types/schemas'
+import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
 const route = useRoute()
@@ -17,16 +19,35 @@ const {
     },
     interventions: '*',
     photos: '*',
+    thumbnail: '*',
+    moments: '*',
     pricings: '*',
   },
 })
+
+const media = [
+  seminar.attributes.thumbnail.data ? seminar.attributes.thumbnail.data : [],
+  ...(seminar.attributes.photos.data ? seminar.attributes.photos.data : []),
+]
 
 const goBack = function () {
   const router = useRouter()
   router.push('/aanbod')
 }
 
-const { $markdown } = useNuxtApp()
+const openDetails: Ref<string[]> = ref([])
+const toggleDetails = (description: string) => {
+  openDetails.value.indexOf(description) >= 0
+    ? openDetails.value.splice(openDetails.value.indexOf(description))
+    : openDetails.value.push(description)
+}
+
+const readableDate = function (date: string) {
+  return useDateFormat(date, 'D MMMM YYYY, HH:mm uur', {
+    locales: 'nl-NL',
+  }).value.replaceAll('"', '')
+}
+
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -37,9 +58,7 @@ const { trimImgSrc } = useImgUtils()
       :aria-label="`Meer over ${seminar.attributes.name}`"
       id="seminarModal"
       open
-      :overflow-header="
-        seminar.attributes.photos.data && seminar.attributes.photos.data.length > 0
-      "
+      :overflow-header="media && media.length > 0"
       @close="goBack"
     >
       <template v-slot:heading>
@@ -63,24 +82,25 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <section>
         <div
-          v-if="seminar.attributes.photos.data"
+          v-if="media"
           :class="[
             'my-5',
-            seminar.attributes.photos.data.length > 1 &&
+            media.length > 1 &&
               '-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-scroll px-5 md:snap-proximity',
           ]"
           role="list"
         >
           <NuxtImg
-            v-for="photo in seminar.attributes.photos.data"
+            v-for="photo in media"
             :class="[
-              seminar.attributes.photos.data.length > 1
+              media.length > 1
                 ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
                 : 'aspect-[4/3] w-full',
-              'rounded-xl object-cover',
+              'overflow-hidden rounded-xl object-cover',
             ]"
             :placeholder="[800, 600, 10]"
             :src="trimImgSrc(photo.attributes.url)"
+            fit="inside"
             height="600"
             provider="cloudinary"
             role="listitem"
@@ -90,10 +110,12 @@ const { trimImgSrc } = useImgUtils()
         <div
           v-if="seminar.attributes.content"
           :class="mdClasses"
-          v-html="$markdown.render(seminar.attributes.content)"
+          v-html="$sanitize(seminar.attributes.content)"
         />
         <template v-if="seminar.attributes.interventions.data.length">
-          <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+          <h4
+            class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
+          >
             Interventies tijdens deze informatieavond
           </h4>
           <div
@@ -112,7 +134,9 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </template>
         <template v-if="seminar.attributes.coaches.data.length">
-          <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+          <h4
+            class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
+          >
             Coaches die deze informatieavond verzorgen
           </h4>
           <div
@@ -167,13 +191,93 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </dl>
         <div
-          class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-brown-300 py-10 md:flex-row md:gap-3 md:px-4"
+          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 pt-7 pb-10 md:gap-3 md:px-4"
         >
-          <span class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
-            >Is deze aanpak wat voor jou?</span
+          <h3
+            class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
           >
+            Aanmelden en meedoen
+          </h3>
+          <ul>
+            <li
+              v-for="moment in seminar.attributes.moments.filter((moment: any) => moment.open)"
+              class="border-pencil-brown-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
+              @click="toggleDetails(moment.title)"
+            >
+              <span class="pl-2 text-lg font-bold text-brown-500">
+                {{ moment.title }}
+              </span>
+              <Button
+                class="mx-auto sm:ml-auto sm:mr-0"
+                color="white"
+                icon-only
+                label="Toon informatie over deze groep"
+                small
+                outlined
+                @click.stop="toggleDetails(moment.title)"
+              >
+                <Icon
+                  id="arrow-down"
+                  :class="[
+                    openDetails.indexOf(moment.title) >= 0 && 'rotate-180',
+                    'transition-all',
+                  ]"
+                  size="4"
+                />
+              </Button>
+              <Transition>
+                <div
+                  v-show="openDetails.indexOf(moment.title) >= 0"
+                  class="col-span-2 -mx-2 -mb-2 bg-gray-100 p-3"
+                >
+                  <div v-if="moment.start_date">
+                    <dt class="mr-2 inline font-bold">Van:</dt>
+                    <dd class="inline leading-snug">
+                      {{ readableDate(moment.start_date) }}
+                    </dd>
+                  </div>
+                  <div v-if="moment.end_date">
+                    <dt class="mr-2 inline font-bold">Tot:</dt>
+                    <dd class="inline leading-snug">
+                      {{ readableDate(moment.end_date) }}
+                    </dd>
+                  </div>
+                  <h4 class="mt-3 mb-0 font-bold">Meer info:</h4>
+                  <div
+                    v-if="moment.description"
+                    :class="mdClasses"
+                    v-html="$sanitize(moment.description)"
+                  />
+                  <Button
+                    class="ml-auto mr-0 w-min"
+                    small
+                    color="black"
+                    label="Toon aanbod met dit tarief"
+                    aria-controls="seminarParticipateModal"
+                    :to="`/aanbod/informatieavonden/${$route.params.seminar}/aanmelden/${moment.id}`"
+                  >
+                    aanmelden
+                    <Icon
+                      id="send"
+                      class="ml-2"
+                      size="4"
+                    />
+                  </Button>
+                </div>
+              </Transition>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="z-1 border-pencil-black relative -mx-6 flex flex-col items-center justify-between gap-5 bg-sky-500 py-10 md:flex-row md:gap-3 md:px-4"
+        >
+          <span
+            class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
+          >
+            Vragen over deze informatieavond?
+          </span>
           <Button
-            color="brown-200"
+            color="sky-400"
             class="flex-shrink-0"
             label="Contact opnemen"
           >

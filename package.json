@@ -11,14 +11,12 @@
     "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
     "@nuxtjs/strapi": "^1.6.3",
     "@types/lodash-es": "^4.17.6",
-    "@types/markdown-it": "^12.2.3",
     "autoprefixer": "^10.4.13",
     "eslint": "latest",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-tailwindcss": "^3.8.0",
     "lodash-es": "^4.17.21",
-    "markdown-it": "^13.0.1",
     "nuxt": "3.0.0",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
@@ -29,6 +27,7 @@
     "@formkit/icons": "^1.0.0-beta.15",
     "@formkit/nuxt": "^1.0.0-beta.15",
     "@formkit/themes": "^1.0.0-beta.15",
-    "@vueuse/nuxt": "^9.12.0"
+    "@vueuse/nuxt": "^9.12.0",
+    "vue-3-sanitize": "^0.1.4"
   }
 }

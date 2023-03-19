@@ -19,7 +19,6 @@ const goBack = function () {
   router.push('/ontdek')
 }
 
-const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -58,7 +57,7 @@ const { trimImgSrc } = useImgUtils()
             animal.attributes.photos.data.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
-            'rounded-xl object-cover',
+            'overflow-hidden rounded-xl object-cover',
           ]"
           :placeholder="[800, 600, 10]"
           :src="trimImgSrc(photo.attributes.url)"
@@ -71,7 +70,7 @@ const { trimImgSrc } = useImgUtils()
       <div
         v-if="animal.attributes.bio"
         :class="mdClasses"
-        v-html="$markdown.render(animal.attributes.bio)"
+        v-html="$sanitize(animal.attributes.bio)"
       />
     </section>
   </Modal>

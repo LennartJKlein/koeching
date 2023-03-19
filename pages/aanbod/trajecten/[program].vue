@@ -26,7 +26,6 @@ const goBack = function () {
   router.push('/aanbod')
 }
 
-const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -76,7 +75,7 @@ const { trimImgSrc } = useImgUtils()
             program.attributes.photos.data.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[4/3]'
               : 'aspect-[4/3] w-full',
-            'rounded-xl object-cover',
+            'overflow-hidden rounded-xl object-cover',
           ]"
           :placeholder="[800, 600, 10]"
           :src="trimImgSrc(photo.attributes.url)"
@@ -89,7 +88,7 @@ const { trimImgSrc } = useImgUtils()
       <div
         v-if="program.attributes.content"
         :class="mdClasses"
-        v-html="$markdown.render(program.attributes.content)"
+        v-html="$sanitize(program.attributes.content)"
       />
       <template v-if="program.attributes.interventions.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">

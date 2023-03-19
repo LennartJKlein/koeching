@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
 import type { ApiTrainingTraining } from '~/types/schemas'
 
 const { find } = useStrapi()

@@ -25,7 +25,6 @@ const goBack = function () {
   router.push('/ontdek')
 }
 
-const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -75,7 +74,7 @@ const { trimImgSrc } = useImgUtils()
             coach.attributes.photos.data.length > 1
               ? 'aspect-square w-10/12 flex-shrink-0 snap-start sm:aspect-[5/3]'
               : 'aspect-[5/3] w-full',
-            'rounded-xl object-cover',
+            'overflow-hidden rounded-xl object-cover',
           ]"
           :placeholder="[800, 600, 10]"
           :src="trimImgSrc(photo.attributes.url)"
@@ -88,7 +87,7 @@ const { trimImgSrc } = useImgUtils()
       <div
         v-if="coach.attributes.bio"
         :class="[...mdClasses, 'mb-14']"
-        v-html="$markdown.render(coach.attributes.bio)"
+        v-html="$sanitize(coach.attributes.bio)"
       />
       <template v-if="coach.attributes.programs.data.length">
         <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">

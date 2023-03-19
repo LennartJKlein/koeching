@@ -28,7 +28,6 @@ const goBack = function () {
   router.push('/aanbod')
 }
 
-const { $markdown } = useNuxtApp()
 const { classes: mdClasses } = useMdStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
@@ -77,7 +76,7 @@ const { trimImgSrc } = useImgUtils()
           v-for="photo in intervention.attributes.photos.data"
           :placeholder="[800, 600, 10]"
           :src="trimImgSrc(photo.attributes.url)"
-          class="w-[80vw] flex-shrink-0 snap-start rounded-xl object-cover sm:h-60 sm:w-auto md:h-80"
+          class="w-[80vw] flex-shrink-0 snap-start overflow-hidden rounded-xl object-cover sm:h-60 sm:w-auto md:h-80"
           height="600"
           provider="cloudinary"
           role="listitem"
@@ -87,7 +86,7 @@ const { trimImgSrc } = useImgUtils()
       <div
         v-if="intervention.attributes.content"
         :class="mdClasses"
-        v-html="$markdown.render(intervention.attributes.content)"
+        v-html="$sanitize(intervention.attributes.content)"
       />
       <template v-if="intervention.attributes.programs.data.length">
         <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
