@@ -1,8 +1,8 @@
-interface mdStylesComposable {
+interface contentStylesComposable {
   classes: string[]
 }
 
-export const useMdStyles = (): mdStylesComposable => {
+export const useContentStyles = (): contentStylesComposable => {
   return {
     classes: [
       'first:[&>h2]:mt-0 [&>h2]:mt-5 [&>h2]:mb-1 [&>h2+p]:mt-1 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:leading-none [&>h2]:text-brown-400',

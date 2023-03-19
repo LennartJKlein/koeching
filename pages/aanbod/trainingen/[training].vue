@@ -48,7 +48,7 @@ const readableDate = function (date: string) {
   }).value.replaceAll('"', '')
 }
 
-const { classes: mdClasses } = useMdStyles()
+const { classes: contentClasses } = useContentStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
 
@@ -109,7 +109,7 @@ const { trimImgSrc } = useImgUtils()
         </div>
         <div
           v-if="training.attributes.content"
-          :class="mdClasses"
+          :class="contentClasses"
           v-html="$sanitize(training.attributes.content)"
         />
         <template v-if="training.attributes.interventions.data.length">
@@ -247,7 +247,7 @@ const { trimImgSrc } = useImgUtils()
                   <h4 class="mt-3 mb-0 font-bold">Meer info:</h4>
                   <div
                     v-if="moment.description"
-                    :class="mdClasses"
+                    :class="contentClasses"
                     v-html="$sanitize(moment.description)"
                   />
                   <Button

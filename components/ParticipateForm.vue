@@ -309,7 +309,8 @@ async function fetchAddress(postalCodeInput: String, streetNrInput: String) {
       class="border-pencil-black mb-6 rounded-lg bg-green-400 px-2 py-1 font-bold text-white"
     >
       Dankjewel voor je aanmelding! Je krijgt zo snel mogelijk meer informatie van ons en
-      antwoord op eventuele vragen. Je kunt dit scherm nu sluiten.
+      antwoord op eventuele vragen. Let op: je aanmelding is pas definitief zodra de
+      betaling is ontvangen. Je kunt dit scherm nu sluiten.
     </p>
   </div>
 </template>

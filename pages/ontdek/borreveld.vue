@@ -12,7 +12,7 @@ const goBack = function () {
   router.push('/ontdek')
 }
 
-const { classes: mdClasses } = useMdStyles()
+const { classes: contentClasses } = useContentStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
 
@@ -66,7 +66,7 @@ const { trimImgSrc } = useImgUtils()
       </div>
       <div
         v-if="farm.attributes.content"
-        :class="[...mdClasses, 'mb-10']"
+        :class="[...contentClasses, 'mb-10']"
         v-html="$sanitize(farm.attributes.content)"
       />
     </section>

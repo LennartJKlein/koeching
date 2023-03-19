@@ -25,7 +25,7 @@ const goBack = function () {
   router.push('/ontdek')
 }
 
-const { classes: mdClasses } = useMdStyles()
+const { classes: contentClasses } = useContentStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
 
@@ -86,7 +86,7 @@ const { trimImgSrc } = useImgUtils()
       </div>
       <div
         v-if="coach.attributes.bio"
-        :class="[...mdClasses, 'mb-14']"
+        :class="[...contentClasses, 'mb-14']"
         v-html="$sanitize(coach.attributes.bio)"
       />
       <template v-if="coach.attributes.programs.data.length">

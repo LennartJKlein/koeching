@@ -26,7 +26,7 @@ const goBack = function () {
   router.push('/aanbod')
 }
 
-const { classes: mdClasses } = useMdStyles()
+const { classes: contentClasses } = useContentStyles()
 const { trimImgSrc } = useImgUtils()
 </script>
 
@@ -87,7 +87,7 @@ const { trimImgSrc } = useImgUtils()
       </div>
       <div
         v-if="program.attributes.content"
-        :class="mdClasses"
+        :class="contentClasses"
         v-html="$sanitize(program.attributes.content)"
       />
       <template v-if="program.attributes.interventions.data.length">
