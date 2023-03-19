@@ -269,7 +269,10 @@ const { trimImgSrc } = useImgUtils()
               </Transition>
             </li>
           </ul>
-          <p v-else>
+          <p
+            v-else
+            class="italic text-white"
+          >
             Er zijn nog geen data ingepland voor deze informatieavond. Houd deze pagina in
             de gaten voor updates of neem contact op om te laten weten dat je
             geïnteresseerd bent.
