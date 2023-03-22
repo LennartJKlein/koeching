@@ -233,13 +233,13 @@ const { trimImgSrc } = useImgUtils()
                   class="col-span-2 -mx-2 -mb-2 bg-gray-100 p-3"
                 >
                   <div v-if="moment.start_date">
-                    <dt class="mr-2 inline font-bold">Van:</dt>
+                    <dt class="mr-2 inline font-bold">Start:</dt>
                     <dd class="inline leading-snug">
                       {{ readableDate(moment.start_date) }}
                     </dd>
                   </div>
                   <div v-if="moment.end_date">
-                    <dt class="mr-2 inline font-bold">Tot:</dt>
+                    <dt class="mr-2 inline font-bold">Eind:</dt>
                     <dd class="inline leading-snug">
                       {{ readableDate(moment.end_date) }}
                     </dd>
