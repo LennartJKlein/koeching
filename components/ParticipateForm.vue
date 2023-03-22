@@ -312,9 +312,9 @@ async function fetchAddress(postalCodeInput: String, streetNrInput: String) {
         Dankjewel voor je aanmelding! Je krijgt zo snel mogelijk meer informatie van ons
         en antwoord op eventuele vragen.
       </p>
-      <p class="mt-4"></p>
-        Let op: als deelname hievoor niet gratis is, wordt je aanmelding pas definitief zodra jouw
-        betaling door ons is ontvangen.
+      <p class="mt-4">
+        Let op: als deelname hievoor niet gratis is, wordt je aanmelding pas definitief
+        zodra jouw betaling door ons is ontvangen.
       </p>
       <p class="mt-4">Je kunt dit scherm nu sluiten.</p>
     </div>
