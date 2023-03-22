@@ -304,13 +304,19 @@ async function fetchAddress(postalCodeInput: String, streetNrInput: String) {
     >
       Er is iets mis gegaan bij het versturen van je aanmelding. Probeer het nog eens.
     </p>
-    <p
+    <div
       v-if="isSubmitSuccesfull === true"
       class="border-pencil-black mb-6 rounded-lg bg-green-400 px-2 py-1 font-bold text-white"
     >
-      Dankjewel voor je aanmelding! Je krijgt zo snel mogelijk meer informatie van ons en
-      antwoord op eventuele vragen. Let op: je aanmelding is pas definitief zodra de
-      betaling is ontvangen. Je kunt dit scherm nu sluiten.
-    </p>
+      <p>
+        Dankjewel voor je aanmelding! Je krijgt zo snel mogelijk meer informatie van ons
+        en antwoord op eventuele vragen.
+      </p>
+      <p class="mt-4"></p>
+        Let op: als deelname hievoor niet gratis is, wordt je aanmelding pas definitief zodra jouw
+        betaling door ons is ontvangen.
+      </p>
+      <p class="mt-4">Je kunt dit scherm nu sluiten.</p>
+    </div>
   </div>
 </template>
