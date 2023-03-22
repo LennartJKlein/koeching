@@ -3,21 +3,16 @@
 <template>
   <main class="min-h-screen bg-white pb-10">
     <PageTitle class="sr-only">(Kinder)coaching op de boerderij</PageTitle>
-    <Hero
-      image="borreveld"
-      blur-image
-    >
-      <img
-        class="mx-auto mt-3 w-64 md:w-72 lg:w-80"
-        src="~/assets/svg/logo.svg"
-        alt="Logo van Koeching"
-      />
-      <img
-        class="-mx-8 mt-auto max-w-3xl animate-fly-in md:mx-auto"
-        src="~/assets/svg/animals-inviting-hug.svg"
-        alt="Dieren van Koeching"
-      />
-    </Hero>
+    <img
+      class="mx-auto mt-3 w-64 md:w-72 lg:w-80"
+      src="~/assets/svg/logo.svg"
+      alt="Logo van Koeching"
+    />
+    <img
+      class="-mx-8 mt-auto max-w-3xl animate-fly-in md:mx-auto"
+      src="~/assets/svg/animals-inviting-hug.svg"
+      alt="Dieren van Koeching"
+    />
     <div class="px-3">
       <SpeechBubble
         marker

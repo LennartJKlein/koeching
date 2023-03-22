@@ -13,7 +13,9 @@ export default defineNuxtConfig({
   ],
   image: {
     cloudinary: {
-      baseURL: 'https://res.cloudinary.com/deppvwtko/image/upload/',
+      baseURL:
+        process.env.CLOUDINARY_URL ||
+        'https://res.cloudinary.com/deppvwtko/image/upload/',
       modifiers: {
         fit: 'cover',
         quality: 'auto:best',
@@ -26,12 +28,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: [
-    '@formkit/nuxt',
-    '@nuxt/image-edge',
-    '@nuxtjs/strapi',
-    '@vueuse/nuxt',
-  ],
+  modules: ['@formkit/nuxt', '@nuxt/image-edge', '@nuxtjs/strapi', '@vueuse/nuxt'],
   strapi: {
     url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
   },
