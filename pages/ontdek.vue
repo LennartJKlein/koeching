@@ -30,7 +30,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
         color="sky-500"
       >
         <PageTitle class="text-center">Ga op ontdekkingstocht</PageTitle>
-        <p class="mt-1 font-bold sm:mt-2 sm:text-lg">
+        <p class="mt-1 text-center leading-snug sm:mt-2 sm:text-lg sm:leading-snug">
           Maak kennis met alles en iedereen op boerderij Borreveld! Kom meer te weten over
           de mensen, de boerderij en natuurlijk de lieve dieren!
         </p>

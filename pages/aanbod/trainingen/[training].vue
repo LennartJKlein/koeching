@@ -234,7 +234,7 @@ const { trimImgSrc } = useImgUtils()
                 >
                   <div v-if="moment.start_date">
                     <dt class="mr-2 inline font-bold">Start:</dt>
-                    <dd class="inline leading-snug"></dd>
+                    <dd class="inline leading-snug">
                       {{ readableDate(moment.start_date) }}
                     </dd>
                   </div>

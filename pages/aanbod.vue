@@ -38,7 +38,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         color="white"
       >
         <PageTitle class="text-center">Vind jouw aanpak</PageTitle>
-        <p class="mt-1 font-bold sm:mt-2 sm:text-lg">
+        <p class="mt-1 text-center leading-snug sm:mt-2 sm:text-lg sm:leading-snug">
           Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de
           slag gaan met je hulpvraag. Wat past er bij jou?
         </p>

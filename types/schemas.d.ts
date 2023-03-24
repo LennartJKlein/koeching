@@ -647,6 +647,41 @@ export interface ApiFarmFarm extends SingleTypeSchema {
   }
 }
 
+export interface ApiHomepageHomepage extends SingleTypeSchema {
+  photos: MediaAttribute & RequiredAttribute
+  sales_text: ComponentAttribute<'content.paragraph', true> &
+    SetMinMax<{
+      min: 1
+      max: 3
+    }>
+  title: StringAttribute & RequiredAttribute
+  info: {
+    singularName: 'homepage'
+    pluralName: 'homepages'
+    displayName: 'Homepage'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    photos: MediaAttribute & RequiredAttribute
+    sales_text: ComponentAttribute<'content.paragraph', true> &
+      SetMinMax<{
+        min: 1
+        max: 3
+      }>
+    title: StringAttribute & RequiredAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+    updatedBy: RelationAttribute<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+  }
+}
+
 export interface ApiInterventionIntervention extends CollectionTypeSchema {
   id: Number
   name: StringAttribute & RequiredAttribute
@@ -1139,6 +1174,17 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
   }
 }
 
+export interface ContentParagraph extends ComponentSchema {
+  body: TextAttribute & RequiredAttribute
+  info: {
+    displayName: 'Alinea'
+    description: ''
+  }
+  attributes: {
+    body: TextAttribute & RequiredAttribute
+  }
+}
+
 export interface DetailsAddress extends ComponentSchema {
   street: StringAttribute
   streetNr: StringAttribute
@@ -1239,6 +1285,7 @@ declare global {
       'api::animal.animal': ApiAnimalAnimal
       'api::coach.coach': ApiCoachCoach
       'api::farm.farm': ApiFarmFarm
+      'api::homepage.homepage': ApiHomepageHomepage
       'api::intervention.intervention': ApiInterventionIntervention
       'api::membership.membership': ApiMembershipMembership
       'api::message.message': ApiMessageMessage
@@ -1247,6 +1294,9 @@ declare global {
       'api::program.program': ApiProgramProgram
       'api::seminar.seminar': ApiSeminarSeminar
       'api::training.training': ApiTrainingTraining
+      'content.paragraph': ContentParagraph
+      'details.address': DetailsAddress
+      'details.contact': DetailsContact
       'details.keywords': DetailsKeywords
       'details.moment': DetailsMoment
       'details.participants': DetailsParticipants

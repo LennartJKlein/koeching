@@ -1,50 +1,51 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { ApiHomepageHomepage } from '~/types/schemas'
+
+const { find } = useStrapi()
+const { data } = (await find<ApiHomepageHomepage>('homepage', {
+  populate: '*',
+})) as any
+const content: ApiHomepageHomepage = data
+const { classes: contentClasses } = useContentStyles()
+const { trimImgSrc } = useImgUtils()
+</script>
 
 <template>
   <main class="min-h-screen bg-white pb-10">
-    <PageTitle class="sr-only">(Kinder)coaching op de boerderij</PageTitle>
-    <img
-      class="mx-auto mt-3 w-64 md:w-72 lg:w-80"
-      src="~/assets/svg/logo.svg"
-      alt="Logo van Koeching"
-    />
-    <img
-      class="-mx-8 mt-auto max-w-3xl animate-fly-in md:mx-auto"
-      src="~/assets/svg/animals-inviting-hug.svg"
-      alt="Dieren van Koeching"
-    />
-    <div class="px-3">
-      <SpeechBubble
-        marker
-        color="white"
-        class="mx-auto -mt-12 max-w-3xl"
+    <PageTitle class="sr-only">{{ content.attributes.title }}</PageTitle>
+    <HeroSlider
+      :images="content.attributes.photos && content.attributes.photos.data.map((photo: any) => photo.attributes.url)"
+    >
+      <div
+        class="-ml-[5%] -mr-[10%] -mb-10 flex overflow-hidden pt-12 transition-all md:mr-0 md:ml-0"
       >
-        <p class="font-display text-2xl leading-tight text-brown-400 md:text-3xl">
-          Welkom op de site van Koeching!<br />Leuk dat je er bent.
-        </p>
-      </SpeechBubble>
-      <p class="mt-6">
-        Voor leren lezen en rekenen ga je naar school. Om te leren zwemmen ga je naar
-        zwemles. Om te leren dansen ga je naar dansles. Maar hoe en waar leer je omgaan
-        met emoties, zoals bijvoorbeeld boosheid? En hoe gaat dat dan, als je meer
-        zelfvertrouwen wil krijgen? Hoe kun je weerbaar worden als je gepest wordt? Zomaar
-        een paar voorbeelden van dingen die best moeilijk kunnen zijn voor een kind of een
-        jongere.
-      </p>
-      <p class="mt-6">
-        Koeching kan daarbij helpen. Waar een kind of jongere goed in is, zijn of haar
-        kwaliteiten ontdekken, is een belangrijk onderdeel van de sessies. We gaan
-        oplossingsgericht aan het werk, samen (met de dieren) op zoek naar hoe een kind of
-        jongere anders om kan gaan met datgene wat moeilijk is voor hem of haar.
-      </p>
-      <p class="mt-6">
-        Een belangrijk aspect bij Koeching is de verbinding van een kind met zijn of haar
-        ouders.” De appel valt niet ver van de boom” is een bekend spreekwoord. En zo
-        logisch ook, als iets moeilijk is voor ons als ouder(s)/verzorger(s), dan kunnen
-        we het ook niet voorleven of voordoen aan ons kind. Bij Koeching werken we dan ook
-        graag samen met de ouder(s) of verzorger(s), zodat zij zich krachtig voelen en de
-        steunpilaar kunnen zijn voor hun kind.
-      </p>
+        <img
+          class="w-full max-w-2xl animate-fly-in"
+          src="~/assets/svg/animals-inviting-hug.svg"
+          alt="Dieren van Koeching"
+        />
+      </div>
+      <figure class="relative z-10 mb-12 w-full max-w-xl px-8">
+        <img
+          class="w-full"
+          src="~/assets/svg/logo.svg"
+          alt="Logo van Koeching"
+        />
+      </figure>
+    </HeroSlider>
+    <div
+      class="bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:100%_auto] bg-bottom bg-no-repeat px-8 py-16 text-xl text-brown-50"
+    >
+      <div class="mx-auto flex max-w-4xl items-center">
+        <img
+          class="max-w-xs object-contain"
+          src="~/assets/svg/dog-idea.svg"
+        />
+        <p
+          v-if="content.attributes.sales_text[0]"
+          v-html="content.attributes.sales_text[0].body"
+        />
+      </div>
     </div>
     <p class="my-12 mx-3 italic">Todo: introductievideos</p>
     <p class="my-12 mx-3 italic">Todo: agenda / kalender</p>
