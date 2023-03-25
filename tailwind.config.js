@@ -27,7 +27,8 @@ module.exports = {
       animation: {
         gelatine: 'gelatine 300ms linear forwards',
         'fly-in': 'fly-in 1.5s cubic-bezier(.4,1.45,.55,.95) forwards',
-        'zoom-in': 'zoom-in 3.5s linear forwards',
+        'zoom-in-once': 'zoom-in 4s linear forwards',
+        'zoom-in': 'zoom-in 3s ease-in-out infinite alternate',
       },
       backgroundImage: {
         'bottom-nav':

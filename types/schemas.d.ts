@@ -655,6 +655,7 @@ export interface ApiHomepageHomepage extends SingleTypeSchema {
       max: 3
     }>
   title: StringAttribute & RequiredAttribute
+  videos: ComponentAttribute<'content.youtube-video', true>
   info: {
     singularName: 'homepage'
     pluralName: 'homepages'
@@ -672,6 +673,7 @@ export interface ApiHomepageHomepage extends SingleTypeSchema {
         max: 3
       }>
     title: StringAttribute & RequiredAttribute
+    videos: ComponentAttribute<'content.youtube-video', true>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute
@@ -1185,6 +1187,16 @@ export interface ContentParagraph extends ComponentSchema {
   }
 }
 
+export interface ContentYoutubeVideo extends ComponentSchema {
+  info: {
+    displayName: 'Youtube video'
+    description: ''
+  }
+  attributes: {
+    url: StringAttribute
+  }
+}
+
 export interface DetailsAddress extends ComponentSchema {
   street: StringAttribute
   streetNr: StringAttribute
@@ -1295,6 +1307,7 @@ declare global {
       'api::seminar.seminar': ApiSeminarSeminar
       'api::training.training': ApiTrainingTraining
       'content.paragraph': ContentParagraph
+      'content.youtube-video': ContentYoutubeVideo
       'details.address': DetailsAddress
       'details.contact': DetailsContact
       'details.keywords': DetailsKeywords
