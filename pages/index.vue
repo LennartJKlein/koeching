@@ -59,7 +59,7 @@ const nextVideo = () => {
     </HeroSlider>
     <section
       v-if="content.attributes.sales_text[0]"
-      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-28 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
@@ -71,7 +71,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="pageImages[0]"
-      class="relative aspect-[3/1] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+      class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <NuxtImg
         class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
@@ -84,7 +84,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.sales_text[1]"
-      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-28 text-xl text-brown-600 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-600 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <p v-html="$sanitize(content.attributes.sales_text[1].body)" />
@@ -96,7 +96,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="pageImages[1]"
-      class="relative aspect-[3/1] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+      class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <NuxtImg
         class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
@@ -109,7 +109,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.sales_text[2]"
-      class="relative bg-white bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-28 text-xl text-brown-500 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-white bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-500 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img

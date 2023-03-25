@@ -10,7 +10,7 @@ const props = withDefaults(
 
 const { trimImgSrc } = useImgUtils()
 
-const { counter, reset, pause, resume } = useInterval(3000, {
+const { counter, reset, pause, resume } = useInterval(4000, {
   immediate: true,
   controls: true,
 })
@@ -55,7 +55,7 @@ watch(counter, (iteration) => {
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 500ms ease;
+  transition: opacity 700ms ease;
 }
 
 .v-enter-from,
