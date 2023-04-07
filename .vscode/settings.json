@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "Vue.volar",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnType": true,
+  "prettier.printWidth": 999999999,
+  "tailwindCSS.validate": true,
+  "prettier.requireConfig": true,
+  "prettier.singleAttributePerLine": true
+}

@@ -29,6 +29,12 @@ module.exports = {
         'fly-in': 'fly-in 1.5s cubic-bezier(.4,1.45,.55,.95) forwards',
         'zoom-in-once': 'zoom-in 4.5s linear forwards',
         'zoom-in': 'zoom-in 6s ease-in-out infinite alternate',
+        'contact-sky': 'contact-sky 15s ease-in-out infinite alternate',
+        'contact-pen': 'contact-pen 2s ease-in-out infinite alternate',
+        'contact-phone': 'contact-ring 150ms infinite',
+        'contact-envelop': 'contact-envelop 2s ease-in forwards',
+        'contact-phone-sound': 'contact-ring 200ms infinite',
+        'contact-smartphone-light': 'contact-light-up 750ms ease-in-out infinite',
       },
       backgroundImage: {
         'bottom-nav':
@@ -88,6 +94,76 @@ module.exports = {
         '55v': '55vh',
       },
       keyframes: {
+        'contact-sky': {
+          '0%': {
+            rotate: '10deg',
+          },
+          '100%': {
+            rotate: '-10deg',
+          },
+        },
+        'contact-envelop': {
+          '0%': {
+            opacity: '0',
+            transform: 'translate(5%, 5%) scale(0)',
+          },
+          '15%': {
+            opacity: '1',
+            transform: 'translate(5%, 5%) scale(0.11)',
+          },
+          '20%': {
+            opacity: '1',
+            transform: 'translate(5%, 5%) scale(0.1)',
+          },
+          '30%': {
+            opacity: '1',
+            transform: 'translate(5%, 5%) scale(0.1)',
+          },
+          '100%': {
+            opacity: '1',
+            transform:
+              'translate(5%, 16.5%) rotate(88deg) skew(0, -43deg) scale(0.025, 0.05)',
+          },
+        },
+        'contact-pen': {
+          '0%': {
+            rotate: '1deg',
+          },
+          '20%': {
+            rotate: '-2deg',
+          },
+          '50%': {
+            rotate: '2deg',
+          },
+          '75%': {
+            rotate: '-1deg',
+          },
+          '100%': {
+            rotate: '1deg',
+          },
+        },
+        'contact-ring': {
+          '0%': {
+            rotate: '-2deg',
+          },
+          '50%': {
+            rotate: '2deg',
+          },
+          '100%': {
+            rotate: '-2deg',
+          },
+        },
+        'contact-light-up': {
+          '0%': {
+            opacity: 0,
+          },
+          '50%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+          },
+        },
         gelatine: {
           '0%, 100%': { transform: 'scale(1, 1)' },
           '25%': { transform: 'scale(0.85, 1.15)' },
