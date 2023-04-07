@@ -182,11 +182,8 @@ const nextVideo = () => {
 }
 .static-enter-active:after,
 .static-leave-active:after {
-  animation: static 0.2s infinite alternate;
-  background-blend-mode: difference;
-  background: repeating-radial-gradient(black 0 0.0001%, white 0 0.0002%) 50% 0/2500px
-      2500px,
-    repeating-conic-gradient(black 0 0.0001%, white 0 0.0002%) 60% 60%/2500px 2500px;
+  animation: static 0.3s step-end infinite;
+  background: url('~/assets/webp/noise.webp') center / 300px auto repeat;
   content: '';
   height: 100%;
   inset: 0;
@@ -200,8 +197,26 @@ const nextVideo = () => {
 }
 
 @keyframes static {
+  16% {
+    scale: -1 1;
+  }
+  32% {
+    scale: 1 -1;
+    filter: invert(1);
+  }
+  48% {
+    scale: -1 -1;
+    filter: invert(1);
+  }
+  64% {
+    scale: -1 1;
+  }
+  80% {
+    scale: 1 -1;
+    filter: invert(1);
+  }
   100% {
-    background-position: 50% 0, 60% 50%;
+    scale: -1 -1;
   }
 }
 </style>
