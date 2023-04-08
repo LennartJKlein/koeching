@@ -7,8 +7,9 @@ useHead({
 
 const footerLinks = [
   { path: '/contact', label: 'Contact' },
+  { path: '/kennis', label: 'Kennisbank' },
   { path: '/tarieven', label: 'Tarieven en vergoedingen' },
-  { path: '/ontdek/certificeringen', label: 'Certificeringen' },
+  { path: '/certificeringen', label: 'Certificeringen' },
 ]
 
 const subfooterLinks = [
@@ -41,9 +42,9 @@ const subfooterLinks = [
           to="/aanbod"
         />
         <BottomNavItem
-          label="Kennis"
+          label="Nieuws"
           icon="grad-cap"
-          to="/kennis"
+          to="/nieuws"
         />
         <BottomNavItem
           label="Contact"

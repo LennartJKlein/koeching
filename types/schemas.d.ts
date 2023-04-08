@@ -784,6 +784,15 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
 }
 
 export interface ApiMembershipMembership extends CollectionTypeSchema {
+  name: StringAttribute
+  membership_id: StringAttribute
+  url: StringAttribute
+  logo: MediaAttribute
+  slug: UIDAttribute<'api::membership.membership', 'name'>
+  rank: IntegerAttribute
+  createdAt: DateTimeAttribute
+  updatedAt: DateTimeAttribute
+  publishedAt: DateTimeAttribute
   id: Number
   info: {
     singularName: 'membership'
