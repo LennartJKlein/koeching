@@ -48,7 +48,11 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
       >
         <div class="relative mx-auto max-w-5xl px-4">
           <template v-if="programs.length">
-            <PageH2>Trajecten</PageH2>
+            <PageH2 class="text-center">Trajecten</PageH2>
+            <p class="mx-auto max-w-xl text-center">
+              We gaan met je persoonlijke hulpvraag aan de slag. We kijken samen hoeveel
+              sessies je nodig hebt en welke methodes en interventies daarbij passen.
+            </p>
             <div
               class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
               role="list"
@@ -72,6 +76,10 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </template>
           <template v-if="trainings.length">
             <PageH2 class="text-center">Groepstrainingen</PageH2>
+            <p class="mx-auto max-w-xl text-center">
+              In een aantal bijeenkomsten werk je via een werkboek aan je hulpvraag. Een
+              veilige omgeving waar je samen met anderen kunt groeien.
+            </p>
             <div
               class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-2"
               role="list"
@@ -97,6 +105,10 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </template>
           <template v-if="seminars.length">
             <PageH2 class="text-center">Informatieavonden</PageH2>
+            <p class="mx-auto max-w-xl text-center">
+              Deze seminars zijn dé manier om meer te leren over hoe we werken met
+              kinderen, jeugd, volwassenen en gezinnen.
+            </p>
             <div
               class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
               role="list"
