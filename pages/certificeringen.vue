@@ -24,7 +24,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
         </p>
       </div>
       <ul
-        class="mx-auto grid max-w-3xl grid-cols-[repeat(auto-fit,minmax(180px,1fr))] place-items-center gap-x-5 gap-y-10"
+        class="mx-auto mb-20 grid max-w-3xl grid-cols-[repeat(auto-fit,minmax(180px,1fr))] place-items-center gap-x-5 gap-y-10"
       >
         <li v-for="(membership, index) in memberships">
           <component
@@ -32,7 +32,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
             :href="membership.attributes.url"
             target="_blank"
             :class="{
-              'flex h-[140px] w-[180px] items-stretch bg-[radial-gradient(transparent_0px,_transparent_5px,_white_5px,_white)] bg-[length:20px_20px] bg-[position:-10px_-10px] p-3 drop-shadow-[0_3px_1px_#342819]': true,
+              'flex h-[140px] w-[180px] items-stretch bg-[radial-gradient(transparent_0px,_transparent_5px,_white_5px,_white)] bg-[length:20px_20px] bg-[position:-10px_-10px] p-3 drop-shadow-[1px_4px_0_#5d482d]': true,
               'transition-transform hover:scale-105': membership.attributes.url,
               'rotate-1': (index + 1) % 1 == 0,
               '-rotate-2': (index + 1) % 2 == 0,

@@ -21,7 +21,7 @@ const toggleDetails = (description: string) => {
     class="min-h-screen bg-brown-600 bg-[url(~/assets/svg/wood-pattern.svg)] bg-[length:450px_auto] pb-10 bg-blend-soft-light"
   >
     <div
-      class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"
+      class="mb-20 min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"
     >
       <div class="mx-auto max-w-xl pl-[13vw] pt-[8vw] pb-[10vw] md:pb-[6vw] md:pl-0">
         <PageTitle class="text-white">Tarieven</PageTitle>

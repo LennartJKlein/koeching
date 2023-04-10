@@ -185,6 +185,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
             label="Neem contact op"
             class="mx-auto mt-5"
             color="sky-400"
+            to="/contact"
           >
             Vraag advies
           </Button>
