@@ -34,7 +34,7 @@ const nextVideo = () => {
 </script>
 
 <template>
-  <main class="min-h-screen bg-white pb-10">
+  <main class="min-h-screen bg-white">
     <PageTitle class="sr-only">{{ content.attributes.title }}</PageTitle>
     <HeroSlider
       :images="heroImages"
@@ -121,7 +121,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.videos && content.attributes.videos.length"
-      class="relative bg-[linear-gradient(#62aac6_64%,#3f93b6_64%)] px-5 pt-12 pb-16 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+      class="relative bg-[linear-gradient(#3f93b6_64%,#62aac6_64%)] px-5 pt-12 pb-16 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <h2 class="mb-8 w-full text-center font-display text-4xl font-bold text-white">
         Een kijkje nemen bij Koeching
@@ -171,7 +171,24 @@ const nextVideo = () => {
         </Button>
       </div>
     </section>
-    <p class="my-12 mx-3 italic">Todo: verwijzing naar ontdek</p>
+
+    <div
+      class="relative overflow-hidden bg-[url(~/assets/svg/farm-from-distance.svg),linear-gradient(#83A500,#83A500),linear-gradient(#c8e1eb,#c8e1eb)] bg-[length:auto_1140px,cover,cover] bg-[position:center_1rem,center_20vw,center] bg-no-repeat py-20 md:bg-[length:100%_auto,cover,cover]"
+    >
+      <div class="mx-auto flex h-full max-w-4xl items-center justify-end px-5">
+        <Button
+          color="white"
+          label="Maak kennis met de mensen en dieren"
+          to="/ontdek"
+        >
+          Kennismaken
+          <Icon
+            id="arrow-right"
+            class="ml-2"
+          />
+        </Button>
+      </div>
+    </div>
   </main>
 </template>
 
