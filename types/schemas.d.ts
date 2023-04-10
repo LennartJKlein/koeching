@@ -829,6 +829,21 @@ export interface ApiMembershipMembership extends CollectionTypeSchema {
 }
 
 export interface ApiMessageMessage extends CollectionTypeSchema {
+  title: StringAttribute
+  media: MediaAttribute
+  content: RichTextAttribute
+  author: RelationAttribute<'api::message.message', 'oneToOne', 'admin::user'>
+  seo_title: StringAttribute
+  seo_description: StringAttribute
+  seo_keywords: StringAttribute
+  seo_keywords: ComponentAttribute<'details.keywords', true> &
+    SetMinMax<{
+      max: 5
+    }>
+  slug: UIDAttribute<'api::message.message', 'title'>
+  createdAt: DateTimeAttribute
+  updatedAt: DateTimeAttribute
+  publishedAt: DateTimeAttribute
   info: {
     singularName: 'message'
     pluralName: 'messages'
