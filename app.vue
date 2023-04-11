@@ -8,7 +8,10 @@ useHead({
 const footerLinks = [
   { path: '/contact', label: 'Contact' },
   { path: '/tarieven', label: 'Tarieven en vergoedingen' },
-  { path: '/certificeringen', label: 'Certificeringen' },
+  {
+    path: '/lidmaatschappen-en-certificeringen',
+    label: 'Lidmaatschappen',
+  },
 ]
 
 const subfooterLinks = [

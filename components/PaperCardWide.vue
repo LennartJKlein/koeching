@@ -1,17 +1,18 @@
 <script setup lang="ts">
 const props = defineProps({
-  color: String,
   accentColor: {
     default: 'green',
     type: String,
   },
+  color: String,
   description: String,
   image: String,
-  placeholder: String,
+  imageRounded: Boolean,
   label: String,
+  modal: String,
+  placeholder: String,
   title: String,
   to: String,
-  modal: String,
 })
 
 const random = Math.floor(Math.random() * 3)
@@ -78,10 +79,11 @@ const { trimImgSrc } = useImgUtils()
       <div class="flex w-4/5 max-w-[140px] flex-grow-0 flex-col items-end">
         <figure
           :class="[
-            'mb-auto aspect-square overflow-hidden rounded-full bg-gray-800 bg-cover bg-center',
+            'mb-auto aspect-square overflow-hidden bg-gray-800 bg-cover bg-center',
             placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
             placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
             placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
+            imageRounded ? 'rounded-full' : 'mb-5 rounded-2xl',
           ]"
           tabindex="-1"
           aria-hidden="true"

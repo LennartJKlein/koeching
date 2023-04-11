@@ -88,18 +88,19 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 v-for="training in trainings"
                 accent-color="sky"
                 :description="training.attributes.intro"
-                :label="`Lees meer over ${training.attributes.name}`"
                 :image="
                   training.attributes.thumbnail.data &&
                   training.attributes.thumbnail.data.attributes.url
                 "
-                placeholder="method"
-                role="listitem"
+                :label="`Lees meer over ${training.attributes.name}`"
                 :title="training.attributes.name"
                 :to="`/aanbod/trainingen/${training.attributes.slug}`"
                 class="w-11/12 flex-shrink-0 snap-start md:w-7/12 lg:w-full"
                 color="white"
+                image-rounded
                 modal="trainingModal"
+                placeholder="method"
+                role="listitem"
               />
             </div>
           </template>

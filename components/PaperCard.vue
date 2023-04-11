@@ -106,7 +106,7 @@ const { trimImgSrc } = useImgUtils()
       </div>
       <figure
         :class="[
-          'my-auto aspect-square w-4/5 overflow-hidden rounded-full bg-gray-800 bg-cover bg-center',
+          'mt-auto mb-12 aspect-square w-4/5 overflow-hidden rounded-2xl bg-gray-800 bg-cover bg-center',
           placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
           placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
           placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',

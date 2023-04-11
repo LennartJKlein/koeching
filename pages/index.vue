@@ -8,10 +8,10 @@ const { data } = (await find<ApiHomepageHomepage>('homepage', {
 const content: ApiHomepageHomepage = data
 
 const heroImages = content.attributes.photos.data
-  .slice(0, -2)
+  .slice(0, -3)
   .map((photo: any) => photo.attributes.url)
 const pageImages = content.attributes.photos.data
-  .slice(-2)
+  .slice(-3)
   .map((photo: any) => photo.attributes.url)
 
 const { trimImgSrc } = useImgUtils()
@@ -120,8 +120,21 @@ const nextVideo = () => {
       </div>
     </section>
     <section
+      v-if="pageImages[2]"
+      class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+    >
+      <NuxtImg
+        class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
+        :placeholder="[1920, 1080, 10]"
+        :src="trimImgSrc(pageImages[2])"
+        height="1080"
+        provider="cloudinary"
+        width="1920"
+      />
+    </section>
+    <section
       v-if="content.attributes.videos && content.attributes.videos.length"
-      class="relative bg-[linear-gradient(#3f93b6_64%,#62aac6_64%)] px-5 pt-12 pb-16 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+      class="relative bg-[linear-gradient(#3f93b6_64%,#62aac6_64%)] px-5 pt-20 pb-32 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <h2 class="mb-8 w-full text-center font-display text-4xl font-bold text-white">
         Een kijkje nemen bij Koeching
@@ -173,7 +186,7 @@ const nextVideo = () => {
     </section>
 
     <div
-      class="relative overflow-hidden bg-[url(~/assets/svg/farm-from-distance.svg),linear-gradient(#83A500,#83A500),linear-gradient(#c8e1eb,#c8e1eb)] bg-[length:auto_1140px,cover,cover] bg-[position:center_1rem,center_20vw,center] bg-no-repeat py-20 md:bg-[length:100%_auto,cover,cover]"
+      class="relative overflow-hidden bg-[linear-gradient(to_left,rgb(255_255_255/50%),transparent,transparent),url(~/assets/svg/farm-from-distance.svg),linear-gradient(#c8e1eb,#c8e1eb)] bg-[length:cover,auto_1140px,cover] bg-[position:center,center_1rem,center] bg-no-repeat pt-20 pb-24 md:bg-[length:cover,100%_auto,cover]"
     >
       <div class="mx-auto flex h-full max-w-4xl items-center justify-end px-5">
         <Button
