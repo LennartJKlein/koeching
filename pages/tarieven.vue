@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiPricingPricing } from '~/types/schemas'
+import type { ApiPricingPricing, ApiReimbursementReimbursement } from '~/types/schemas'
 
 const { find } = useStrapi()
 const { data: pricings = [] } = await find<ApiPricingPricing>('pricings', {
   populate: '*',
   sort: 'rank:asc',
 })
+const { data } = (await find<ApiReimbursementReimbursement>('reimbursement', {
+  populate: '*',
+})) as any
+const reimbursement: ApiReimbursementReimbursement = data
+
+const { classes: contentClasses } = useContentStyles()
 
 const openDetails: Ref<string[]> = ref([])
 const toggleDetails = (description: string) => {
@@ -115,9 +121,63 @@ const toggleDetails = (description: string) => {
               </ul>
             </div>
           </Transition>
-          <Divider class="col-span-2 mt-6 mb-10 w-full" />
+          <Divider class="col-span-2 mt-4 mb-8 w-full" />
         </li>
       </ul>
+      <div class="mx-auto my-14 max-w-2xl">
+        <template
+          v-if="
+            reimbursement.attributes.files.data &&
+            reimbursement.attributes.files.data.length
+          "
+        >
+          <PageH2 class="text-white">Vergoeding door verzekering</PageH2>
+          <p class="mt-4 mb-8 text-white">
+            De beroepsvereniging heeft overzichten opgesteld waarop u kunt zien welke
+            ziektekostenverzekeraars de kosten van de kinder- en jeugdtherapeut
+            (gedeeltelijk) vergoeden. Aan deze lijsten kunnen geen rechten worden
+            ontleend. We raden aan om voor aanmelding te informeren bij uw
+            zorgverzekeraar.
+          </p>
+          <Button
+            v-for="file in reimbursement.attributes.files.data"
+            class="my-4"
+            color="brown-200"
+            label="Lidnummers en certificeringen"
+            small
+            :to="file.attributes.url"
+            squared
+          >
+            {{
+              file.attributes.name
+                ?.replaceAll('-', ' ')
+                ?.replaceAll('_', ' ')
+                ?.replace(/(.[^.]+)$/i, ' ($1)') || 'Download het bestand'
+            }}
+          </Button>
+        </template>
+      </div>
+
+      <div
+        v-if="reimbursement.attributes.content"
+        :class="`
+          -mx-4
+          max-w-3xl
+          bg-[url(~/assets/svg/paper-top.svg),url(~/assets/svg/paper-middle.svg),url(~/assets/svg/paper-bottom.svg)]
+          bg-[length:100%_auto,100%_calc(100%-52vw),100%_auto]
+          bg-[position:center_top,center_38vw,center_bottom]
+          bg-no-repeat
+          px-[10vw]
+          pt-[9vw] pb-[8vw] drop-shadow-2xl
+          md:mx-auto
+          md:bg-[length:100%_auto,100%_calc(100%-380px),100%_auto] md:bg-[position:center_top,center_280px,center_bottom]
+          lg:px-20 lg:pt-20 lg:pb-10`"
+      >
+        <div
+          :class="contentClasses"
+          v-html="$sanitize(reimbursement.attributes.content)"
+        />
+      </div>
     </div>
   </main>
 </template>
