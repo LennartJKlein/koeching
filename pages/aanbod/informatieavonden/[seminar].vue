@@ -100,7 +100,6 @@ const { trimImgSrc } = useImgUtils()
             ]"
             :placeholder="[800, 600, 10]"
             :src="trimImgSrc(photo.attributes.url)"
-            fit="inside"
             height="600"
             provider="cloudinary"
             role="listitem"
