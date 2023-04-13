@@ -57,15 +57,14 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
                 :src="membership.attributes.logo.data.attributes.url"
                 class="object-contain brightness-0 invert"
               />
-              <h3 :class="membership.attributes.logo.data && 'sr-only'">
+              <h3
+                :class="[
+                  membership.attributes.logo.data && 'sr-only',
+                  'text-center font-bold leading-tight text-white',
+                ]"
+              >
                 {{ membership.attributes.name }}
               </h3>
-              <!-- <h3 class="text-lg font-bold md:text-xl">
-                {{ membership.attributes.logo }}
-                {{ membership.attributes.url }}
-                {{ membership.attributes.name }}
-                {{ membership.attributes.membership_id }}
-              </h3> -->
             </div>
           </component>
           <span class="mt-3 block text-center text-sm text-white">
