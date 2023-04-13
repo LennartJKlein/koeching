@@ -142,7 +142,7 @@ const { trimImgSrc } = useImgUtils()
         class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
       >
         <div
-          v-if="intervention.attributes.pricings.data"
+          v-if="intervention.attributes.pricings.data.length"
           class="border-pencil-sky-500 flex-1"
         >
           <dt
@@ -153,6 +153,9 @@ const { trimImgSrc } = useImgUtils()
           <template v-for="price in intervention.attributes.pricings.data">
             <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
           </template>
+          <p v-if="!intervention.attributes.pricings.data.length">
+            Het tarief is nog niet bekend
+          </p>
         </div>
         <div
           v-if="intervention.attributes.location"

@@ -117,11 +117,11 @@ const { trimImgSrc } = useImgUtils()
         <NuxtImg
           v-if="image"
           provider="cloudinary"
-          :placeholder="[300, 300, 10]"
+          :placeholder="[100, 100, 10]"
           :src="trimImgSrc(image)"
           class="aspect-square w-full object-cover"
-          height="300"
-          width="300"
+          height="400"
+          width="400"
         />
       </figure>
       <slot />

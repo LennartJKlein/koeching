@@ -140,7 +140,7 @@ const { trimImgSrc } = useImgUtils()
         class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
       >
         <div
-          v-if="program.attributes.pricings.data"
+          v-if="program.attributes.pricings.data.length"
           class="border-pencil-sky-500 flex-1"
         >
           <dt

@@ -535,6 +535,79 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   }
 }
 
+export interface ApiActivityActivity extends CollectionTypeSchema {
+  name: StringAttribute & RequiredAttribute
+  moments: ComponentAttribute<'details.moment', true>
+  coaches: RelationAttribute<'api::activity.activity', 'manyToMany', 'api::coach.coach'>
+  interventions: RelationAttribute<
+    'api::activity.activity',
+    'manyToMany',
+    'api::intervention.intervention'
+  >
+  photos: MediaAttribute
+  location: StringAttribute
+  slug: UIDAttribute<'api::activity.activity', 'name'>
+  seo_description: StringAttribute
+  seo_title: StringAttribute
+  intro: TextAttribute
+  thumbnail: MediaAttribute
+  seo_keywords: ComponentAttribute<'details.keywords', true> &
+    SetMinMax<{
+      max: 5
+    }>
+  rank: IntegerAttribute
+  pricings: RelationAttribute<
+    'api::activity.activity',
+    'manyToMany',
+    'api::pricing.pricing'
+  >
+  content: RichTextAttribute
+  info: {
+    singularName: 'activity'
+    pluralName: 'activities'
+    displayName: 'Activiteit'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    moments: ComponentAttribute<'details.moment', true>
+    coaches: RelationAttribute<'api::activity.activity', 'manyToMany', 'api::coach.coach'>
+    interventions: RelationAttribute<
+      'api::activity.activity',
+      'manyToMany',
+      'api::intervention.intervention'
+    >
+    photos: MediaAttribute
+    location: StringAttribute
+    slug: UIDAttribute<'api::activity.activity', 'name'>
+    seo_description: StringAttribute
+    seo_title: StringAttribute
+    intro: TextAttribute
+    thumbnail: MediaAttribute
+    seo_keywords: ComponentAttribute<'details.keywords', true> &
+      SetMinMax<{
+        max: 5
+      }>
+    rank: IntegerAttribute
+    pricings: RelationAttribute<
+      'api::activity.activity',
+      'manyToMany',
+      'api::pricing.pricing'
+    >
+    content: RichTextAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::activity.activity', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+    updatedBy: RelationAttribute<'api::activity.activity', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+  }
+}
+
 export interface ApiAnimalAnimal extends CollectionTypeSchema {
   id: Number
   bio: RichTextAttribute
@@ -568,6 +641,7 @@ export interface ApiAnimalAnimal extends CollectionTypeSchema {
 
 export interface ApiCoachCoach extends CollectionTypeSchema {
   id: Number
+  external: BooleanAttribute & DefaultTo<false>
   bio: RichTextAttribute
   intro: TextAttribute
   name: StringAttribute & RequiredAttribute
@@ -580,6 +654,11 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
     'api::coach.coach',
     'manyToMany',
     'api::intervention.intervention'
+  >
+  activities: RelationAttribute<
+    'api::coach.coach',
+    'manyToMany',
+    'api::activity.activity'
   >
   info: {
     singularName: 'coach'
@@ -594,6 +673,7 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
     name: StringAttribute & RequiredAttribute
     photos: MediaAttribute & RequiredAttribute
     bio: RichTextAttribute
+    external: BooleanAttribute & DefaultTo<false>
     intro: TextAttribute
     slug: UIDAttribute<'api::coach.coach', 'name'> & RequiredAttribute
     rank: IntegerAttribute
@@ -608,6 +688,11 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
       'api::coach.coach',
       'manyToMany',
       'api::intervention.intervention'
+    >
+    activities: RelationAttribute<
+      'api::coach.coach',
+      'manyToMany',
+      'api::activity.activity'
     >
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
@@ -715,6 +800,11 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     'manyToMany',
     'api::training.training'
   >
+  activities: RelationAttribute<
+    'api::intervention.intervention',
+    'manyToMany',
+    'api::activity.activity'
+  >
   coaches: RelationAttribute<
     'api::intervention.intervention',
     'manyToMany',
@@ -758,6 +848,11 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
       'api::intervention.intervention',
       'manyToMany',
       'api::training.training'
+    >
+    activities: RelationAttribute<
+      'api::intervention.intervention',
+      'manyToMany',
+      'api::activity.activity'
     >
     coaches: RelationAttribute<
       'api::intervention.intervention',
@@ -888,6 +983,11 @@ export interface ApiParticipantParticipant extends CollectionTypeSchema {
     'oneToOne',
     'api::training.training'
   >
+  activity: RelationAttribute<
+    'api::participant.participant',
+    'oneToOne',
+    'api::activity.activity'
+  >
   moment: ComponentAttribute<'details.moment'>
   payment: BooleanAttribute
   comments: TextAttribute
@@ -903,7 +1003,7 @@ export interface ApiParticipantParticipant extends CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    informatieavond: RelationAttribute<
+    seminar: RelationAttribute<
       'api::participant.participant',
       'oneToOne',
       'api::seminar.seminar'
@@ -912,6 +1012,11 @@ export interface ApiParticipantParticipant extends CollectionTypeSchema {
       'api::participant.participant',
       'oneToOne',
       'api::training.training'
+    >
+    activity: RelationAttribute<
+      'api::participant.participant',
+      'oneToOne',
+      'api::activity.activity'
     >
     moment: ComponentAttribute<'details.moment'>
     payment: BooleanAttribute
@@ -952,6 +1057,11 @@ export interface ApiPricingPricing extends CollectionTypeSchema {
     'manyToMany',
     'api::training.training'
   >
+  activities: RelationAttribute<
+    'api::intervention.intervention',
+    'manyToMany',
+    'api::activity.activity'
+  >
   seminars: RelationAttribute<
     'api::pricing.pricing',
     'manyToMany',
@@ -985,6 +1095,11 @@ export interface ApiPricingPricing extends CollectionTypeSchema {
       'api::pricing.pricing',
       'manyToMany',
       'api::training.training'
+    >
+    activities: RelationAttribute<
+      'api::intervention.intervention',
+      'manyToMany',
+      'api::activity.activity'
     >
     seminars: RelationAttribute<
       'api::pricing.pricing',
@@ -1351,6 +1466,7 @@ declare global {
       'admin::permission': AdminPermission
       'admin::role': AdminRole
       'admin::user': AdminUser
+      'api::activity.activity': ApiActivityActivity
       'api::animal.animal': ApiAnimalAnimal
       'api::coach.coach': ApiCoachCoach
       'api::farm.farm': ApiFarmFarm

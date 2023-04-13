@@ -139,7 +139,7 @@ onMounted(() => {
       <header
         :class="[
           '-mx-5  px-5',
-          overflowHeader ? '-mb-32 pb-32' : 'pb-6',
+          overflowHeader ? '-mb-32 pb-32' : 'mb-6 pb-6',
           headingClasses || 'bg-sky-100',
         ]"
       >

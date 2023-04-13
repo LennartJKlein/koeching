@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {
+  ApiActivityActivity,
   ApiInterventionIntervention,
   ApiProgramProgram,
   ApiSeminarSeminar,
@@ -7,6 +8,10 @@ import type {
 } from '~/types/schemas'
 
 const { find } = useStrapi()
+const { data: activities = [] } = await find<ApiActivityActivity>('activities', {
+  populate: '*',
+  sort: 'rank:asc',
+})
 const { data: interventions = [] } = await find<ApiInterventionIntervention>(
   'interventions',
   {
@@ -104,11 +109,39 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               />
             </div>
           </template>
-          <template v-if="seminars.length">
-            <PageH2 class="text-center">Informatieavonden</PageH2>
+          <template v-if="activities.length">
+            <PageH2 class="text-center">Activiteiten</PageH2>
             <p class="mx-auto max-w-xl text-center">
-              Deze seminars zijn dé manier om meer te leren over hoe we werken met
-              kinderen, jeugd, volwassenen en gezinnen.
+              Koeching biedt verschillende activiteiten voor zowel kinderen, jeugd,
+              volwassenen als gezinnen.
+            </p>
+            <div
+              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
+              role="list"
+            >
+              <PaperCardWide
+                v-for="activity in activities"
+                :description="activity.attributes.intro"
+                :label="`Lees meer over ${activity.attributes.name}`"
+                :image="
+                  activity.attributes.thumbnail.data &&
+                  activity.attributes.thumbnail.data.attributes.url
+                "
+                placeholder="method"
+                role="listitem"
+                :title="activity.attributes.name"
+                :to="`/aanbod/activiteiten/${activity.attributes.slug}`"
+                class="w-11/12 flex-shrink-0 snap-start md:w-auto"
+                color="white"
+                modal="activityModal"
+              />
+            </div>
+          </template>
+          <template v-if="seminars.length">
+            <PageH2 class="text-center">Lezingen</PageH2>
+            <p class="mx-auto max-w-xl text-center">
+              Deze informatieavonden zijn dé manier om meer te leren over hoe we werken
+              met kinderen, jeugd, volwassenen en gezinnen.
             </p>
             <div
               class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
@@ -152,9 +185,9 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 Interventies
               </h2>
               <p class="max-w-2xl text-sm text-gray-500 md:text-base lg:my-4">
-                Dit zijn alle methodes die we toepassen in de trajecten, trainingen en
-                informatieavonden. Als een bepaalde interventie je aanspreekt, is het ook
-                mogelijk ze als losse sessies te boeken!
+                Dit zijn alle methodes die we toepassen in de trajecten, trainingen,
+                activiteiten en informatieavonden. Als een bepaalde interventie je
+                aanspreekt, is het ook mogelijk ze als losse sessies te boeken!
               </p>
               <ul class="mt-5 lg:mt-6">
                 <PaperRow

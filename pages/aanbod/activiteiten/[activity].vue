@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiSeminarSeminar } from '~/types/schemas'
+import type { ApiActivityActivity } from '~/types/schemas'
 import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
 const route = useRoute()
 const {
-  data: [seminar],
-} = await find<ApiSeminarSeminar>('seminars', {
+  data: [activity],
+} = await find<ApiActivityActivity>('activities', {
   filters: {
     slug: {
-      $eq: route.params.seminar,
+      $eq: route.params.activity,
     },
   },
   populate: {
@@ -26,9 +26,10 @@ const {
 })
 
 const media = [
-  ...(seminar.attributes.thumbnail.data ? seminar.attributes.thumbnail.data : []),
-  ...(seminar.attributes.photos.data ? seminar.attributes.photos.data : []),
+  ...(activity.attributes.thumbnail.data ? activity.attributes.thumbnail.data : []),
+  ...(activity.attributes.photos.data ? activity.attributes.photos.data : []),
 ]
+console.log(media)
 
 const goBack = function () {
   const router = useRouter()
@@ -55,29 +56,29 @@ const { trimImgSrc } = useImgUtils()
 <template>
   <div>
     <Modal
-      :aria-label="`Meer over ${seminar.attributes.name}`"
-      id="seminarModal"
+      :aria-label="`Meer over ${activity.attributes.name}`"
+      id="activityModal"
       open
       :overflow-header="media && media.length > 0"
       @close="goBack"
     >
       <template v-slot:heading>
         <h1
-          v-if="seminar.attributes.name"
+          v-if="activity.attributes.name"
           class="mb-3 flex flex-col font-display text-3xl font-bold leading-none text-sky-900 md:text-4xl"
         >
           <span
             class="order-1 block font-sans text-sm uppercase tracking-wide text-sky-300"
           >
-            Informatieavond
+            Activiteit
           </span>
-          {{ seminar.attributes.name }}
+          {{ activity.attributes.name }}
         </h1>
         <p
-          v-if="seminar.attributes.intro"
+          v-if="activity.attributes.intro"
           class="text-lg font-bold text-sky-500"
         >
-          {{ seminar.attributes.intro }}
+          {{ activity.attributes.intro }}
         </p>
       </template>
       <section>
@@ -107,21 +108,21 @@ const { trimImgSrc } = useImgUtils()
           />
         </div>
         <div
-          v-if="seminar.attributes.content"
+          v-if="activity.attributes.content"
           :class="contentClasses"
-          v-html="$sanitize(seminar.attributes.content)"
+          v-html="$sanitize(activity.attributes.content)"
         />
-        <template v-if="seminar.attributes.interventions.data.length">
+        <template v-if="activity.attributes.interventions.data.length">
           <h4
             class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
           >
-            Interventies tijdens deze informatieavond
+            Interventies die we toepassen
           </h4>
           <div
             class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
           >
             <Button
-              v-for="intervention in seminar.attributes.interventions.data"
+              v-for="intervention in activity.attributes.interventions.data"
               class="min-w-fit"
               :label="`Meer info over ${intervention.attributes.name}`"
               small
@@ -132,18 +133,18 @@ const { trimImgSrc } = useImgUtils()
             </Button>
           </div>
         </template>
-        <template v-if="seminar.attributes.coaches.data.length">
+        <template v-if="activity.attributes.coaches.data.length">
           <h4
             class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
           >
-            Coaches die deze informatieavond verzorgen
+            Coaches die deze activiteit verzorgen
           </h4>
           <div
             class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
             role="list"
           >
             <PhotoCard
-              v-for="coach in seminar.attributes.coaches.data"
+              v-for="coach in activity.attributes.coaches.data"
               :label="`Lees meer over ${coach.attributes.name}`"
               :image="
                 coach.attributes.photos.data &&
@@ -161,27 +162,27 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </template>
         <dl
-          v-if="seminar.attributes.pricings || seminar.attributes.location"
+          v-if="activity.attributes.pricings || activity.attributes.location"
           class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
         >
           <div
-            v-if="seminar.attributes.pricings.data.length"
+            v-if="activity.attributes.pricings.data.length"
             class="border-pencil-sky-500 flex-1"
           >
             <dt
               class="flex items-center gap-1 font-bold before:block before:h-4 before:w-4 before:bg-euro before:bg-contain before:bg-center before:bg-no-repeat before:content-['']"
             >
-              {{ seminar.attributes.pricings.length > 1 ? 'Tarieven' : 'Tarief' }}
+              {{ activity.attributes.pricings.length > 1 ? 'Tarieven' : 'Tarief' }}
             </dt>
-            <template v-for="price in seminar.attributes.pricings.data">
+            <template v-for="price in activity.attributes.pricings.data">
               <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
             </template>
-            <p v-if="!seminar.attributes.pricings.data.length">
+            <p v-if="!activity.attributes.pricings.data.length">
               Het tarief is nog niet bekend
             </p>
           </div>
           <div
-            v-if="seminar.attributes.location"
+            v-if="activity.attributes.location"
             class="border-pencil-brown-300 flex-1"
           >
             <dt
@@ -189,7 +190,7 @@ const { trimImgSrc } = useImgUtils()
             >
               Locatie
             </dt>
-            <dd class="ml-5 mt-1 leading-snug">{{ seminar.attributes.location }}</dd>
+            <dd class="ml-5 mt-1 leading-snug">{{ activity.attributes.location }}</dd>
           </div>
         </dl>
         <div
@@ -201,10 +202,10 @@ const { trimImgSrc } = useImgUtils()
             Aanmelden en meedoen
           </h3>
           <ul
-            v-if="seminar.attributes.moments.filter((moment: any) => moment.open).length > 0"
+            v-if="activity.attributes.moments.filter((moment: any) => moment.open).length > 0"
           >
             <li
-              v-for="moment in seminar.attributes.moments.filter((moment: any) => moment.open)"
+              v-for="moment in activity.attributes.moments.filter((moment: any) => moment.open)"
               class="border-pencil-brown-500 grid cursor-pointer grid-cols-[auto_110px] items-center justify-between gap-3 bg-white sm:grid-cols-[auto_145px]"
               @click="toggleDetails(moment.title)"
             >
@@ -257,8 +258,8 @@ const { trimImgSrc } = useImgUtils()
                     small
                     color="black"
                     label="Toon aanbod met dit tarief"
-                    aria-controls="seminarParticipateModal"
-                    :to="`/aanbod/informatieavonden/${$route.params.seminar}/aanmelden/${moment.id}`"
+                    aria-controls="activityParticipateModal"
+                    :to="`/aanbod/activiteiten/${$route.params.activity}/aanmelden/${moment.id}`"
                   >
                     aanmelden
                     <Icon
@@ -275,9 +276,9 @@ const { trimImgSrc } = useImgUtils()
             v-else
             class="italic text-white"
           >
-            Er zijn nog geen data ingepland voor deze informatieavond. Houd deze pagina in
-            de gaten voor updates of neem contact op om te laten weten dat je
-            geïnteresseerd bent.
+            Er zijn nog geen data ingepland voor deze activiteit. Houd deze pagina in de
+            gaten voor updates of neem contact op om te laten weten dat je geïnteresseerd
+            bent.
           </p>
         </div>
         <div
@@ -286,7 +287,7 @@ const { trimImgSrc } = useImgUtils()
           <span
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
           >
-            Vragen over deze informatieavond?
+            Vragen over deze activiteit?
           </span>
           <Button
             color="sky-400"

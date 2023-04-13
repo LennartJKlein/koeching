@@ -26,7 +26,7 @@ const {
 })
 
 const media = [
-  training.attributes.thumbnail.data ? training.attributes.thumbnail.data : [],
+  ...(training.attributes.thumbnail.data ? training.attributes.thumbnail.data : []),
   ...(training.attributes.photos.data ? training.attributes.photos.data : []),
 ]
 
@@ -82,7 +82,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <section>
         <div
-          v-if="media"
+          v-if="media && media.length > 0"
           :class="[
             'my-5',
             media.length > 1 &&
@@ -166,7 +166,7 @@ const { trimImgSrc } = useImgUtils()
           class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
         >
           <div
-            v-if="training.attributes.pricings"
+            v-if="training.attributes.pricings.data.length"
             class="border-pencil-sky-500 flex-1"
           >
             <dt
@@ -177,6 +177,9 @@ const { trimImgSrc } = useImgUtils()
             <template v-for="price in training.attributes.pricings.data">
               <dd class="ml-5 mt-1 leading-snug">{{ price.attributes.description }}</dd>
             </template>
+            <p v-if="!training.attributes.pricings.data.length">
+              Het tarief is nog niet bekend
+            </p>
           </div>
           <div
             v-if="training.attributes.location"

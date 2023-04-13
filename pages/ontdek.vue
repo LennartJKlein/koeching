@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type {
-  ApiAnimalAnimal,
-  ApiCoachCoach,
-  ApiMembershipMembership,
-} from '~/types/schemas'
+import type { ApiAnimalAnimal, ApiCoachCoach } from '~/types/schemas'
 
 const { find } = useStrapi()
 const { data: coaches = [] } = await find<ApiCoachCoach>('coaches', {
@@ -11,10 +7,6 @@ const { data: coaches = [] } = await find<ApiCoachCoach>('coaches', {
   sort: 'rank:asc',
 })
 const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
-  populate: '*',
-  sort: 'rank:asc',
-})
-const { data: memberships = [] } = await find<ApiMembershipMembership>('memberships', {
   populate: '*',
   sort: 'rank:asc',
 })
@@ -61,7 +53,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
               role="list"
             >
               <PhotoCard
-                v-for="coach in coaches"
+                v-for="coach in coaches.filter((coach) => !coach.attributes.external)"
                 :description="coach.attributes.intro"
                 :label="`Lees meer over ${coach.attributes.name}`"
                 :image="
