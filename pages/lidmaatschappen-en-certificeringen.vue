@@ -45,7 +45,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
           >
             <div
               :class="{
-                'flex grow place-items-center p-6': true,
+                'flex grow items-center justify-center p-6': true,
                 'bg-brown-400': (index + 1) % 1 == 0,
                 'bg-sky-400': (index + 1) % 2 == 0,
                 'bg-green-400': (index + 1) % 3 == 0,
@@ -60,7 +60,7 @@ const { data: memberships = [] } = await find<ApiMembershipMembership>('membersh
               <h3
                 :class="[
                   membership.attributes.logo.data && 'sr-only',
-                  'text-center font-bold leading-tight text-white',
+                  'text-center text-2xl font-bold leading-tight text-white',
                 ]"
               >
                 {{ membership.attributes.name }}
