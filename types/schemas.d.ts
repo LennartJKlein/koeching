@@ -547,7 +547,7 @@ export interface ApiActivityActivity extends CollectionTypeSchema {
   photos: MediaAttribute
   location: StringAttribute
   slug: UIDAttribute<'api::activity.activity', 'name'>
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   seo_title: StringAttribute
   intro: TextAttribute
   thumbnail: MediaAttribute
@@ -583,7 +583,7 @@ export interface ApiActivityActivity extends CollectionTypeSchema {
     photos: MediaAttribute
     location: StringAttribute
     slug: UIDAttribute<'api::activity.activity', 'name'>
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     seo_title: StringAttribute
     intro: TextAttribute
     thumbnail: MediaAttribute
@@ -776,7 +776,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
   photos: MediaAttribute
   intro: TextAttribute
   seo_title: StringAttribute
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   pricings: ComponentAttribute<'details.price', true>
   location: StringAttribute
   thumbnail: MediaAttribute & RequiredAttribute
@@ -826,7 +826,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
     intro: TextAttribute
     photos: MediaAttribute
     seo_title: StringAttribute
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     pricings: ComponentAttribute<'details.price', true>
     location: StringAttribute
     thumbnail: MediaAttribute & RequiredAttribute
@@ -929,7 +929,7 @@ export interface ApiMessageMessage extends CollectionTypeSchema {
   content: RichTextAttribute
   author: RelationAttribute<'api::message.message', 'oneToOne', 'admin::user'>
   seo_title: StringAttribute
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   seo_keywords: StringAttribute
   seo_keywords: ComponentAttribute<'details.keywords', true> &
     SetMinMax<{
@@ -954,7 +954,7 @@ export interface ApiMessageMessage extends CollectionTypeSchema {
     content: RichTextAttribute
     author: RelationAttribute<'api::message.message', 'oneToOne', 'admin::user'>
     seo_title: StringAttribute
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     seo_keywords: StringAttribute
     seo_keywords: ComponentAttribute<'details.keywords', true> &
       SetMinMax<{
@@ -1167,7 +1167,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
   intro: TextAttribute
   location: StringAttribute
   content: RichTextAttribute
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   id: Number
   seo_title: StringAttribute
   slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute
@@ -1198,7 +1198,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
     >
     intro: TextAttribute
     location: StringAttribute
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     seo_title: StringAttribute
     content: RichTextAttribute
     slug: UIDAttribute<'api::seminar.seminar', 'name'> & RequiredAttribute
@@ -1231,7 +1231,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
   content: RichTextAttribute
   photos: MediaAttribute
   seo_title: StringAttribute
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   intro: TextAttribute
   id: Number
   pricings: ComponentAttribute<'details.price', true>
@@ -1262,7 +1262,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
     content: RichTextAttribute
     photos: MediaAttribute
     seo_title: StringAttribute
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     intro: TextAttribute
     pricings: ComponentAttribute<'details.price', true>
     location: StringAttribute
@@ -1298,7 +1298,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
   pricings: ComponentAttribute<'details.price', true>
   location: StringAttribute
   slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute
-  seo_description: StringAttribute
+  seo_description: TextAttribute
   seo_title: StringAttribute
   intro: TextAttribute
   thumbnail: MediaAttribute & RequiredAttribute
@@ -1329,7 +1329,7 @@ export interface ApiTrainingTraining extends CollectionTypeSchema {
     content: RichTextAttribute
     location: StringAttribute
     slug: UIDAttribute<'api::training.training', 'name'> & RequiredAttribute
-    seo_description: StringAttribute
+    seo_description: TextAttribute
     seo_title: StringAttribute
     intro: TextAttribute
     thumbnail: MediaAttribute & RequiredAttribute
