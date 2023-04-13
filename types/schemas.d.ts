@@ -878,6 +878,33 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
   }
 }
 
+export interface ApiLegalLegal extends SingleTypeSchema {
+  privacy_data: RichTextAttribute
+  terms: RichTextAttribute
+  privacy_web: RichTextAttribute
+  info: {
+    singularName: 'legal'
+    pluralName: 'legals'
+    displayName: 'Juridisch'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    privacy_data: RichTextAttribute
+    terms: RichTextAttribute
+    privacy_web: RichTextAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<'api::legal.legal', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+    updatedBy: RelationAttribute<'api::legal.legal', 'oneToOne', 'admin::user'> &
+      PrivateAttribute
+  }
+}
+
 export interface ApiMembershipMembership extends CollectionTypeSchema {
   name: StringAttribute
   membership_id: StringAttribute
@@ -1472,6 +1499,7 @@ declare global {
       'api::farm.farm': ApiFarmFarm
       'api::homepage.homepage': ApiHomepageHomepage
       'api::intervention.intervention': ApiInterventionIntervention
+      'api::legal.legal': ApiLegalLegal
       'api::membership.membership': ApiMembershipMembership
       'api::message.message': ApiMessageMessage
       'api::participant.participant': ApiParticipantParticipant
