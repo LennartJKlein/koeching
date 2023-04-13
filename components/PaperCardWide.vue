@@ -61,7 +61,7 @@ const { trimImgSrc } = useImgUtils()
         <h5
           v-if="title"
           :class="[
-            'w-full font-display text-3xl font-bold leading-none lg:text-2xl lg:leading-none',
+            'w-full font-display text-2xl font-bold leading-none',
             accentColorDark,
           ]"
           style="hyphens: auto"
@@ -76,7 +76,9 @@ const { trimImgSrc } = useImgUtils()
         </p>
         <slot />
       </div>
-      <div class="flex w-4/5 max-w-[140px] flex-grow-0 flex-col items-end">
+      <div
+        class="flex w-1/4 max-w-[140px] shrink-0 grow-0 flex-col items-end md:w-2/5 lg:w-3/5"
+      >
         <figure
           :class="[
             'mb-auto aspect-square overflow-hidden bg-gray-800 bg-cover bg-center',
@@ -116,12 +118,12 @@ const { trimImgSrc } = useImgUtils()
           >
         </Button>
       </div>
-      <nuxt-link
-        class="absolute left-0 top-0 right-0 bottom-0 rounded-full"
-        :to="to"
-        tabindex="-1"
-        aria-hidden="true"
-      />
     </div>
+    <nuxt-link
+      class="absolute left-0 top-0 right-0 bottom-0 rounded-full"
+      :to="to"
+      tabindex="-1"
+      aria-hidden="true"
+    />
   </div>
 </template>
