@@ -22,14 +22,15 @@ const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
           laatste updates van Koeching!
         </p>
       </div>
-      <NewspaperArticle
-        class="mb-10"
-        v-for="article in articles"
-        :content="article.attributes.content"
-        :date="article.attributes.publishedAt"
-        :image="article.attributes.media.data"
-        :title="article.attributes.title"
-      />
+      <div class="grid gap-10 2xl:grid-cols-2">
+        <NewspaperArticle
+          v-for="article in articles"
+          :content="article.attributes.content"
+          :date="article.attributes.publishedAt"
+          :image="article.attributes.media.data"
+          :title="article.attributes.title"
+        />
+      </div>
     </div>
   </main>
 </template>

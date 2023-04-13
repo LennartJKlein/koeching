@@ -41,15 +41,15 @@ const nextVideo = () => {
       class="bg-sky-300"
     >
       <div
-        class="-ml-[5%] -mr-[10%] -mb-10 flex overflow-hidden pt-12 transition-all md:mr-0 md:ml-0"
+        class="-ml-[5%] -mr-[10%] -mb-[6vh] flex overflow-hidden pt-12 transition-all md:mr-0 md:ml-0"
       >
         <img
-          class="w-full max-w-2xl animate-fly-in"
+          class="w-full max-w-[80vh] animate-fly-in"
           src="~/assets/svg/animals-inviting-hug.svg"
           alt="Dieren van Koeching"
         />
       </div>
-      <figure class="relative z-10 mb-12 w-full max-w-xl px-8">
+      <figure class="relative z-10 mb-16 w-full max-w-[80vh] px-8 md:mb-12">
         <img
           class="w-full"
           src="~/assets/svg/logo.svg"
@@ -59,7 +59,7 @@ const nextVideo = () => {
     </HeroSlider>
     <section
       v-if="content.attributes.sales_text[0]"
-      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
@@ -84,7 +84,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.sales_text[1]"
-      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-600 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-600 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <p v-html="$sanitize(content.attributes.sales_text[1].body)" />
@@ -109,7 +109,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.sales_text[2]"
-      class="relative bg-white bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-500 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto]"
+      class="relative bg-white bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-500 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img

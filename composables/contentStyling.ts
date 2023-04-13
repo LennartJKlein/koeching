@@ -16,7 +16,7 @@ export const useContentStyles = (theme?: string = 'dark'): contentStylesComposab
         '[&_h2]:text-brown-400 [&_h3]:text-brown-400 [&_h4]:text-brown-400 [&_h5]:text-brown-400 [&_h6]:text-brown-400',
       'first:[&_ul]:mt-0 [&_ul]:mt-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:leading-relaxed',
       'first:[&_ol]:mt-0 [&_ol]:mt-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:leading-relaxed',
-      '[&_p>a]:underline [&_ul>li>a]:underline [&_ol>li>a]:underline',
+      '[&_p>a]:underline [&_ul>li>a]:underline [&_ol>li>a]:underline [&>a]:underline',
       'first:[&_p]:mt-0 [&_p]:mt-4 [&_p]:leading-relaxed',
     ],
   }

@@ -40,7 +40,8 @@ const contentClasses = [
   'order-3 col-span-3 md:col-span-2 sm:columns-2',
   'order-3 col-span-3 sm:columns-2 lg:columns-3',
 ]
-const contentClass = contentClasses[random]
+const { classes: classesTextStyling } = useContentStyles()
+const contentClass = [contentClasses[random], ...classesTextStyling]
 
 const { trimImgSrc } = useImgUtils()
 
