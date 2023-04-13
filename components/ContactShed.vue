@@ -60,10 +60,12 @@ watch(
 </script>
 
 <template>
-  <div class="relative flex items-stretch justify-center overflow-hidden">
+  <div
+    class="relative flex aspect-[433/169] items-stretch justify-center overflow-hidden"
+  >
     <svg
       :class="{
-        'absolute inset-0 left-1/2 aspect-[436/169] h-full -translate-x-1/2 transition-all duration-[4s]': true,
+        'absolute inset-0 left-1/2 h-full origin-center -translate-x-1/2 transition-transform duration-[4s]': true,
         'scale-125': channel,
       }"
       x="0px"

@@ -11,7 +11,7 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
 <template>
   <main class="min-h-screen bg-brown-600 pb-10">
     <ContactShed
-      class="mx-auto h-[19.5vw] min-h-[500px] w-full max-w-[1605px] rounded-b-xl border-x-4 border-b-4 border-black"
+      class="mx-auto h-[19.5vw] min-h-[400px] w-full rounded-b-xl border-x-4 border-b-4 border-black lg:h-auto lg:min-h-fit lg:max-w-[1605px]"
       :channel="channel"
     >
       <SpeechBubble
