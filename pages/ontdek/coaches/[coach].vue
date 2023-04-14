@@ -66,7 +66,7 @@ const { trimImgSrc } = useImgUtils()
         <span
           class="order-1 block font-sans text-sm uppercase tracking-wide text-sky-300"
         >
-          Coach
+          {{ coach.attributes.external ? 'Externe' : undefined }} Coach
         </span>
         {{ coach.attributes.name }}
       </h1>
@@ -109,7 +109,7 @@ const { trimImgSrc } = useImgUtils()
         v-html="$sanitize(coach.attributes.bio)"
       />
       <template v-if="coach.attributes.programs.data.length">
-        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+        <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
           Trajecten met deze coach
         </h4>
         <div
@@ -129,7 +129,7 @@ const { trimImgSrc } = useImgUtils()
         </div>
       </template>
       <template v-if="coach.attributes.trainings.data.length">
-        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+        <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
           Trainingen door deze coach
         </h4>
         <div
@@ -149,7 +149,7 @@ const { trimImgSrc } = useImgUtils()
         </div>
       </template>
       <template v-if="coach.attributes.seminars.data.length">
-        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-brown-200">
+        <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
           Informatieavonden met deze coach
         </h4>
         <div
@@ -170,7 +170,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <Divider color="sky-100" />
       <template v-if="coach.attributes.interventions.data.length">
-        <h4 class="mt-8 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+        <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies met deze coach
         </h4>
         <div

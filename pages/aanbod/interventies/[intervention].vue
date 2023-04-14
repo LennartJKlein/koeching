@@ -118,7 +118,7 @@ const { trimImgSrc } = useImgUtils()
         v-html="$sanitize(intervention.attributes.content)"
       />
       <template v-if="intervention.attributes.programs.data.length">
-        <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+        <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Trajecten met deze interventie
         </h4>
         <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
@@ -135,12 +135,12 @@ const { trimImgSrc } = useImgUtils()
         </div>
       </template>
       <template v-if="intervention.attributes.coaches.data.length">
-        <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+        <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Coaches die dit faciliteren
         </h4>
         <div
           :class="[
-            '-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid',
+            '-mx-5 mb-10 mt-4 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid',
             intervention.attributes.coaches.data.length > 4 ||
             intervention.attributes.coaches.data.length < 4
               ? 'md:grid-cols-3'
@@ -168,7 +168,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <dl
         v-if="intervention.attributes.pricings.data || intervention.attributes.location"
-        class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
+        class="mb-12 mt-8 flex flex-col gap-3 md:flex-row"
       >
         <div
           v-if="intervention.attributes.pricings.data.length"

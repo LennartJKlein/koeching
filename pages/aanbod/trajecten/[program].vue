@@ -118,7 +118,7 @@ const { trimImgSrc } = useImgUtils()
         v-html="$sanitize(program.attributes.content)"
       />
       <template v-if="program.attributes.interventions.data.length">
-        <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+        <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies in dit traject
         </h4>
         <div
@@ -137,11 +137,11 @@ const { trimImgSrc } = useImgUtils()
         </div>
       </template>
       <template v-if="program.attributes.coaches.data.length">
-        <h4 class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400">
+        <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Coaches die dit traject verzorgen
         </h4>
         <div
-          class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
+          class="-mx-5 mb-10 mt-4 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
           role="list"
         >
           <PhotoCard
@@ -164,7 +164,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <dl
         v-if="program.attributes.pricings.data || program.attributes.location"
-        class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
+        class="mb-12 mt-8 flex flex-col gap-3 md:flex-row"
       >
         <div
           v-if="program.attributes.pricings.data.length"
