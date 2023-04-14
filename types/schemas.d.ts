@@ -536,6 +536,8 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
 }
 
 export interface ApiActivityActivity extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
+  id: Number
   name: StringAttribute & RequiredAttribute
   moments: ComponentAttribute<'details.moment', true>
   coaches: RelationAttribute<'api::activity.activity', 'manyToMany', 'api::coach.coach'>
@@ -572,6 +574,7 @@ export interface ApiActivityActivity extends CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    id: Number
     name: StringAttribute & RequiredAttribute
     moments: ComponentAttribute<'details.moment', true>
     coaches: RelationAttribute<'api::activity.activity', 'manyToMany', 'api::coach.coach'>
@@ -609,6 +612,7 @@ export interface ApiActivityActivity extends CollectionTypeSchema {
 }
 
 export interface ApiAnimalAnimal extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   id: Number
   bio: RichTextAttribute
   name: StringAttribute
@@ -640,6 +644,7 @@ export interface ApiAnimalAnimal extends CollectionTypeSchema {
 }
 
 export interface ApiCoachCoach extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   id: Number
   external: BooleanAttribute & DefaultTo<false>
   bio: RichTextAttribute
@@ -705,6 +710,7 @@ export interface ApiCoachCoach extends CollectionTypeSchema {
 }
 
 export interface ApiFarmFarm extends SingleTypeSchema {
+  updatedAt: DateTimeAttribute
   name: StringAttribute
   content: RichTextAttribute
   photos: MediaAttribute
@@ -733,6 +739,7 @@ export interface ApiFarmFarm extends SingleTypeSchema {
 }
 
 export interface ApiHomepageHomepage extends SingleTypeSchema {
+  updatedAt: DateTimeAttribute
   photos: MediaAttribute & RequiredAttribute
   sales_text: ComponentAttribute<'content.paragraph', true> &
     SetMinMax<{
@@ -770,6 +777,7 @@ export interface ApiHomepageHomepage extends SingleTypeSchema {
 }
 
 export interface ApiInterventionIntervention extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   id: Number
   name: StringAttribute & RequiredAttribute
   content: RichTextAttribute
@@ -879,6 +887,7 @@ export interface ApiInterventionIntervention extends CollectionTypeSchema {
 }
 
 export interface ApiLegalLegal extends SingleTypeSchema {
+  updatedAt: DateTimeAttribute
   privacy_data: RichTextAttribute
   terms: RichTextAttribute
   privacy_web: RichTextAttribute
@@ -906,6 +915,7 @@ export interface ApiLegalLegal extends SingleTypeSchema {
 }
 
 export interface ApiMembershipMembership extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   name: StringAttribute
   membership_id: StringAttribute
   url: StringAttribute
@@ -913,7 +923,6 @@ export interface ApiMembershipMembership extends CollectionTypeSchema {
   slug: UIDAttribute<'api::membership.membership', 'name'>
   rank: IntegerAttribute
   createdAt: DateTimeAttribute
-  updatedAt: DateTimeAttribute
   publishedAt: DateTimeAttribute
   id: Number
   info: {
@@ -951,6 +960,7 @@ export interface ApiMembershipMembership extends CollectionTypeSchema {
 }
 
 export interface ApiMessageMessage extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   title: StringAttribute
   media: MediaAttribute
   content: RichTextAttribute
@@ -964,7 +974,6 @@ export interface ApiMessageMessage extends CollectionTypeSchema {
     }>
   slug: UIDAttribute<'api::message.message', 'title'>
   createdAt: DateTimeAttribute
-  updatedAt: DateTimeAttribute
   publishedAt: DateTimeAttribute
   info: {
     singularName: 'message'
@@ -999,6 +1008,7 @@ export interface ApiMessageMessage extends CollectionTypeSchema {
 }
 
 export interface ApiParticipantParticipant extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   id: Number
   seminar: RelationAttribute<
     'api::participant.participant',
@@ -1069,6 +1079,7 @@ export interface ApiParticipantParticipant extends CollectionTypeSchema {
 }
 
 export interface ApiPricingPricing extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   id: Number
   description: StringAttribute &
     RequiredAttribute &
@@ -1150,6 +1161,7 @@ export interface ApiPricingPricing extends CollectionTypeSchema {
 }
 
 export interface ApiReimbursementReimbursement extends SingleTypeSchema {
+  updatedAt: DateTimeAttribute
   files: MediaAttribute
   content: RichTextAttribute
   info: {
@@ -1183,6 +1195,7 @@ export interface ApiReimbursementReimbursement extends SingleTypeSchema {
 }
 
 export interface ApiSeminarSeminar extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   name: StringAttribute & RequiredAttribute
   moments: ComponentAttribute<'details.moment', true>
   coaches: RelationAttribute<'api::seminar.seminar', 'manyToMany', 'api::coach.coach'>
@@ -1248,6 +1261,7 @@ export interface ApiSeminarSeminar extends CollectionTypeSchema {
 }
 
 export interface ApiProgramProgram extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   name: StringAttribute & RequiredAttribute
   coaches: RelationAttribute<'api::program.program', 'manyToMany', 'api::coach.coach'>
   interventions: RelationAttribute<
@@ -1311,6 +1325,7 @@ export interface ApiProgramProgram extends CollectionTypeSchema {
 }
 
 export interface ApiTrainingTraining extends CollectionTypeSchema {
+  updatedAt: DateTimeAttribute
   name: StringAttribute & RequiredAttribute
   moments: ComponentAttribute<'details.moment', true>
   coaches: RelationAttribute<'api::training.training', 'manyToMany', 'api::coach.coach'>

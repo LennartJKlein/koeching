@@ -1,8 +1,51 @@
 <script setup lang="ts">
+const route = useRoute()
 useHead({
   htmlAttrs: {
     lang: 'nl',
   },
+  link: [
+    { rel: 'canonical', href: route.fullPath },
+    { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' },
+    { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+    { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+    { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+    { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#96bf15' },
+  ],
+  title: 'Koeching | kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Koeching | kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'Kinder- en jeugdtherapie op de boerderij. Therapie met behulp van dieren in Amerongen.',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Kinder- en jeugdtherapie op de boerderij. Therapie met behulp van dieren in Amerongen.',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: route.fullPath },
+    { property: 'og:locale', content: 'nl_NL' },
+    { property: 'og:image', content: '/og-image.jpg' },
+    {
+      property: 'keywords',
+      content:
+        'amerongen, elst, leersum, wijk bij duurstede, coaching, EMDR, ikleeranders, dyslexie, ADHD, ADD, beelddenken, hoogsensitief, autisme, coaching, therapie, opleiding, ezels, asinotherapie, kinderen',
+    },
+    { property: 'author', content: 'Koeching' },
+    { property: 'robots', content: 'index, follow' },
+    { property: 'revisit-after', content: '1 days' },
+
+    { name: 'apple-mobile-web-app-title', content: 'Koeching' },
+    { name: 'application-name', content: 'Koeching' },
+    { name: 'msapplication-TileColor', content: '#96bf15' },
+    { name: 'theme-color', content: '#ffffff' },
+  ],
 })
 
 const footerLinks = [
