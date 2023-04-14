@@ -47,7 +47,7 @@ useHead({
     },
     {
       property: 'keywords',
-      content: seminar.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+      content: seminar.attributes.seo_keywords?.map((k: any) => k.keyword).join(', '),
     },
   ],
 })

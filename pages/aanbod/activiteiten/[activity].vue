@@ -47,7 +47,7 @@ useHead({
     },
     {
       property: 'keywords',
-      content: activity.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+      content: activity.attributes.seo_keywords?.map((k: any) => k.keyword).join(', '),
     },
   ],
 })

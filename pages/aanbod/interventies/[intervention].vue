@@ -45,7 +45,9 @@ useHead({
     },
     {
       property: 'keywords',
-      content: intervention.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+      content: intervention.attributes.seo_keywords
+        ?.map((k: any) => k.keyword)
+        .join(', '),
     },
   ],
 })

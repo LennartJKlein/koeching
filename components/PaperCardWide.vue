@@ -81,7 +81,7 @@ const { trimImgSrc } = useImgUtils()
       >
         <figure
           :class="[
-            'mb-auto aspect-square overflow-hidden bg-gray-800 bg-cover bg-center',
+            '-mb-6 aspect-square overflow-hidden bg-gray-800 bg-cover bg-center',
             placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
             placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
             placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',

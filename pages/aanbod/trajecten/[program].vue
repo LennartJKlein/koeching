@@ -43,7 +43,7 @@ useHead({
     },
     {
       property: 'keywords',
-      content: program.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+      content: program.attributes.seo_keywords?.map((k: any) => k.keyword).join(', '),
     },
   ],
 })
