@@ -57,7 +57,7 @@ const group = training.attributes.moments
 if (!group) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Groepstraining bestaat niet of is niet langer beschikbaar',
+    statusMessage: '(Groeps)training bestaat niet of is niet langer beschikbaar',
   })
 }
 

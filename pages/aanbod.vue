@@ -73,13 +73,13 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
       >
         <div class="relative mx-auto max-w-5xl px-4">
           <template v-if="trainings.length">
-            <PageH2 class="text-center">Groepstrainingen</PageH2>
+            <PageH2 class="text-center">(Groeps)trainingen</PageH2>
             <p class="mx-auto max-w-xl text-center">
               In een aantal bijeenkomsten werk je via een werkboek aan je hulpvraag. Een
               veilige omgeving waar je samen met anderen kunt groeien.
             </p>
             <div
-              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-2"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-2"
               role="list"
             >
               <PaperCardWide
@@ -109,7 +109,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               volwassenen als gezinnen.
             </p>
             <div
-              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
               role="list"
             >
               <PaperCardWide
@@ -137,7 +137,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               met kinderen, jeugd, volwassenen en gezinnen.
             </p>
             <div
-              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
               role="list"
             >
               <PaperCardWide
@@ -165,7 +165,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               sessies je nodig hebt en welke methodes en interventies daarbij passen.
             </p>
             <div
-              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
               role="list"
             >
               <PaperCard
@@ -194,10 +194,10 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           bg-[position:center_top,center_38vw,center_bottom]
           bg-no-repeat
           px-[10vw]
-          pt-[9vw] pb-[8vw] drop-shadow-2xl
+          pb-[8vw] pt-[9vw] drop-shadow-2xl
           md:mx-auto
           md:bg-[length:100%_auto,100%_calc(100%-380px),100%_auto] md:bg-[position:center_top,center_280px,center_bottom]
-          lg:px-20 lg:pt-20 lg:pb-10`"
+          lg:px-20 lg:pb-10 lg:pt-20`"
             v-if="interventions.length"
           >
             <div>
@@ -231,7 +231,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </div>
         <p
-          class="my-12 mx-auto max-w-sm text-center font-bold text-white md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
+          class="mx-auto my-12 max-w-sm text-center font-bold text-white md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
         >
           Geen idee waarmee jij geholpen zou zijn? Leg je vraag gratis voor aan onze
           coaches en krijg een advies op maat!

@@ -96,7 +96,7 @@ const { trimImgSrc } = useImgUtils()
           <span
             class="order-1 block font-sans text-sm uppercase tracking-wide text-sky-300"
           >
-            Groepstraining
+            (Groeps)training
           </span>
           {{ training.attributes.name }}
         </h1>
@@ -314,7 +314,7 @@ const { trimImgSrc } = useImgUtils()
           <span
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
           >
-            Vragen over deze groepstraining?
+            Vragen over deze (groeps)training?
           </span>
           <Button
             color="sky-400"
