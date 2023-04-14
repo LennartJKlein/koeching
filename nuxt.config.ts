@@ -37,6 +37,16 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-simple-sitemap',
   ],
+  routeRules: {
+    '/hetteam.php': { redirect: '/ontdek' },
+    '/mijnaanpak.php': { redirect: '/aanbod' },
+    '/archief.php': { redirect: '/nieuws' },
+    '/tarieven.php': { redirect: '/tarieven' },
+    '/contact.php': { redirect: '/contact' },
+    '/algemene-voorwaarden.php': { redirect: '/algemene-voorwaarden' },
+    '/res/docs/privacyreglement-koeching-2020.pdf': { redirect: '/privacyreglement' },
+    '/res/docs/web-privacy-policy-koeching-2020.pdf': { redirect: '/privacyverklaring' },
+  },
   strapi: {
     url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
   },
