@@ -53,7 +53,7 @@ useHead({
 })
 
 const media = [
-  ...(training.attributes.thumbnail.data ? training.attributes.thumbnail.data : []),
+  ...(training.attributes.thumbnail.data ? [training.attributes.thumbnail.data] : []),
   ...(training.attributes.photos.data ? training.attributes.photos.data : []),
 ]
 
@@ -141,7 +141,7 @@ const { trimImgSrc } = useImgUtils()
         />
         <template v-if="training.attributes.interventions.data.length">
           <h4
-            class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
+            class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400"
           >
             Interventies in deze training
           </h4>
@@ -162,12 +162,12 @@ const { trimImgSrc } = useImgUtils()
         </template>
         <template v-if="training.attributes.coaches.data.length">
           <h4
-            class="mt-14 mb-3 font-display text-2xl font-bold leading-none text-sky-400"
+            class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400"
           >
             Coaches die deze training geven
           </h4>
           <div
-            class="-mx-5 mt-4 mb-10 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
+            class="-mx-5 mb-10 mt-4 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-3"
             role="list"
           >
             <PhotoCard
@@ -190,7 +190,7 @@ const { trimImgSrc } = useImgUtils()
         </template>
         <dl
           v-if="training.attributes.pricings || training.attributes.location"
-          class="mt-8 mb-12 flex flex-col gap-3 md:flex-row"
+          class="mb-12 mt-8 flex flex-col gap-3 md:flex-row"
         >
           <div
             v-if="training.attributes.pricings.data.length"
@@ -221,7 +221,7 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </dl>
         <div
-          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 px-3 pt-7 pb-10 md:gap-3 md:px-4"
+          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 px-3 pb-10 pt-7 md:gap-3 md:px-4"
         >
           <h3
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"
@@ -274,7 +274,7 @@ const { trimImgSrc } = useImgUtils()
                       {{ readableDate(moment.end_date) }}
                     </dd>
                   </div>
-                  <h4 class="mt-3 mb-0 font-bold">Meer info:</h4>
+                  <h4 class="mb-0 mt-3 font-bold">Meer info:</h4>
                   <div
                     v-if="moment.description"
                     :class="contentClasses"
