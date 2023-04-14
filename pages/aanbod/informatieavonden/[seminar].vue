@@ -22,7 +22,34 @@ const {
     thumbnail: '*',
     moments: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `${
+    seminar.attributes.seo_title || seminar.attributes.name
+  } | Informatieavond door Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${
+        seminar.attributes.seo_title || seminar.attributes.name
+      } | Informatieavond door Koeching`,
+    },
+    {
+      name: 'description',
+      content: seminar.attributes.seo_description || seminar.attributes.intro,
+    },
+    {
+      property: 'og:description',
+      content: seminar.attributes.seo_description || seminar.attributes.intro,
+    },
+    {
+      property: 'keywords',
+      content: seminar.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+    },
+  ],
 })
 
 const media = [
@@ -193,7 +220,7 @@ const { trimImgSrc } = useImgUtils()
           </div>
         </dl>
         <div
-          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 pt-7 pb-10 md:gap-3 md:px-4"
+          class="z-1 border-pencil-black relative -mx-6 -mb-1 flex flex-col gap-5 bg-brown-300 px-3 pt-7 pb-10 md:gap-3 md:px-4"
         >
           <h3
             class="font-display text-xl leading-none text-white md:text-2xl lg:text-3xl"

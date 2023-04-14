@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import type { ApiAnimalAnimal, ApiCoachCoach } from '~/types/schemas'
 
+useHead({
+  title: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'Maak kennis met alles en iedereen op boerderij Borreveld! Kom meer te weten over de mensen, de boerderij en natuurlijk de lieve dieren!',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Maak kennis met alles en iedereen op boerderij Borreveld! Kom meer te weten over de mensen, de boerderij en natuurlijk de lieve dieren!',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data: coaches = [] } = await find<ApiCoachCoach>('coaches', {
   populate: '*',

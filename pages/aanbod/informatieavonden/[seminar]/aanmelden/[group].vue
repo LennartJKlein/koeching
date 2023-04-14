@@ -20,7 +20,35 @@ const {
     thumbnail: '*',
     moments: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `Aanmelden voor ${
+    seminar.attributes.seo_title || seminar.attributes.name
+  } | bij Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `Aanmelden voor ${
+        seminar.attributes.seo_title || seminar.attributes.name
+      } | bij Koeching`,
+    },
+    {
+      name: 'description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze informatieavond!',
+    },
+    {
+      property: 'og:description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze informatieavond!',
+    },
+    {
+      property: 'keywords',
+      content:
+        'aanmelden koeching, aanmelden voor informatieavond, aanmelden voor seminar',
+    },
+  ],
 })
 
 const group = seminar.attributes.moments
@@ -61,7 +89,6 @@ const goBack = function () {
         Aanmeldformulier voor de informatieavond: {{ seminar.attributes.name }}.
       </h1>
     </template>
-    <br />
     <ParticipateForm
       :group="group"
       :seminar="seminar"

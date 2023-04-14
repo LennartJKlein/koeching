@@ -2,6 +2,26 @@
 import { Ref, ref } from 'vue'
 import type { ApiPricingPricing, ApiReimbursementReimbursement } from '~/types/schemas'
 
+useHead({
+  title: 'Tarieven | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Tarieven | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'De tarieven die worden gehanteerd voor therapie, interventies, activiteiten, trainingen en seminars.',
+    },
+    {
+      property: 'og:description',
+      content:
+        'De tarieven die worden gehanteerd voor therapie, interventies, activiteiten, trainingen en seminars.',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data: pricings = [] } = await find<ApiPricingPricing>('pricings', {
   populate: '*',

@@ -1,12 +1,33 @@
 <script setup lang="ts">
 import type { ApiMembershipMembership } from '~/types/schemas'
-const NuxtLink = resolveComponent('NuxtLink')
+
+useHead({
+  title: 'Lidmaatschappen en certificeringen | Koeching',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Lidmaatschappen en certificeringen | Koeching',
+    },
+    {
+      name: 'description',
+      content:
+        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen hebben wij verschillende certificaten behaald en ons aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen hebben wij verschillende certificaten behaald en ons aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
+    },
+  ],
+})
 
 const { find } = useStrapi()
 const { data: memberships = [] } = await find<ApiMembershipMembership>('memberships', {
   populate: '*',
   sort: 'rank:asc',
 })
+
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

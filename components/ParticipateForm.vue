@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reset } from '@formkit/core'
 import type {
+  ApiActivityActivity,
   ApiParticipantParticipant,
   ApiSeminarSeminar,
   ApiTrainingTraining,
@@ -10,14 +11,16 @@ import type {
 // Props
 const props = withDefaults(
   defineProps<{
+    activity?: ApiActivityActivity
     group?: DetailsMoment
-    training?: ApiTrainingTraining
     seminar?: ApiSeminarSeminar
+    training?: ApiTrainingTraining
   }>(),
   {
+    activity: undefined,
     group: undefined,
-    training: undefined,
     seminar: undefined,
+    training: undefined,
   }
 )
 
@@ -38,6 +41,7 @@ const submitForm = async (fields: any) => {
     },
     training: props.training?.id,
     seminar: props.seminar?.id,
+    activity: props.activity?.id,
   })
   if (data) {
     isSubmitSuccesfull.value = true

@@ -1,6 +1,25 @@
 <script setup lang="ts">
 import type { ApiLegalLegal } from '~/types/schemas'
 
+useHead({
+  title: 'Algemene Voorwaarden | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content:
+        'Algemene Voorwaarden | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content: 'Lees hier de meest recente Algemene Voorwaarden.',
+    },
+    {
+      property: 'og:description',
+      content: 'Lees hier de meest recente Algemene Voorwaarden.',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data } = (await find<ApiLegalLegal>('legal', {
   populate: '*',

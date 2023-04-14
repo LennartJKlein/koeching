@@ -7,6 +7,26 @@ import type {
   ApiTrainingTraining,
 } from '~/types/schemas'
 
+useHead({
+  title: 'Aanbod | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Aanbod | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de slag gaan met je hulpvraag. Wat past er bij jou?',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de slag gaan met je hulpvraag. Wat past er bij jou?',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data: activities = [] } = await find<ApiActivityActivity>('activities', {
   populate: '*',

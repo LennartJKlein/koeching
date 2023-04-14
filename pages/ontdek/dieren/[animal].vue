@@ -14,6 +14,24 @@ const {
   populate: '*',
 })
 
+useHead({
+  title: `${animal.attributes.name} | Dier op de boerderij van Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${animal.attributes.name} | Dier op de boerderij van Koeching`,
+    },
+    {
+      name: 'description',
+      content: `Kom alles te weten over ${animal.attributes.name} bij Koeching`,
+    },
+    {
+      property: 'og:description',
+      content: `Kom alles te weten over ${animal.attributes.name} bij Koeching`,
+    },
+  ],
+})
+
 const goBack = function () {
   const router = useRouter()
   router.push('/ontdek')

@@ -7,6 +7,16 @@ const { data } = (await find<ApiHomepageHomepage>('homepage', {
 })) as any
 const content: ApiHomepageHomepage = data
 
+useHead({
+  title: `Koeching | ${content.attributes.title}`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `Koeching | ${content.attributes.title}`,
+    },
+  ],
+})
+
 const heroImages = content.attributes.photos.data
   .slice(0, -3)
   .map((photo: any) => photo.attributes.url)

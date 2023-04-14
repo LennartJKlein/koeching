@@ -1,4 +1,24 @@
 <script setup lang="ts">
+useHead({
+  title: 'Contact | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Contact | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'Wil je weten hoe we jou kunnen helpen? Of heb je vragen over Koeching? Dan kun je die hier eenvoudig aan ons stellen. We reageren zo snel mogelijk!',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Wil je weten hoe we jou kunnen helpen? Of heb je vragen over Koeching? Dan kun je die hier eenvoudig aan ons stellen. We reageren zo snel mogelijk!',
+    },
+  ],
+})
+
 const channel = ref()
 const delayedContact = (newChannel: string, newUrl: string, milliseconds: number) => {
   channel.value = newChannel

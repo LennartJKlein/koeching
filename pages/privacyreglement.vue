@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import type { ApiLegalLegal } from '~/types/schemas'
 
+useHead({
+  title: 'Privacyreglement | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Privacyreglement | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content: 'Lees hier de meest recente privacyreglement.',
+    },
+    {
+      property: 'og:description',
+      content: 'Lees hier de meest recente privacyreglement.',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data } = (await find<ApiLegalLegal>('legal', {
   populate: '*',

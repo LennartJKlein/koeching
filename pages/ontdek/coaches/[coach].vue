@@ -17,7 +17,26 @@ const {
     programs: '*',
     seminars: '*',
     trainings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `${coach.attributes.name} | Coach bij de praktijk van Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${coach.attributes.name} | Coach bij de praktijk van Koeching`,
+    },
+    {
+      name: 'description',
+      content: coach.attributes.intro,
+    },
+    {
+      property: 'og:description',
+      content: coach.attributes.intro,
+    },
+  ],
 })
 
 const goBack = function () {

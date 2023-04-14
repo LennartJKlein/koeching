@@ -20,7 +20,34 @@ const {
     thumbnail: '*',
     moments: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `Aanmelden voor ${
+    activity.attributes.seo_title || activity.attributes.name
+  } | bij Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `Aanmelden voor ${
+        activity.attributes.seo_title || activity.attributes.name
+      } | bij Koeching`,
+    },
+    {
+      name: 'description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze activiteit!',
+    },
+    {
+      property: 'og:description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze activiteit!',
+    },
+    {
+      property: 'keywords',
+      content: 'aanmelden koeching, aanmelden voor activiteiten op boerderij',
+    },
+  ],
 })
 
 const group = activity.attributes.moments
@@ -29,13 +56,13 @@ const group = activity.attributes.moments
 if (!group) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Informatieavond bestaat niet of is niet langer beschikbaar',
+    statusMessage: 'Activiteit bestaat niet of is niet langer beschikbaar',
   })
 }
 
 const goBack = function () {
   const router = useRouter()
-  router.push(`/aanbod/informatieavonden/${route.params.activity}`)
+  router.push(`/aanbod/activiteiten/${route.params.activity}`)
 }
 </script>
 
@@ -61,7 +88,6 @@ const goBack = function () {
         Aanmeldformulier voor deze activiteit: {{ activity.attributes.name }}.
       </h1>
     </template>
-    <br />
     <ParticipateForm
       :group="group"
       :activity="activity"

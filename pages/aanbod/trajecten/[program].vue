@@ -18,7 +18,34 @@ const {
     interventions: '*',
     photos: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `${
+    program.attributes.seo_title || program.attributes.name
+  } | Traject om te volgen bij Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${
+        program.attributes.seo_title || program.attributes.name
+      } | Traject om te volgen bij Koeching`,
+    },
+    {
+      name: 'description',
+      content: program.attributes.seo_description || program.attributes.intro,
+    },
+    {
+      property: 'og:description',
+      content: program.attributes.seo_description || program.attributes.intro,
+    },
+    {
+      property: 'keywords',
+      content: program.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+    },
+  ],
 })
 
 const goBack = function () {

@@ -20,7 +20,35 @@ const {
     thumbnail: '*',
     moments: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `Aanmelden voor ${
+    training.attributes.seo_title || training.attributes.name
+  } | bij Koeching`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `Aanmelden voor ${
+        training.attributes.seo_title || training.attributes.name
+      } | bij Koeching`,
+    },
+    {
+      name: 'description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze (groeps)training!',
+    },
+    {
+      property: 'og:description',
+      content: 'Meld jou, je kind of gezin vandaag nog aan voor deze (groeps)training!',
+    },
+    {
+      property: 'keywords',
+      content:
+        'aanmelden koeching, aanmelden voor training, aanmelding voor groepstraining',
+    },
+  ],
 })
 
 const group = training.attributes.moments
@@ -61,7 +89,6 @@ const goBack = function () {
         Aanmeldformulier voor de training: {{ training.attributes.name }}.
       </h1>
     </template>
-    <br />
     <ParticipateForm
       :group="group"
       :training="training"

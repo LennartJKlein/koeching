@@ -20,7 +20,34 @@ const {
     seminars: '*',
     photos: '*',
     pricings: '*',
+    seo_keywords: '*',
   },
+})
+
+useHead({
+  title: `${
+    intervention.attributes.seo_title || intervention.attributes.name
+  } | Interventie die Koeching aanbiedt`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${
+        intervention.attributes.seo_title || intervention.attributes.name
+      } | Interventie die Koeching aanbiedt`,
+    },
+    {
+      name: 'description',
+      content: intervention.attributes.seo_description || intervention.attributes.intro,
+    },
+    {
+      property: 'og:description',
+      content: intervention.attributes.seo_description || intervention.attributes.intro,
+    },
+    {
+      property: 'keywords',
+      content: intervention.attributes.seo_keywords.map((k: any) => k.keyword).join(', '),
+    },
+  ],
 })
 
 const goBack = function () {

@@ -7,6 +7,24 @@ const { data } = (await find<ApiFarmFarm>('farm', {
 })) as any
 const farm: ApiFarmFarm = data
 
+useHead({
+  title: `${farm.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+  meta: [
+    {
+      property: 'og:title',
+      content: `${farm.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+    },
+    {
+      name: 'description',
+      content: farm.attributes.intro,
+    },
+    {
+      property: 'og:description',
+      content: farm.attributes.intro,
+    },
+  ],
+})
+
 const goBack = function () {
   const router = useRouter()
   router.push('/ontdek')

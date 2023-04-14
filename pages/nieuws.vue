@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import type { ApiMessageMessage } from '~/types/schemas'
 
+useHead({
+  title: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',
+  meta: [
+    {
+      property: 'og:title',
+      content: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',
+    },
+    {
+      name: 'description',
+      content:
+        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching!',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching!',
+    },
+  ],
+})
+
 const { find } = useStrapi()
 const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
   populate: '*',
