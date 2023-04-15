@@ -32,13 +32,13 @@ const dateClass = dateClasses[random]
 const imageClasses = [
   'order-1 row-span-2 @xl:row-span-0 @xl:order-2',
   'order-0 row-span-2 @xl:row-span-3',
-  'order-2 col-span-3 @xl:order-0',
+  'order-2 col-span-3 @xl:col-span-1 @xl:order-4',
 ]
 const imageClass = imageClasses[random]
 const contentClasses = [
   'order-3 col-span-3 gap-12 @xl:col-span-2 @4xl:columns-2',
   'order-3 col-span-3 gap-12 @xl:col-span-2 @4xl:columns-2',
-  'order-3 col-span-3 gap-12 @2xl:columns-2 @4xl:columns-3',
+  'order-3 col-span-3 @xl:col-span-2 gap-12 @2xl:columns-2',
 ]
 const { classes: classesTextStyling } = useContentStyles()
 const contentClass = [contentClasses[random], ...classesTextStyling]
