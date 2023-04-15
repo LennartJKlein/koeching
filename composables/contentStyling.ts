@@ -18,7 +18,7 @@ export const useContentStyles = (theme: string = 'dark'): contentStylesComposabl
         : '',
       '[&_ul]:mt-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:leading-relaxed',
       '[&_ol]:mt-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:leading-relaxed',
-      '[&_p>a]:underline [&_ul>li>a]:underline [&_ol>li>a]:underline [&>a]:underline',
+      '[&>a]:underline [&_p>a]:underline [&_ul>li>a]:underline [&_ol>li>a]:underline [&_div>a]:underline',
       '[&_p]:mt-4 [&_p]:leading-relaxed',
       '[&_img]:w-full [&_img]:object-contain [&_img]:my-5',
       'first:[&>*]:mt-0 last:[&>*]:mb-0',
