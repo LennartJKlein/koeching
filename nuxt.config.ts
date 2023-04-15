@@ -24,6 +24,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    public: {
+      host: 'https://www.koeching.nl',
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},

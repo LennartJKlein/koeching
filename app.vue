@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const config = useRuntimeConfig()
 useHead({
   htmlAttrs: {
     lang: 'nl',
@@ -31,7 +32,7 @@ useHead({
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: route.fullPath },
     { property: 'og:locale', content: 'nl_NL' },
-    { property: 'og:image', content: '/og-image.jpg' },
+    { property: 'og:image', content: `${config.public.host}/og-image.jpg` },
     {
       property: 'keywords',
       content:
