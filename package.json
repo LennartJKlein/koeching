@@ -32,7 +32,6 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@vueuse/nuxt": "^10.0.2",
     "sanitize-html": "^2.10.0",
-    "vue-3-sanitize": "^0.1.4",
     "vue-gtag": "^2.0.1",
     "vue3-youtube": "^0.1.9"
   }
