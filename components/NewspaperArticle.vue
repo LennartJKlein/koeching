@@ -11,34 +11,34 @@ const props = defineProps({
 const randomRotation = Math.floor(Math.random() * 3)
 const rootClasses = [
   'rotate-0',
-  'rotate-[0.5deg] md:rotate-1',
-  '-rotate-[0.5deg] md:-rotate-1',
+  'rotate-[0.5deg] @xl:rotate-1',
+  '-rotate-[0.5deg] @xl:-rotate-1',
 ]
 const rootClass = rootClasses[randomRotation]
 
 const random = Math.floor(Math.random() * 3)
 const titleClasses = [
-  'order-0 col-span-2 md:col-span-3',
+  'order-0 col-span-2 @xl:col-span-3',
   'order-1 col-span-2',
-  'order-0 col-span-3 md:order-1',
+  'order-0 col-span-3 @xl:order-1',
 ]
 const titleClass = titleClasses[random]
 const dateClasses = [
-  'order-2 col-span-2 md:col-span-3 md:order-1',
+  'order-2 col-span-2 @xl:col-span-3 @xl:order-1',
   'order-2 col-span-2',
-  'order-1 col-span-3 md:order-2',
+  'order-1 col-span-3 @xl:order-2',
 ]
 const dateClass = dateClasses[random]
 const imageClasses = [
-  'order-1 row-span-2 md:row-span-0 md:order-2',
-  'order-0 row-span-2 md:row-span-3',
-  'order-2 col-span-3 md:order-0',
+  'order-1 row-span-2 @xl:row-span-0 @xl:order-2',
+  'order-0 row-span-2 @xl:row-span-3',
+  'order-2 col-span-3 @xl:order-0',
 ]
 const imageClass = imageClasses[random]
 const contentClasses = [
-  'order-3 col-span-3 md:col-span-2 sm:columns-2',
-  'order-3 col-span-3 md:col-span-2 sm:columns-2',
-  'order-3 col-span-3 sm:columns-2 lg:columns-3',
+  'order-3 col-span-3 gap-12 @xl:col-span-2 @4xl:columns-2',
+  'order-3 col-span-3 gap-12 @xl:col-span-2 @4xl:columns-2',
+  'order-3 col-span-3 gap-12 @2xl:columns-2 @4xl:columns-3',
 ]
 const { classes: classesTextStyling } = useContentStyles()
 const contentClass = [contentClasses[random], ...classesTextStyling]
@@ -51,47 +51,47 @@ const readableDate = computed(() => {
   }).value.replaceAll('"', '')
 })
 
-const isMobileCollapsed = ref(true)
+const isCollapsed = ref(true)
 </script>
 
 <template>
-  <article :class="['relative', rootClass]">
+  <article :class="['relative @container', rootClass]">
     <div
-      class="absolute bottom-0 right-0 left-0 z-10 mx-auto w-max translate-y-1/2 md:hidden"
+      class="absolute bottom-0 left-0 right-0 z-10 mx-auto w-max translate-y-1/2 @4xl:hidden"
     >
       <Button
-        @click="isMobileCollapsed = !isMobileCollapsed"
+        @click="isCollapsed = !isCollapsed"
         color="brown-200"
         small
       >
         <Icon
           id="arrow-down"
           size="4"
-          :class="['z-20 fill-black', !isMobileCollapsed && 'rotate-180']"
+          :class="['z-20 fill-black', !isCollapsed && 'rotate-180']"
         />
       </Button>
     </div>
     <div
       :class="[
-        'grid grid-cols-3 gap-x-5 gap-y-3 overflow-hidden bg-gradient-to-br from-gray-50 to-brown-50 px-5 pt-5 pb-10 shadow-md drop-shadow-[1px_3px_2px_#5d482d] md:pb-5',
-        isMobileCollapsed && 'max-h-72 md:max-h-[none]',
+        'grid grid-cols-3 gap-x-5 gap-y-3 overflow-hidden bg-gradient-to-br from-gray-50 to-brown-50 px-5 pb-10 pt-5 shadow-md drop-shadow-[1px_3px_2px_#5d482d] @xl:pb-5',
+        isCollapsed && 'max-h-72 @4xl:max-h-[none]',
       ]"
     >
       <h2
         v-if="title"
         :class="[
-          'w-full font-display text-3xl font-bold leading-none lg:text-4xl lg:leading-none',
+          'w-full font-display text-3xl font-bold leading-none @xl:text-4xl @xl:leading-none',
           titleClass,
         ]"
         style="hyphens: auto"
-        @click="isMobileCollapsed = !isMobileCollapsed"
+        @click="isCollapsed = !isCollapsed"
       >
         {{ title }}
       </h2>
       <p
         v-if="readableDate"
         :class="[
-          '-mt-1 w-full text-sm font-bold italic text-gray-400 md:-mt-2',
+          '-mt-1 w-full text-sm font-bold italic text-gray-400 @xl:-mt-2',
           dateClass,
         ]"
       >

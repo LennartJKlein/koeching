@@ -204,5 +204,5 @@ module.exports = {
       pattern: /border-pencil-/,
     },
   ],
-  plugins: [FormKitVariants],
+  plugins: [FormKitVariants, require('@tailwindcss/container-queries')],
 }

@@ -49,7 +49,7 @@ export default cachedEventHandler(
     seminars = mapToSitemapEntries(seminars, 'seminars')
     trainings = mapToSitemapEntries(trainings, 'trainings')
 
-    const sitemapEntries = [
+    return [
       ...activities,
       ...animals,
       ...coaches,
@@ -58,10 +58,6 @@ export default cachedEventHandler(
       ...seminars,
       ...trainings,
     ]
-
-    console.log(sitemapEntries)
-
-    return sitemapEntries
   },
   {
     name: 'sitemap-dynamic-urls',

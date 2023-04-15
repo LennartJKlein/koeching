@@ -67,7 +67,6 @@ const subfooterLinks = [
 const viewportYCenter = ref(0)
 const { y } = useWindowScroll()
 watch(y, async () => {
-  console.log((y.value / window.innerHeight) * 100 + 50)
   viewportYCenter.value = (y.value / window.innerHeight) * 100 + 50
 })
 </script>

@@ -56,7 +56,6 @@ const media = [
   ...(activity.attributes.thumbnail.data ? [activity.attributes.thumbnail.data] : []),
   ...(activity.attributes.photos.data ? activity.attributes.photos.data : []),
 ]
-console.log(media)
 
 const goBack = function () {
   const router = useRouter()

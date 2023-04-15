@@ -24,7 +24,7 @@ useHead({
 const { find } = useStrapi()
 const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
   populate: '*',
-  sort: 'rank:asc',
+  sort: 'publishedAt:desc',
 })
 </script>
 
@@ -35,16 +35,19 @@ const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
     <div
       class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-knowledge.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-6 md:px-[5vw]"
     >
-      <div class="mx-auto max-w-xl px-[6vw] pb-[10vw] pt-[8vw] md:pb-[6vw]">
+      <div class="mx-auto max-w-xl px-[6vw] pb-[10vw] pt-[8vw] md:pb-[6vw] lg:max-w-3xl">
         <PageTitle class="text-center text-white">Nieuws</PageTitle>
-        <p class="mt-4 text-white sm:text-center">
+        <p class="mt-4 text-white sm:text-center lg:text-lg xl:text-xl">
           Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de
           laatste updates van Koeching!
         </p>
       </div>
-      <div class="grid gap-10 2xl:grid-cols-2">
+      <div
+        class="grid gap-10 xl:grid-cols-[repeat(auto-fill,minmax(auto,1100px))] xl:items-center xl:justify-center"
+      >
         <NewspaperArticle
           v-for="article in articles"
+          class="grow"
           :content="article.attributes.content"
           :date="article.attributes.publishedAt"
           :image="article.attributes.media.data"
