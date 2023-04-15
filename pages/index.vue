@@ -54,7 +54,7 @@ const nextVideo = () => {
         class="-mb-[6vh] -ml-[5%] -mr-[10%] flex overflow-hidden pt-12 transition-all md:ml-0 md:mr-0"
       >
         <img
-          class="w-full max-w-[80vh] animate-fly-in"
+          class="w-full max-w-[80vh] animate-fly-in will-change-transform"
           src="~/assets/svg/animals-inviting-hug.svg"
           alt="Dieren van Koeching"
         />
@@ -84,7 +84,7 @@ const nextVideo = () => {
       class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <NuxtImg
-        class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
+        class="absolute inset-0 h-full w-full animate-zoom-in object-cover will-change-transform"
         :placeholder="[1920, 1080, 10]"
         :src="trimImgSrc(pageImages[0])"
         height="1080"
@@ -109,7 +109,7 @@ const nextVideo = () => {
       class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <NuxtImg
-        class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
+        class="absolute inset-0 h-full w-full animate-zoom-in object-cover will-change-transform"
         :placeholder="[1920, 1080, 10]"
         :src="trimImgSrc(pageImages[1])"
         height="1080"
@@ -134,7 +134,7 @@ const nextVideo = () => {
       class="relative aspect-[7/3] overflow-hidden bg-sky-300 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <NuxtImg
-        class="absolute inset-0 h-full w-full animate-zoom-in object-cover"
+        class="absolute inset-0 h-full w-full animate-zoom-in object-cover will-change-transform"
         :placeholder="[1920, 1080, 10]"
         :src="trimImgSrc(pageImages[2])"
         height="1080"

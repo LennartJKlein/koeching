@@ -66,10 +66,10 @@ const subfooterLinks = [
 
 // Scroll events
 const viewportYCenter = ref(0)
-const { y } = useWindowScroll()
-watch(y, async () => {
-  viewportYCenter.value = (y.value / window.innerHeight) * 100 + 50
-})
+// const { y } = useWindowScroll()
+// watch(y, async () => {
+//   viewportYCenter.value = (y.value / window.innerHeight) * 100 + 50
+// })
 </script>
 
 <template>
@@ -161,12 +161,12 @@ watch(y, async () => {
 .page-enter-active,
 .page-leave-active {
   transition: all 300ms ease-in;
-  clip-path: circle(71% at 50% var(--viewport-y-center));
+  /* clip-path: circle(71% at 50% var(--viewport-y-center)); */
 }
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
   filter: blur(5px);
-  clip-path: circle(0% at 50% var(--viewport-y-center));
+  /* clip-path: circle(0% at 50% var(--viewport-y-center)); */
 }
 </style>

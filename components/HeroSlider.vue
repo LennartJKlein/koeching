@@ -35,7 +35,7 @@ watch(counter, (iteration) => {
         class="absolute inset-0 h-full w-full overflow-hidden"
       >
         <NuxtImg
-          class="h-full w-full origin-top animate-zoom-in-once object-cover md:origin-left"
+          class="h-full w-full origin-top animate-zoom-in-once object-cover will-change-transform md:origin-left"
           :placeholder="[1920, 1920, 10]"
           :src="trimImgSrc(src)"
           height="1920"
