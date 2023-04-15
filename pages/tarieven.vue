@@ -49,7 +49,7 @@ const toggleDetails = (description: string) => {
     <div
       class="mb-20 min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-money.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"
     >
-      <div class="mx-auto max-w-xl pl-[13vw] pt-[8vw] pb-[10vw] md:pb-[6vw] md:pl-0">
+      <div class="mx-auto max-w-xl pb-[10vw] pl-[13vw] pt-[8vw] md:pb-[6vw] md:pl-0">
         <PageTitle class="text-white">Tarieven</PageTitle>
       </div>
       <ul class="mx-auto max-w-xl">
@@ -141,7 +141,7 @@ const toggleDetails = (description: string) => {
               </ul>
             </div>
           </Transition>
-          <Divider class="col-span-2 mt-4 mb-8 w-full" />
+          <Divider class="col-span-2 mb-8 mt-4 w-full" />
         </li>
       </ul>
       <div class="mx-auto my-14 max-w-2xl">
@@ -152,7 +152,7 @@ const toggleDetails = (description: string) => {
           "
         >
           <PageH2 class="text-white">Vergoeding door verzekering</PageH2>
-          <p class="mt-4 mb-8 text-white">
+          <p class="mb-8 mt-4 text-white">
             De beroepsvereniging heeft overzichten opgesteld waarop u kunt zien welke
             ziektekostenverzekeraars de kosten van de kinder- en jeugdtherapeut
             (gedeeltelijk) vergoeden. Aan deze lijsten kunnen geen rechten worden
@@ -188,10 +188,10 @@ const toggleDetails = (description: string) => {
           bg-[position:center_top,center_38vw,center_bottom]
           bg-no-repeat
           px-[10vw]
-          pt-[9vw] pb-[8vw] drop-shadow-2xl
+          pb-[8vw] pt-[9vw] drop-shadow-2xl
           md:mx-auto
           md:bg-[length:100%_auto,100%_calc(100%-380px),100%_auto] md:bg-[position:center_top,center_280px,center_bottom]
-          lg:px-20 lg:pt-20 lg:pb-10`"
+          lg:px-20 lg:pb-10 lg:pt-20`"
       >
         <div
           :class="contentClasses"

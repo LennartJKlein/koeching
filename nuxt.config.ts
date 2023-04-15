@@ -2,12 +2,12 @@ import { $fetch } from 'ofetch'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // app: {
-  //   pageTransition: {
-  //     name: 'page',
-  //     mode: 'out-in',
-  //   },
-  // },
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+    },
+  },
   css: [
     '~/assets/css/main.css',
     '~/assets/css/fonts/karla.css',

@@ -69,7 +69,7 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
               De coaches
             </PageH2>
             <div
-              class="-mx-4 mt-5 mb-16 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-4"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-4"
               role="list"
             >
               <PhotoCard
@@ -94,7 +94,7 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
             <PageH2 class="mx-auto max-w-4xl text-white md:mt-44"> De dieren </PageH2>
             <div class="-mx-4">
               <div
-                class="border-fence mx-auto mt-3 mb-36 grid max-w-7xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:mt-8"
+                class="border-fence mx-auto mb-36 mt-3 grid max-w-7xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:mt-8"
                 role="list"
               >
                 <PhotoCard

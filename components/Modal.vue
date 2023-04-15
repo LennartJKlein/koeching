@@ -89,8 +89,10 @@ function clickAnywhere(e: TouchEvent | MouseEvent) {
 onMounted(() => {
   watchEffect(() => {
     if (props.open !== isOpen.value) {
-      props.open ? showModal() : hideModal()
-      isOpen.value = props.open
+      setTimeout(() => {
+        props.open ? showModal() : hideModal()
+        isOpen.value = props.open
+      }, 350) // wait for page transition animation to have ended
     }
   })
 })
@@ -99,7 +101,7 @@ onMounted(() => {
 <template>
   <dialog
     :class="[
-      'top-0 left-0 right-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-[350ms] ease-out backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
+      'left-0 right-0 top-0 m-0 h-full max-h-screen min-w-full max-w-none overflow-y-auto overflow-x-hidden bg-transparent p-0 duration-[350ms] ease-out backdrop:bg-white backdrop:bg-opacity-40 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-700',
       !isOpen && 'backdrop:bg-opacity-0 backdrop:backdrop-blur-none',
       !isDragging && 'transition-transform',
       isClosing

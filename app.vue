@@ -62,6 +62,14 @@ const subfooterLinks = [
   { path: '/privacyreglement', label: 'Privacyregelement' },
   { path: '/privacyverklaring', label: 'Privacyverklaring website' },
 ]
+
+// Scroll events
+const viewportYCenter = ref(0)
+const { y } = useWindowScroll()
+watch(y, async () => {
+  console.log((y.value / window.innerHeight) * 100 + 50)
+  viewportYCenter.value = (y.value / window.innerHeight) * 100 + 50
+})
 </script>
 
 <template>
@@ -99,12 +107,12 @@ const subfooterLinks = [
       </ul>
     </nav>
   </header>
-  <NuxtPage />
+  <NuxtPage :style="{ '--viewport-y-center': viewportYCenter + 'vh' }" />
   <footer
     :class="[
       'relative z-10 mt-1 bg-brown-500 pt-8 text-white',
       `before:absolute before:-top-4 before:left-0 before:-z-20 before:h-20 before:w-full before:-rotate-1 before:bg-brown-500 before:content-['']`,
-      `after:absolute after:left-0 after:-top-4 after:-z-10 after:h-2 after:w-full after:-translate-y-1/2 after:-rotate-1 after:bg-[url(~/assets/svg/line-black.svg)] after:bg-cover after:content-['']`,
+      `after:absolute after:-top-4 after:left-0 after:-z-10 after:h-2 after:w-full after:-translate-y-1/2 after:-rotate-1 after:bg-[url(~/assets/svg/line-black.svg)] after:bg-cover after:content-['']`,
     ]"
   >
     <div class="relative z-10 bg-[url(~/assets/svg/cow-spots.svg)] bg-cover">
@@ -112,7 +120,7 @@ const subfooterLinks = [
         src="~/assets/svg/logo-full.svg"
         class="mx-auto w-40 opacity-60 brightness-75 drop-shadow-2xl sepia"
       />
-      <nav class="pt-10 pb-16">
+      <nav class="pb-16 pt-10">
         <ul class="mx-auto max-w-3xl px-3 text-center">
           <li v-for="link in footerLinks">
             <NuxtLink
@@ -125,7 +133,7 @@ const subfooterLinks = [
         </ul>
       </nav>
     </div>
-    <div class="bg-brown-700 pt-10 pb-28 text-center sm:pb-32 md:pb-40">
+    <div class="bg-brown-700 pb-28 pt-10 text-center sm:pb-32 md:pb-40">
       <nav>
         <ul class="flex w-full flex-wrap items-center justify-center">
           <li
@@ -133,7 +141,7 @@ const subfooterLinks = [
             class="text-brown-400 after:mx-2 sm:after:content-['|'] sm:last:after:content-['']"
           >
             <NuxtLink
-              class="relative inline-block w-max p-2 text-brown-200 before:absolute before:top-0 before:left-0 before:h-full before:w-full before:scale-y-0 before:rounded-xl before:bg-brown-600 before:bg-opacity-0 before:transition-all before:duration-100 before:content-[''] hover:before:scale-y-75 hover:before:bg-opacity-70 focus-visible:before:scale-y-75 focus-visible:before:bg-opacity-50 active:before:scale-y-100 active:before:bg-opacity-100"
+              class="relative inline-block w-max p-2 text-brown-200 before:absolute before:left-0 before:top-0 before:h-full before:w-full before:scale-y-0 before:rounded-xl before:bg-brown-600 before:bg-opacity-0 before:transition-all before:duration-100 before:content-[''] hover:before:scale-y-75 hover:before:bg-opacity-70 focus-visible:before:scale-y-75 focus-visible:before:bg-opacity-50 active:before:scale-y-100 active:before:bg-opacity-100"
               :to="link.path"
             >
               <span class="relative">{{ link.label }}</span>
@@ -153,12 +161,12 @@ const subfooterLinks = [
 .page-enter-active,
 .page-leave-active {
   transition: all 300ms ease-in;
-  clip-path: circle(71% at 50% 50vh);
+  clip-path: circle(71% at 50% var(--viewport-y-center));
 }
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
   filter: blur(5px);
-  clip-path: circle(0% at 50% 50vh);
+  clip-path: circle(0% at 50% var(--viewport-y-center));
 }
 </style>

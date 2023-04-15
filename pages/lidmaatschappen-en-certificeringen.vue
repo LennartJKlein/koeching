@@ -37,7 +37,7 @@ const NuxtLink = resolveComponent('NuxtLink')
     <div
       class="min-h-[19.5vw] bg-[url(~/assets/svg/desk-clutter-certifications.svg)] bg-[length:100%_auto] bg-left-top bg-no-repeat px-5 md:px-[16vw]"
     >
-      <div class="mx-auto max-w-xl px-[6vw] pt-[8vw] pb-[10vw] md:pb-[6vw] lg:max-w-2xl">
+      <div class="mx-auto max-w-xl px-[6vw] pb-[10vw] pt-[8vw] md:pb-[6vw] lg:max-w-2xl">
         <PageTitle class="text-center text-white"
           >Lidmaatschappen en certificeringen</PageTitle
         >

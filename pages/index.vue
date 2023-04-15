@@ -51,7 +51,7 @@ const nextVideo = () => {
       class="bg-sky-300"
     >
       <div
-        class="-ml-[5%] -mr-[10%] -mb-[6vh] flex overflow-hidden pt-12 transition-all md:mr-0 md:ml-0"
+        class="-mb-[6vh] -ml-[5%] -mr-[10%] flex overflow-hidden pt-12 transition-all md:ml-0 md:mr-0"
       >
         <img
           class="w-full max-w-[80vh] animate-fly-in"
@@ -144,7 +144,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.videos && content.attributes.videos.length"
-      class="relative bg-[linear-gradient(#3f93b6_64%,#62aac6_64%)] px-5 pt-20 pb-32 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
+      class="relative bg-[linear-gradient(#3f93b6_64%,#62aac6_64%)] px-5 pb-32 pt-20 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%]"
     >
       <h2 class="mb-8 w-full text-center font-display text-4xl font-bold text-white">
         Een kijkje nemen bij Koeching
@@ -166,7 +166,7 @@ const nextVideo = () => {
         <div class="relative w-full max-w-md overflow-hidden">
           <Transition name="static">
             <YouTube
-              class="absolute top-[27%] left-[7%] right-[6%] aspect-video overflow-hidden [&>iframe]:aspect-video [&>iframe]:w-full"
+              class="absolute left-[7%] right-[6%] top-[27%] aspect-video overflow-hidden [&>iframe]:aspect-video [&>iframe]:w-full"
               height="auto"
               :key="content.attributes.videos[activeVideo].url"
               :src="content.attributes.videos[activeVideo].url"
@@ -196,7 +196,7 @@ const nextVideo = () => {
     </section>
 
     <div
-      class="relative overflow-hidden bg-[linear-gradient(to_left,rgb(255_255_255/50%),transparent,transparent),url(~/assets/svg/farm-from-distance.svg),linear-gradient(#c8e1eb,#c8e1eb)] bg-[length:cover,auto_1140px,cover] bg-[position:center,center_1rem,center] bg-no-repeat pt-20 pb-24 md:bg-[length:cover,100%_auto,cover]"
+      class="relative overflow-hidden bg-[linear-gradient(to_left,rgb(255_255_255/50%),transparent,transparent),url(~/assets/svg/farm-from-distance.svg),linear-gradient(#c8e1eb,#c8e1eb)] bg-[length:cover,auto_1140px,cover] bg-[position:center,center_1rem,center] bg-no-repeat pb-24 pt-20 md:bg-[length:cover,100%_auto,cover]"
     >
       <div class="mx-auto flex h-full max-w-4xl items-center justify-end px-5">
         <Button
