@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     '/archief.php': { redirect: '/nieuws' },
     '/contact.php': { redirect: '/contact' },
     '/hetteam.php': { redirect: '/ontdek' },
+    '/index.php': { redirect: '/' },
     '/leren': { redirect: '/aanbod' },
     '/mijnaanpak.php': { redirect: '/aanbod' },
     '/opleidingen.php': { redirect: '/aanbod' },
