@@ -54,6 +54,10 @@ export default defineNuxtConfig({
     '/opleidingen.php': { redirect: '/aanbod' },
     '/res/docs/privacyreglement-koeching-2020.pdf': { redirect: '/privacyreglement' },
     '/res/docs/web-privacy-policy-koeching-2020.pdf': { redirect: '/privacyverklaring' },
+    '/res/docs/Artikel%20Balans%20Magazine%20Therapie%20met%20dieren.pdf': {
+      redirect:
+        'https://res.cloudinary.com/dac2obdby/image/upload/v1681914187/Artikel_Balans_Magazine_Therapie_met_dieren_258953e423.pdf',
+    },
     '/tarieven.php': { redirect: '/tarieven' },
     '/therapie': { redirect: '/aanbod' },
     '/workshops.php': { redirect: '/aanbod' },
