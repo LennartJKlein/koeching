@@ -72,6 +72,34 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         class="relative -mx-4 overflow-hidden bg-[url(~/assets/svg/paddock-from-above.svg),linear-gradient(#C19E6B,#C19E6B)] bg-[length:auto_1140px,cover] bg-[position:left_3rem,center_20vw] bg-no-repeat pb-10 pt-[260px] md:bg-[length:100%_auto,cover] md:pt-[30vw] lg:pt-[25vw]"
       >
         <div class="relative mx-auto max-w-5xl px-4">
+          <template v-if="programs.length">
+            <PageH2 class="text-center">Trajecten</PageH2>
+            <p class="mx-auto max-w-xl text-center">
+              We gaan met je persoonlijke hulpvraag aan de slag. We kijken samen hoeveel
+              sessies je nodig hebt en welke methodes en interventies daarbij passen.
+            </p>
+            <div
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
+              role="list"
+            >
+              <PaperCard
+                v-for="program in programs"
+                :label="`Lees meer over ${program.attributes.name}`"
+                :image="
+                  program.attributes.thumbnail.data &&
+                  program.attributes.thumbnail.data.attributes.url
+                "
+                placeholder="method"
+                role="listitem"
+                :title="program.attributes.name"
+                :to="`/aanbod/trajecten/${program.attributes.slug}`"
+                class="w-9/12 flex-shrink-0 snap-start md:w-auto"
+                color="white"
+                modal="programModal"
+              />
+            </div>
+          </template>
+
           <template v-if="trainings.length">
             <PageH2 class="text-center">(Groeps)trainingen</PageH2>
             <p class="mx-auto max-w-xl text-center">
@@ -155,33 +183,6 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 class="w-11/12 flex-shrink-0 snap-start md:w-auto"
                 color="white"
                 modal="seminarModal"
-              />
-            </div>
-          </template>
-          <template v-if="programs.length">
-            <PageH2 class="text-center">Trajecten</PageH2>
-            <p class="mx-auto max-w-xl text-center">
-              We gaan met je persoonlijke hulpvraag aan de slag. We kijken samen hoeveel
-              sessies je nodig hebt en welke methodes en interventies daarbij passen.
-            </p>
-            <div
-              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
-              role="list"
-            >
-              <PaperCard
-                v-for="program in programs"
-                :label="`Lees meer over ${program.attributes.name}`"
-                :image="
-                  program.attributes.thumbnail.data &&
-                  program.attributes.thumbnail.data.attributes.url
-                "
-                placeholder="method"
-                role="listitem"
-                :title="program.attributes.name"
-                :to="`/aanbod/trajecten/${program.attributes.slug}`"
-                class="w-9/12 flex-shrink-0 snap-start md:w-auto"
-                color="white"
-                modal="programModal"
               />
             </div>
           </template>
