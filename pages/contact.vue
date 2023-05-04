@@ -79,17 +79,19 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
     <section
       class="mx-auto max-w-3xl bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat px-5 py-24"
     >
-      <PageH2 class="mb-8 text-center text-brown-200 sm:mb-12">Gegevens</PageH2>
+      <PageH2 class="mb-8 text-center text-brown-200 sm:mb-12 lg:text-5xl"
+        >Gegevens</PageH2
+      >
       <div class="sm:columns-2">
-        <div class="mb-3">
+        <div class="mb-3 md:text-lg xl:text-xl">
           <dt class="font-bold text-brown-200">E-mail:</dt>
           <dd class="text-brown-50">info@koeching.nl</dd>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 md:text-lg xl:text-xl">
           <dt class="font-bold text-brown-200">Telefoon:</dt>
           <dd class="text-brown-50">06-53906916</dd>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 md:text-lg xl:text-xl">
           <dt class="font-bold text-brown-200">Adres:</dt>
           <dd class="text-brown-50">
             Lekdijk 13<br />
@@ -97,12 +99,21 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
           </dd>
         </div>
         <Button
-          class="my-8"
+          class="my-8 hidden lg:flex"
           color="brown-200"
           label="Lidnummers en certificeringen"
-          small
           to="/lidmaatschappen-en-certificeringen"
           squared
+        >
+          Lidnummers en certificeringen
+        </Button>
+        <Button
+          class="my-8 lg:hidden"
+          color="brown-200"
+          label="Lidnummers en certificeringen"
+          to="/lidmaatschappen-en-certificeringen"
+          squared
+          small
         >
           Lidnummers en certificeringen
         </Button>
