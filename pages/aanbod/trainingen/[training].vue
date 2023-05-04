@@ -237,7 +237,7 @@ const { trimImgSrc } = useImgUtils()
               @click="toggleDetails(moment.title)"
             >
               <span class="pl-2 text-lg font-bold text-brown-500">
-                {{ moment.title }}
+                {{ moment.title || 'Bekijk deze groep' }}
               </span>
               <Button
                 class="mx-auto sm:ml-auto sm:mr-0"
@@ -274,12 +274,13 @@ const { trimImgSrc } = useImgUtils()
                       {{ readableDate(moment.end_date) }}
                     </dd>
                   </div>
-                  <h4 class="mb-0 mt-3 font-bold">Meer info:</h4>
-                  <div
-                    v-if="moment.description"
-                    :class="contentClasses"
-                    v-html="$sanitize(moment.description)"
-                  />
+                  <template v-if="moment.description">
+                    <h4 class="mb-0 mt-3 font-bold">Meer info:</h4>
+                    <div
+                      :class="contentClasses"
+                      v-html="$sanitize(moment.description)"
+                    />
+                  </template>
                   <Button
                     class="ml-auto mr-0 w-min"
                     small

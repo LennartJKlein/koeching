@@ -121,10 +121,12 @@ const { trimImgSrc } = useImgUtils()
         <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Trajecten met deze interventie
         </h4>
-        <div class="mb-12 flex items-start justify-start gap-3 md:mt-4 md:gap-4">
+        <div
+          class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
+        >
           <Button
             v-for="program in intervention.attributes.programs.data"
-            class="text-white"
+            class="w-min-fit text-white"
             :label="`Meer info over ${program.attributes.name}`"
             small
             squared
