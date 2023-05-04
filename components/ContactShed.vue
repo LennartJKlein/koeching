@@ -12,6 +12,7 @@ const horse = ref('hidden') // hidden, connecting
 const smartphone = ref('passive') // passive, ringing
 const telephone = ref('passive') // passive, ringing
 const envelop = ref('hidden') // hidden, stacked
+const number = ref('hidden') // hidden, visible
 
 watch(
   () => props.channel,
@@ -26,12 +27,16 @@ watch(
               cow.value = 'alert-left'
               setTimeout(() => {
                 cow.value = 'waving'
+                setTimeout(() => {
+                  number.value = 'visible'
+                }, 500)
               }, 1500)
             }, 1500)
           }, 1000)
         }, 200)
         break
       case 'email':
+        number.value = 'hidden'
         setTimeout(() => {
           envelop.value = 'stacked'
           setTimeout(() => {
@@ -43,6 +48,7 @@ watch(
         }, 200)
         break
       case 'whatsapp':
+        number.value = 'hidden'
         setTimeout(() => {
           smartphone.value = 'ringing'
           setTimeout(() => {
@@ -63,6 +69,15 @@ watch(
   <div
     class="relative flex aspect-[433/169] items-stretch justify-center overflow-hidden"
   >
+    <SpeechBubble
+      color="white"
+      :class="[
+        'absolute bottom-auto z-10 mb-[10%] hidden h-fit w-fit scale-y-0 self-center text-2xl font-bold tracking-widest shadow-[0_25px_50px_-12px_rgb(0_0_0/0.75)] transition-transform duration-500 md:block',
+        number === 'visible' && 'scale-y-100',
+      ]"
+    >
+      06-53906916
+    </SpeechBubble>
     <svg
       :class="{
         'absolute inset-0 left-1/2 h-full origin-center -translate-x-1/2 transition-transform duration-[4s]': true,
@@ -3360,7 +3375,7 @@ watch(
         id="paard"
         :class="{
           'origin-[34%_79%] transition-all duration-700': true,
-          'hidden translate-x-[5%] -translate-y-[5%] -rotate-45 scale-50 opacity-0':
+          'hidden -translate-y-[5%] translate-x-[5%] -rotate-45 scale-50 opacity-0':
             horse == 'hidden',
         }"
       >
