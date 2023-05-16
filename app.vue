@@ -59,6 +59,10 @@ const footerLinks = [
 ]
 
 const subfooterLinks = [
+  {
+    path: 'https://de-nfg.nl/niet-tevreden-over-je-hulpverlener.html',
+    label: 'Klacht melden',
+  },
   { path: '/algemene-voorwaarden', label: 'Algemene voorwaarden' },
   { path: '/privacyreglement', label: 'Privacyregelement' },
   { path: '/privacyverklaring', label: 'Privacyverklaring website' },

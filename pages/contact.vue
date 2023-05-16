@@ -126,5 +126,12 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
         />
       </div>
     </section>
+    <a
+      href="https://de-nfg.nl/niet-tevreden-over-je-hulpverlener.html"
+      class="mt-20"
+      target="_blank"
+    >
+      Ik heb een klacht
+    </a>
   </main>
 </template>
