@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiTrainingTraining } from '~/types/schemas'
+import type { ApiTrainingTraining } from '@/typess'
 import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()

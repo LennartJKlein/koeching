@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiFarmFarm } from '~/types/schemas'
+import type { ApiFarmFarm } from '@/typess'
 
 const { find } = useStrapi()
 const { data } = (await find<ApiFarmFarm>('farm', {

@@ -5,7 +5,7 @@ import type {
   ApiProgramProgram,
   ApiSeminarSeminar,
   ApiTrainingTraining,
-} from '~/types/schemas'
+} from '@/typess'
 
 useHead({
   title: 'Aanbod | Koeching, kinder- en jeugdtherapie op de boerderij',
@@ -79,7 +79,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               sessies je nodig hebt en welke methodes en interventies daarbij passen.
             </p>
             <div
-              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
+              class="-mx-4 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
               role="list"
             >
               <PaperCard
@@ -98,6 +98,17 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 modal="programModal"
               />
             </div>
+            <Button
+              class="mb-16"
+              color="brown-200"
+              label="Lees meer over onze werkwijze"
+              to="/aanbod/trajecten/werkwijze"
+              aria-controls="processModal"
+              small
+              squared
+            >
+              Werkwijze na aanmelding
+            </Button>
           </template>
 
           <template v-if="trainings.length">
@@ -232,7 +243,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           </div>
         </div>
         <p
-          class="mx-auto my-12 max-w-sm text-center font-bold text-white md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
+          class="mx-auto my-12 max-w-sm px-4 text-center font-bold text-white md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
         >
           Geen idee waarmee jij geholpen zou zijn? Leg je vraag gratis voor aan onze
           coaches en krijg een advies op maat!

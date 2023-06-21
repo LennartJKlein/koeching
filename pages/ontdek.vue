@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiAnimalAnimal, ApiCoachCoach } from '~/types/schemas'
+import type { ApiAnimalAnimal, ApiCoachCoach } from '@/typess'
 
 useHead({
   title: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',
@@ -94,7 +94,7 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
             <PageH2 class="mx-auto max-w-4xl text-white md:mt-44"> De dieren </PageH2>
             <div class="-mx-4">
               <div
-                class="border-fence mx-auto mb-36 mt-3 grid max-w-7xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:mt-8"
+                class="border-fence mx-auto mb-32 mt-3 grid max-w-7xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:mt-8"
                 role="list"
               >
                 <PhotoCard

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiLegalLegal } from '~/types/schemas'
+import type { ApiLegalLegal } from '@/typess'
 
 useHead({
   title: 'Privacyreglement | Koeching, kinder- en jeugdtherapie op de boerderij',

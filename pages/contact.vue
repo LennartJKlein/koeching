@@ -79,9 +79,9 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
     <section
       class="mx-auto max-w-3xl bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat px-5 py-24"
     >
-      <PageH2 class="mb-8 text-center text-brown-200 sm:mb-12 lg:text-5xl"
-        >Gegevens</PageH2
-      >
+      <PageH2 class="mb-8 text-center text-brown-200 sm:mb-12 lg:text-5xl">
+        Gegevens
+      </PageH2>
       <div class="sm:columns-2">
         <div class="mb-3 md:text-lg xl:text-xl">
           <dt class="font-bold text-brown-200">E-mail:</dt>
@@ -126,12 +126,29 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
         />
       </div>
     </section>
-    <a
-      href="https://de-nfg.nl/niet-tevreden-over-je-hulpverlener.html"
-      class="mx-auto mt-20 text-center text-brown-200 underline"
-      target="_blank"
-    >
-      Ik heb een klacht
-    </a>
+    <section class="my-12 flex flex-wrap justify-center gap-3">
+      <Button
+        class="w-fit"
+        color="brown-200"
+        label="Lees meer over onze werkwijze"
+        to="/aanbod/trajecten/werkwijze"
+        aria-controls="processModal"
+        small
+        squared
+      >
+        Werkwijze na aanmelding voor traject
+      </Button>
+      <Button
+        class="w-fit"
+        color="brown-200"
+        label="Ik heb een klacht"
+        to="https://de-nfg.nl/niet-tevreden-over-je-hulpverlener.html"
+        small
+        target="_blank"
+        squared
+      >
+        Ik heb een klacht
+      </Button>
+    </section>
   </main>
 </template>

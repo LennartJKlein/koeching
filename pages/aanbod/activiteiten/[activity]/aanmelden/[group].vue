@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiActivityActivity } from '~/types/schemas'
+import type { ApiActivityActivity } from '@/typess'
 
 const { find } = useStrapi()
 const route = useRoute()

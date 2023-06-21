@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiProgramProgram } from '~/types/schemas'
+import type { ApiProgramProgram } from '@/typess'
 
 const { find } = useStrapi()
 const route = useRoute()

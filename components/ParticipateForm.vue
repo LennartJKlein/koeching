@@ -6,7 +6,7 @@ import type {
   ApiSeminarSeminar,
   ApiTrainingTraining,
   DetailsMoment,
-} from '~/types/schemas'
+} from '@/typess'
 
 // Props
 const props = withDefaults(
@@ -304,7 +304,7 @@ async function fetchAddress(postalCodeInput: String, streetNrInput: String) {
     </FormKit>
     <p
       v-if="isSubmitSuccesfull === false"
-      class="border-pencil-black mb-6 rounded-lg bg-red-400 py-1 px-2 font-bold text-white"
+      class="border-pencil-black mb-6 rounded-lg bg-red-400 px-2 py-1 font-bold text-white"
     >
       Er is iets mis gegaan bij het versturen van je aanmelding. Probeer het nog eens.
     </p>

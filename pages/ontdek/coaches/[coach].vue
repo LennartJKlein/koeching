@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiCoachCoach } from '~/types/schemas'
+import type { ApiCoachCoach } from '@/typess'
 
 const { find } = useStrapi()
 const route = useRoute()

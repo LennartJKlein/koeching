@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiMessageMessage } from '~/types/schemas'
+import type { ApiMessageMessage } from '@/typess'
 
 useHead({
   title: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',

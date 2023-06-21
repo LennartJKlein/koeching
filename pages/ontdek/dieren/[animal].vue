@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiAnimalAnimal } from '~/types/schemas'
+import type { ApiAnimalAnimal } from '@/typess'
 
 const { find } = useStrapi()
 const route = useRoute()

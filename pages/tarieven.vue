@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiPricingPricing, ApiReimbursementReimbursement } from '~/types/schemas'
+import type { ApiPricingPricing, ApiReimbursementReimbursement } from '@/typess'
 
 useHead({
   title: 'Tarieven | Koeching, kinder- en jeugdtherapie op de boerderij',

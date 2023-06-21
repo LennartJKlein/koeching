@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiHomepageHomepage } from '~/types/schemas'
+import type { ApiHomepageHomepage } from '@/typess'
 
 const { find } = useStrapi()
 const { data } = (await find<ApiHomepageHomepage>('homepage', {

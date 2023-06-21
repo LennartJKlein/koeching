@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiActivityActivity } from '~/types/schemas'
+import type { ApiActivityActivity } from '@/typess'
 import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
