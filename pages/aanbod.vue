@@ -98,17 +98,6 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 modal="programModal"
               />
             </div>
-            <Button
-              class="mb-16"
-              color="brown-200"
-              label="Lees meer over onze werkwijze"
-              to="/aanbod/trajecten/werkwijze"
-              aria-controls="processModal"
-              small
-              squared
-            >
-              Werkwijze na aanmelding
-            </Button>
           </template>
 
           <template v-if="trainings.length">

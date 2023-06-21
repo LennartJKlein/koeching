@@ -117,6 +117,17 @@ const { trimImgSrc } = useImgUtils()
         :class="contentClasses"
         v-html="$sanitize(program.attributes.content)"
       />
+      <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
+        Procedure van een traject
+      </h4>
+      <NuxtLink
+        class="mb-12 font-bold md:mt-4"
+        label="Meer info over werkwijze en procedure"
+        to="/aanbod/trajecten/werkwijze-en-procedure"
+      >
+        <span class="underline">Bekijk onze werkwijze</span>
+        <span class="ml-2 text-xl no-underline">+</span>
+      </NuxtLink>
       <template v-if="program.attributes.interventions.data.length">
         <h4 class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400">
           Interventies in dit traject

@@ -130,17 +130,6 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
       <Button
         class="w-fit"
         color="brown-200"
-        label="Lees meer over onze werkwijze"
-        to="/aanbod/trajecten/werkwijze"
-        aria-controls="processModal"
-        small
-        squared
-      >
-        Werkwijze na aanmelding voor traject
-      </Button>
-      <Button
-        class="w-fit"
-        color="brown-200"
         label="Ik heb een klacht"
         to="https://de-nfg.nl/niet-tevreden-over-je-hulpverlener.html"
         small

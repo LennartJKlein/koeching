@@ -51,7 +51,6 @@ useHead({
 
 const footerLinks = [
   { path: '/contact', label: 'Contact' },
-  { path: '/aanbod/trajecten/werkwijze', label: 'Werkwijze trajecten' },
   { path: '/tarieven', label: 'Tarieven en vergoedingen' },
   {
     path: '/lidmaatschappen-en-certificeringen',
