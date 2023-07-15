@@ -6,7 +6,7 @@ import type {
   ApiSeminarSeminar,
   ApiTrainingTraining,
   DetailsMoment,
-} from '@/typess'
+} from '@/types'
 
 // Props
 const props = withDefaults(

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiMembershipMembership } from '@/typess'
+import type { ApiMembershipMembership } from '@/types'
 
 useHead({
   title: 'Lidmaatschappen en certificeringen | Koeching',

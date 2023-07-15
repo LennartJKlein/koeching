@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiTrainingTraining } from '@/typess'
+import type { ApiTrainingTraining } from '@/types'
 import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
@@ -330,6 +330,10 @@ const { trimImgSrc } = useImgUtils()
             Contact opnemen
           </Button>
         </div>
+        <NewsletterSubscribe
+          heading="Op de hoogte blijven van aankomende trainingen? Meld je aan voor de nieuwsbrief"
+          class="mx-auto my-8"
+        />
       </section>
     </Modal>
     <NuxtPage />

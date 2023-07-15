@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiTrainingTraining } from '@/typess'
+import type { ApiTrainingTraining } from '@/types'
 
 const { find } = useStrapi()
 const route = useRoute()

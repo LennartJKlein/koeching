@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import type { ApiActivityActivity } from '@/typess'
+import type { ApiActivityActivity } from '@/types'
 import { useDateFormat } from '@vueuse/core'
 
 const { find } = useStrapi()
@@ -329,6 +329,10 @@ const { trimImgSrc } = useImgUtils()
             Contact opnemen
           </Button>
         </div>
+        <NewsletterSubscribe
+          heading="Op de hoogte blijven van aankomende activiteiten? Meld je aan voor de nieuwsbrief"
+          class="mx-auto my-8"
+        />
       </section>
     </Modal>
     <NuxtPage />

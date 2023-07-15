@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiMessageMessage } from '@/typess'
+import type { ApiMessageMessage } from '@/types'
 
 useHead({
   title: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',
@@ -25,6 +25,7 @@ const { find } = useStrapi()
 const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
   populate: '*',
   sort: 'publishedAt:desc',
+  pagination: { start: 0, limit: 5 },
 })
 </script>
 
@@ -53,6 +54,7 @@ const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
           :image="article.attributes.media.data"
           :title="article.attributes.title"
         />
+        <NewsletterSubscribe class="mx-auto" />
       </div>
     </div>
   </main>

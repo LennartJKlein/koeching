@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiAnimalAnimal, ApiCoachCoach } from '@/typess'
+import type { ApiAnimalAnimal, ApiCoachCoach } from '@/types'
 
 useHead({
   title: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',

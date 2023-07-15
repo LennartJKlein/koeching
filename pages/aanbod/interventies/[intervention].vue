@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiInterventionIntervention } from '@/typess'
+import type { ApiInterventionIntervention } from '@/types'
 
 const { find } = useStrapi()
 const route = useRoute()

@@ -126,7 +126,13 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
         />
       </div>
     </section>
-    <section class="my-12 flex flex-wrap justify-center gap-3">
+    <section class="my-8 px-6">
+      <NewsletterSubscribe
+        heading="Op de hoogte blijven van wat we doen? Meld je aan voor de nieuwsbrief"
+        class="mx-auto"
+      />
+    </section>
+    <section class="mb-12 mt-28 flex flex-wrap justify-center gap-3">
       <Button
         class="w-fit"
         color="brown-200"
