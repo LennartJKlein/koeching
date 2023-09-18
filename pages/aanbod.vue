@@ -79,19 +79,19 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               sessies je nodig hebt en welke methodes en interventies daarbij passen.
             </p>
             <Button
-              class="mx-auto mt-3 w-fit"
-              color="brown-200"
+              class="mx-auto my-3 w-fit"
+              color="sky-400"
               label="Meer info over werkwijze en procedure"
               to="/aanbod/trajecten/werkwijze-en-procedure"
             >
-              Onze werkwijze
+              Wat is de werkwijze?
               <Icon
                 id="dots"
                 class="ml-3 fill-white"
               />
             </Button>
             <div
-              class="-mx-4 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
               role="list"
             >
               <PaperCard

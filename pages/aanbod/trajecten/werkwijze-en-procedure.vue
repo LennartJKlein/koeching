@@ -27,7 +27,7 @@ useHead({
 
 const goBack = function () {
   const router = useRouter()
-  router.push('/ontdek')
+  router.push('/aanbod')
 }
 
 const { classes: contentClasses } = useContentStyles()
