@@ -320,6 +320,7 @@ const { trimImgSrc } = useImgUtils()
             color="sky-400"
             class="flex-shrink-0"
             label="Contact opnemen"
+            to="/contact"
           >
             <Icon
               id="send"
