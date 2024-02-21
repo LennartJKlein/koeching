@@ -98,7 +98,7 @@ async function fetchAddress(postalCodeInput: String, streetNrInput: String) {
       }
     }>(
       () =>
-        `https://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer+${streetNr}`
+        `https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?fq=postcode:${postalCode}&fq=huisnummer+${streetNr}`
     )
     const result = data.value?.response?.docs?.[0]
     if (result) {

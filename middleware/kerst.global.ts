@@ -1,5 +1,4 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  console.log(to, from)
   if (to.path === '/kerst') {
     if (process.client)
       window.location.href =
