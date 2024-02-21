@@ -8,11 +8,11 @@ const { data } = (await find<ApiFarmFarm>('farm', {
 const farm: ApiFarmFarm = data
 
 useHead({
-  title: `${farm.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+  title: `${farm.attributes.name} | Koeching, therapie op de boerderij`,
   meta: [
     {
       property: 'og:title',
-      content: `${farm.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+      content: `${farm.attributes.name} | Koeching, therapie op de boerderij`,
     },
     {
       name: 'description',

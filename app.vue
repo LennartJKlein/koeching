@@ -13,21 +13,21 @@ useHead({
     { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
     { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#96bf15' },
   ],
-  title: 'Koeching | kinder- en jeugdtherapie op de boerderij',
+  title: 'Koeching | therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Koeching | kinder- en jeugdtherapie op de boerderij',
+      content: 'Koeching | therapie op de boerderij',
     },
     {
       name: 'description',
       content:
-        'Kinder- en jeugdtherapie op de boerderij. Therapie met behulp van dieren in Amerongen.',
+        'Therapie voor het hele gezin, met behulp van de dieren op de boerderij in Amerongen.',
     },
     {
       property: 'og:description',
       content:
-        'Kinder- en jeugdtherapie op de boerderij. Therapie met behulp van dieren in Amerongen.',
+        'Therapie voor het hele gezin, met behulp van de dieren op de boerderij in Amerongen.',
     },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: route.fullPath },
@@ -68,12 +68,7 @@ const subfooterLinks = [
   { path: '/privacyverklaring', label: 'Privacyverklaring website' },
 ]
 
-// Scroll events
 const viewportYCenter = ref(0)
-// const { y } = useWindowScroll()
-// watch(y, async () => {
-//   viewportYCenter.value = (y.value / window.innerHeight) * 100 + 50
-// })
 </script>
 
 <template>

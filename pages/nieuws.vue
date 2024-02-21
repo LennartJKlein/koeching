@@ -2,11 +2,11 @@
 import type { ApiMessageMessage } from '@/types'
 
 useHead({
-  title: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Nieuws | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Nieuws | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Nieuws | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

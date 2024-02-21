@@ -2,11 +2,11 @@
 import type { ApiAnimalAnimal, ApiCoachCoach } from '@/types'
 
 useHead({
-  title: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Ontdekken | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Ontdekken | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Ontdekken | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

@@ -8,11 +8,11 @@ const { data } = (await find<ApiProcessProcess>('process', {
 const process: ApiProcessProcess = data
 
 useHead({
-  title: `${process.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+  title: `${process.attributes.name} | Koeching, therapie op de boerderij`,
   meta: [
     {
       property: 'og:title',
-      content: `${process.attributes.name} | Koeching, kinder- en jeugdtherapie op de boerderij`,
+      content: `${process.attributes.name} | Koeching, therapie op de boerderij`,
     },
     {
       name: 'description',

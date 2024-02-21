@@ -2,11 +2,11 @@
 import type { ApiLegalLegal } from '@/types'
 
 useHead({
-  title: 'Privacyreglement | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Privacyreglement | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Privacyreglement | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Privacyreglement | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

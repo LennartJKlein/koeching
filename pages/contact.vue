@@ -1,10 +1,10 @@
 <script setup lang="ts">
 useHead({
-  title: 'Contact | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Contact | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Contact | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Contact | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

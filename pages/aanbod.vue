@@ -8,11 +8,11 @@ import type {
 } from '@/types'
 
 useHead({
-  title: 'Aanbod | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Aanbod | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Aanbod | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Aanbod | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

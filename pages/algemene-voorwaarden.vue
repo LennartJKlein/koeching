@@ -2,12 +2,11 @@
 import type { ApiLegalLegal } from '@/types'
 
 useHead({
-  title: 'Algemene Voorwaarden | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Algemene Voorwaarden | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content:
-        'Algemene Voorwaarden | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Algemene Voorwaarden | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',

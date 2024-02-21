@@ -3,11 +3,11 @@ import { Ref, ref } from 'vue'
 import type { ApiPricingPricing, ApiReimbursementReimbursement } from '@/types'
 
 useHead({
-  title: 'Tarieven | Koeching, kinder- en jeugdtherapie op de boerderij',
+  title: 'Tarieven | Koeching, therapie op de boerderij',
   meta: [
     {
       property: 'og:title',
-      content: 'Tarieven | Koeching, kinder- en jeugdtherapie op de boerderij',
+      content: 'Tarieven | Koeching, therapie op de boerderij',
     },
     {
       name: 'description',
@@ -154,10 +154,9 @@ const toggleDetails = (description: string) => {
           <PageH2 class="text-white">Vergoeding door verzekering</PageH2>
           <p class="mb-8 mt-4 text-white">
             De beroepsvereniging heeft overzichten opgesteld waarop u kunt zien welke
-            ziektekostenverzekeraars de kosten van de kinder- en jeugdtherapeut
-            (gedeeltelijk) vergoeden. Aan deze lijsten kunnen geen rechten worden
-            ontleend. We raden aan om voor aanmelding te informeren bij uw
-            zorgverzekeraar.
+            ziektekostenverzekeraars de kosten van de therapeut (gedeeltelijk) vergoeden.
+            Aan deze lijsten kunnen geen rechten worden ontleend. We raden aan om voor
+            aanmelding te informeren bij uw zorgverzekeraar.
           </p>
           <Button
             v-for="file in reimbursement.attributes.files.data"
