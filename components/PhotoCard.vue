@@ -23,8 +23,8 @@ const { trimImgSrc } = useImgUtils()
       <h5
         v-if="title"
         :class="[
-          'font-display font-bold leading-none text-white ',
-          titleSmall ? 'text-2xl' : ' text-3xl',
+          'font-display font-bold leading-none text-white',
+          titleSmall ? 'text-xl' : ' text-2xl',
         ]"
         style="hyphens: auto"
       >

@@ -67,7 +67,7 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
           <template v-if="coaches.length > 0">
             <PageH2 class="mt-72 text-white md:mt-[28vw]"> De coach </PageH2>
             <div
-              class="-mx-4 mb-16 mt-5 grid items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid-cols-2"
+              class="-mx-4 mb-16 mt-5 grid items-start justify-start gap-4 px-4 pb-4 md:grid-cols-2"
               role="list"
             >
               <PhotoCard
@@ -117,7 +117,7 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
           <template v-if="coaches.length > 1">
             <PageH2 class="text-white md:mt-32"> Andere praktijken </PageH2>
             <div
-              class="-mx-4 mb-16 mt-5 grid grid-cols-2 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4"
+              class="-mx-4 mb-16 mt-5 grid items-start justify-start gap-4 px-4 pb-4 md:grid-cols-2"
               role="list"
             >
               <PhotoCard
