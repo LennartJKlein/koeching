@@ -50,7 +50,7 @@ const nextVideo = () => {
       :images="heroImages"
       class="bg-sky-300"
     >
-      <div
+      <!-- <div
         class="-mb-[6vh] -ml-[5%] -mr-[10%] flex overflow-hidden pt-12 transition-all md:ml-0 md:mr-0"
       >
         <img
@@ -58,7 +58,7 @@ const nextVideo = () => {
           src="~/assets/svg/animals-inviting-hug.svg"
           alt="Dieren van Koeching"
         />
-      </div>
+      </div> -->
       <figure class="relative z-10 mb-16 w-full max-w-[80vh] px-8 md:mb-12">
         <img
           class="w-full"
