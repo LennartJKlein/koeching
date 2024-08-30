@@ -116,7 +116,7 @@ const viewportYCenter = ref(0)
   >
     <div class="relative z-10 bg-[url(~/assets/svg/cow-spots.svg)] bg-cover">
       <img
-        src="~/assets/svg/logo-full.svg"
+        src="~/assets/svg/logo.svg"
         class="mx-auto w-40 opacity-60 brightness-75 drop-shadow-2xl sepia"
       />
       <nav class="pb-16 pt-10">

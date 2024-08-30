@@ -35,7 +35,7 @@ watch(counter, (iteration) => {
         class="absolute inset-0 h-full w-full overflow-hidden"
       >
         <NuxtImg
-          class="h-full w-full origin-top animate-zoom-in-once object-cover will-change-transform md:origin-left"
+          class="h-full w-full origin-bottom animate-zoom-in-once object-cover will-change-transform"
           :placeholder="[1920, 1920, 10]"
           :src="trimImgSrc(src)"
           height="1920"
@@ -44,9 +44,7 @@ watch(counter, (iteration) => {
         />
       </figure>
     </TransitionGroup>
-    <div
-      class="relative z-20 flex h-full w-full grow flex-col justify-end md:justify-center"
-    >
+    <div class="relative z-20 flex h-full w-full grow flex-col justify-end">
       <slot />
     </div>
   </div>

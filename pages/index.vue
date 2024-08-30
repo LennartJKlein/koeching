@@ -50,16 +50,7 @@ const nextVideo = () => {
       :images="heroImages"
       class="bg-sky-300"
     >
-      <!-- <div
-        class="-mb-[6vh] -ml-[5%] -mr-[10%] flex overflow-hidden pt-12 transition-all md:ml-0 md:mr-0"
-      >
-        <img
-          class="w-full max-w-[80vh] animate-fly-in will-change-transform"
-          src="~/assets/svg/animals-inviting-hug.svg"
-          alt="Dieren van Koeching"
-        />
-      </div> -->
-      <figure class="relative z-10 mb-16 w-full max-w-[80vh] px-8 md:mb-12">
+      <figure class="relative z-10 mx-auto mb-16 w-9/12 max-w-[45vh] px-8 md:mb-24">
         <img
           class="w-full"
           src="~/assets/svg/logo.svg"
@@ -74,7 +65,7 @@ const nextVideo = () => {
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
           class="order-1 mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
-          src="~/assets/svg/dog-idea.svg"
+          src="~/assets/sketch-frames.png"
         />
         <p v-html="$sanitize(content.attributes.sales_text[0].body)" />
       </div>
@@ -100,7 +91,7 @@ const nextVideo = () => {
         <p v-html="$sanitize(content.attributes.sales_text[1].body)" />
         <img
           class="mr-10 w-1/2 max-w-xs object-contain sm:mr-0 sm:w-1/4"
-          src="~/assets/svg/dog-build.svg"
+          src="~/assets/sketch-puzzle.png"
         />
       </div>
     </section>
@@ -124,7 +115,7 @@ const nextVideo = () => {
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
           class="order-1 mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
-          src="~/assets/svg/dog-donkey-brick.svg"
+          src="~/assets/sketch-animals.png"
         />
         <p v-html="$sanitize(content.attributes.sales_text[2].body)" />
       </div>
