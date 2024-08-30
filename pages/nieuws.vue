@@ -11,12 +11,12 @@ useHead({
     {
       name: 'description',
       content:
-        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching!',
+        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching',
     },
     {
       property: 'og:description',
       content:
-        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching!',
+        'Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de laatste updates van Koeching',
     },
   ],
 })
@@ -40,7 +40,7 @@ const { data: articles = [] } = await find<ApiMessageMessage>('messages', {
         <PageTitle class="text-center text-white">Nieuws</PageTitle>
         <p class="mt-4 text-white sm:text-center lg:text-lg xl:text-xl">
           Op de boerderij Borreveld is het nooit saai. Hier lees, kijk en luister je de
-          laatste updates van Koeching!
+          laatste updates van Koeching
         </p>
       </div>
       <div
