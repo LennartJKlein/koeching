@@ -50,10 +50,10 @@ const nextVideo = () => {
       :images="heroImages"
       class="bg-sky-300"
     >
-      <figure class="relative z-10 mx-auto mb-16 w-9/12 max-w-[45vh] px-8 md:mb-24">
+      <figure class="relative z-10 mx-auto mb-16 w-9/12 max-w-[20vh] px-8 md:mb-24">
         <img
           class="w-full"
-          src="~/assets/svg/logo.svg"
+          src="~/assets/svg/logo-plate.svg"
           alt="Logo van Koeching"
         />
       </figure>
