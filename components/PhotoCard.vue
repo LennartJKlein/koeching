@@ -9,6 +9,7 @@ const props = defineProps({
   titleSmall: Boolean,
   to: String,
   modal: String,
+  wide: Boolean,
 })
 
 const { trimImgSrc } = useImgUtils()
@@ -31,7 +32,7 @@ const { trimImgSrc } = useImgUtils()
       </h5>
       <slot />
     </div>
-    <div class="absolute top-3 right-3">
+    <div class="absolute right-3 top-3">
       <Button
         v-if="to"
         :color="color"
@@ -48,7 +49,8 @@ const { trimImgSrc } = useImgUtils()
     </div>
     <figure
       :class="[
-        'aspect-[3/4] w-full overflow-hidden rounded-3xl bg-gray-800 bg-cover bg-center',
+        'w-full overflow-hidden rounded-3xl bg-gray-800 bg-cover bg-center',
+        wide ? 'aspect-video' : 'aspect-[3/4]',
         placeholder == 'animal' && 'bg-[url(~/assets/webp/animal-thumbnail.webp)]',
         placeholder == 'person' && 'bg-[url(~/assets/webp/person-thumbnail.webp)]',
         placeholder == 'method' && 'bg-[url(~/assets/webp/method-thumbnail.webp)]',
@@ -58,18 +60,18 @@ const { trimImgSrc } = useImgUtils()
     >
       <NuxtImg
         v-if="image"
+        :class="['w-full object-cover', wide ? 'aspect-video' : 'aspect-[3/4]']"
+        :height="wide ? 900 : 1200"
         :placeholder="[300, 600, 10]"
         :src="trimImgSrc(image)"
-        class="aspect-[3/4] w-full object-cover"
+        :width="wide ? 1600 : 600"
         fit="cover"
-        height="1200"
         provider="cloudinary"
         quality="100"
-        width="600"
       />
     </figure>
     <nuxt-link
-      class="absolute left-0 top-0 right-0 bottom-0 rounded-3xl"
+      class="absolute bottom-0 left-0 right-0 top-0 rounded-3xl"
       :to="to"
       tabindex="-1"
       aria-hidden="true"

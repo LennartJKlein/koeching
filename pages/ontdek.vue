@@ -41,10 +41,10 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
         class="mx-auto mt-10 max-w-2xl md:mt-20"
         color="sky-500"
       >
-        <PageTitle class="text-center">Ga op ontdekkingstocht</PageTitle>
+        <PageTitle class="text-center">Ontdek de praktijk</PageTitle>
         <p class="mt-1 text-center leading-snug sm:mt-2 sm:text-lg sm:leading-snug">
-          Maak kennis met alles en iedereen op boerderij Borreveld! Kom meer te weten over
-          de mensen, de boerderij en natuurlijk de lieve dieren!
+          Maak kennis met het leven op boerderij Borreveld. Kom meer te weten over de
+          coach, de boerderij en natuurlijk onze lieve dieren.
         </p>
       </SpeechBubble>
       <div
@@ -64,12 +64,10 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
             >
           </Button>
           <PageH2 class="mt-3 text-white"> De boerderij </PageH2>
-          <template v-if="coaches.length">
-            <PageH2 class="mt-[400px] text-white md:mt-[45vw] xl:mt-[35vw]">
-              De coaches
-            </PageH2>
+          <template v-if="coaches.length > 0">
+            <PageH2 class="mt-72 text-white md:mt-[28vw]"> De coach </PageH2>
             <div
-              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid md:grid-cols-4"
+              class="-mx-4 mb-16 mt-5 grid items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 md:grid-cols-2"
               role="list"
             >
               <PhotoCard
@@ -80,18 +78,19 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
                   coach.attributes.photos.data &&
                   coach.attributes.photos.data[0].attributes.url
                 "
+                wide
                 placeholder="person"
                 role="listitem"
                 :title="coach.attributes.name"
                 :to="`/ontdek/coaches/${coach.attributes.slug}`"
-                class="w-9/12 flex-shrink-0 snap-start sm:w-5/12 md:w-auto"
+                class="flex-shrink-0 snap-start"
                 color="white"
                 modal="coachModal"
               />
             </div>
           </template>
           <template v-if="animals.length">
-            <PageH2 class="mx-auto max-w-4xl text-white md:mt-44"> De dieren </PageH2>
+            <PageH2 class="mx-auto max-w-4xl text-white"> De dieren </PageH2>
             <div class="-mx-4">
               <div
                 class="border-fence mx-auto mb-32 mt-3 grid max-w-7xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:mt-8"
@@ -113,6 +112,31 @@ const { data: animals = [] } = await find<ApiAnimalAnimal>('animals', {
                   modal="animalModal"
                 />
               </div>
+            </div>
+          </template>
+          <template v-if="coaches.length > 1">
+            <PageH2 class="text-white md:mt-32"> Andere praktijken </PageH2>
+            <div
+              class="-mx-4 mb-16 mt-5 grid grid-cols-2 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4"
+              role="list"
+            >
+              <PhotoCard
+                v-for="coach in coaches.filter((coach) => coach.attributes.external)"
+                :description="coach.attributes.intro"
+                :label="`Lees meer over ${coach.attributes.name}`"
+                :image="
+                  coach.attributes.photos.data &&
+                  coach.attributes.photos.data[0].attributes.url
+                "
+                wide
+                placeholder="person"
+                role="listitem"
+                :title="coach.attributes.name"
+                :to="`/ontdek/coaches/${coach.attributes.slug}`"
+                class="flex-shrink-0 snap-start"
+                color="white"
+                modal="coachModal"
+              />
             </div>
           </template>
         </div>

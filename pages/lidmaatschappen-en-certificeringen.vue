@@ -11,12 +11,12 @@ useHead({
     {
       name: 'description',
       content:
-        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen hebben wij verschillende certificaten behaald en ons aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
+        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen heb ik verschillende certificaten behaald en is Koeching aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
     },
     {
       property: 'og:description',
       content:
-        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen hebben wij verschillende certificaten behaald en ons aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
+        'Om de kwaliteit van de coaching en bedrijfsvoering te garanderen heb ik verschillende certificaten behaald en is Koeching aangesloten bij verschillende verenigingen, organisaties en initiatievenen.',
     },
   ],
 })
@@ -42,8 +42,8 @@ const NuxtLink = resolveComponent('NuxtLink')
           Lidmaatschappen en certificeringen
         </PageTitle>
         <p class="mt-4 text-white sm:text-center lg:text-lg xl:text-xl">
-          Om de kwaliteit van de coaching en bedrijfsvoering te garanderen hebben wij
-          verschillende certificaten behaald en ons aangesloten bij verschillende
+          Om de kwaliteit van de coaching en bedrijfsvoering te garanderen heb ik
+          verschillende certificaten behaald en is Koeching aangesloten bij verschillende
           verenigingen, organisaties en initiatievenen.
         </p>
       </div>

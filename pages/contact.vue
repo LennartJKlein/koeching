@@ -76,6 +76,33 @@ const delayedContact = (newChannel: string, newUrl: string, milliseconds: number
         Bellen
       </Button>
     </div>
+    <Button
+      class="mx-auto mb-8 hidden lg:flex"
+      color="brown-200"
+      label="Hulp voor mijn kind"
+      to="https://www.passievoormensendier.nl/"
+      squared
+    >
+      Hulp voor mijn kind
+      <Icon
+        id="arrow-right"
+        class="ml-3 fill-white"
+      />
+    </Button>
+    <Button
+      class="mx-auto mb-8 lg:hidden"
+      color="brown-200"
+      label="Hulp voor mijn kind"
+      to="https://www.passievoormensendier.nl/"
+      squared
+      small
+    >
+      Hulp voor mijn kind
+      <Icon
+        id="arrow-right"
+        class="ml-3 fill-white"
+      />
+    </Button>
     <section
       class="mx-auto max-w-3xl bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat px-5 py-24"
     >

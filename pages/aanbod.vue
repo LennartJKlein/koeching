@@ -17,12 +17,12 @@ useHead({
     {
       name: 'description',
       content:
-        'Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de slag gaan met je hulpvraag. Wat past er bij jou?',
+        'Bij Koeching hebben we allerlei manieren om te helpen bij jouw hulpvraag. Waar kunnen we een begin maken?',
     },
     {
       property: 'og:description',
       content:
-        'Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de slag gaan met je hulpvraag. Wat past er bij jou?',
+        'Bij Koeching hebben we allerlei manieren om te helpen bij jouw hulpvraag. Waar kunnen we een begin maken?',
     },
   ],
 })
@@ -64,8 +64,8 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
       >
         <PageTitle class="text-center">Vind jouw aanpak</PageTitle>
         <p class="mt-1 text-center leading-snug sm:mt-2 sm:text-lg sm:leading-snug">
-          Bij Koeching hebben we allerlei manieren om met jou, je kind of gezin aan de
-          slag gaan met je hulpvraag. Wat past er bij jou?
+          Bij Koeching hebben we allerlei manieren om te helpen bij jouw hulpvraag. Waar
+          kunnen we een begin maken?
         </p>
       </SpeechBubble>
       <div
@@ -75,8 +75,9 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           <template v-if="programs.length">
             <PageH2 class="text-center">Trajecten</PageH2>
             <p class="mx-auto max-w-xl text-center">
-              We gaan met je persoonlijke hulpvraag aan de slag. We kijken samen hoeveel
-              sessies je nodig hebt en welke methodes en interventies daarbij passen.
+              Hierin gaan ik met je persoonlijke hulpvraag aan de slag. We kijken samen
+              hoeveel sessies je nodig hebt en welke methodes en interventies daarbij
+              passen.
             </p>
             <Button
               class="mx-auto my-3 w-fit"
@@ -91,7 +92,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               />
             </Button>
             <div
-              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-4"
+              class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 lg:grid lg:grid-cols-3"
               role="list"
             >
               <PaperCard
@@ -115,7 +116,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           <template v-if="trainings.length">
             <PageH2 class="text-center">(Groeps)trainingen</PageH2>
             <p class="mx-auto max-w-xl text-center">
-              In een aantal bijeenkomsten werk je via een werkboek aan je hulpvraag. Een
+              In een aantal bijeenkomsten werk je via een werkboek aan jouw hulpvraag. Een
               veilige omgeving waar je samen met anderen kunt groeien.
             </p>
             <div
@@ -145,8 +146,7 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           <template v-if="activities.length">
             <PageH2 class="text-center">Activiteiten</PageH2>
             <p class="mx-auto max-w-xl text-center">
-              Koeching biedt verschillende activiteiten voor zowel kinderen, jeugd,
-              volwassenen als gezinnen.
+              Koeching biedt verschillende activiteiten voor alle leeftijden.
             </p>
             <div
               class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
@@ -173,8 +173,8 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
           <template v-if="seminars.length">
             <PageH2 class="text-center">Lezingen</PageH2>
             <p class="mx-auto max-w-xl text-center">
-              Deze informatieavonden zijn dé manier om meer te leren over hoe we werken
-              met kinderen, jeugd, volwassenen en gezinnen.
+              Deze informatieavonden zijn dé manier om meer te leren over hoe ik werk en
+              wat je kunt verwachten.
             </p>
             <div
               class="-mx-4 mb-16 mt-5 flex snap-x snap-mandatory scroll-px-4 items-start justify-start gap-4 overflow-y-hidden overflow-x-scroll px-4 pb-4 pt-2 md:grid md:grid-cols-2"
@@ -198,8 +198,27 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
               />
             </div>
           </template>
+          <PageH2 class="text-center">Kinderen</PageH2>
+          <p class="mx-auto max-w-xl text-center">
+            Op zoek naar begeleiding voor jouw kind? Dan verwijs ik je graag door naar
+            mijn collega's via het samenwerkingsverband "Passie voor mens en dier". Ieder
+            van hen heeft een unieke werkwijze en kijk op de hulpvraag van je kind,
+            waarmee ze een breed palet aan hulp voor jouw kind bieden.
+          </p>
+          <Button
+            class="mx-auto my-3 w-fit"
+            color="sky-400"
+            label="Therapie voor kinderen"
+            to="https://www.passievoormensendier.nl"
+          >
+            Therapie voor kinderen
+            <Icon
+              id="arrow-right"
+              class="ml-3 fill-white"
+            />
+          </Button>
           <div
-            class="-mx-4 max-w-3xl bg-[url(~/assets/svg/paper-top.svg),url(~/assets/svg/paper-middle.svg),url(~/assets/svg/paper-bottom.svg)] bg-[length:100%_auto,100%_calc(100%-52vw),100%_auto] bg-[position:center_top,center_38vw,center_bottom] bg-no-repeat px-[10vw] pb-[8vw] pt-[9vw] drop-shadow-2xl md:mx-auto md:bg-[length:100%_auto,100%_calc(100%-380px),100%_auto] md:bg-[position:center_top,center_280px,center_bottom] lg:px-20 lg:pb-10 lg:pt-20"
+            class="-mx-4 mt-16 max-w-3xl bg-[url(~/assets/svg/paper-top.svg),url(~/assets/svg/paper-middle.svg),url(~/assets/svg/paper-bottom.svg)] bg-[length:100%_auto,100%_calc(100%-52vw),100%_auto] bg-[position:center_top,center_38vw,center_bottom] bg-no-repeat px-[10vw] pb-[8vw] pt-[9vw] drop-shadow-2xl md:mx-auto md:bg-[length:100%_auto,100%_calc(100%-380px),100%_auto] md:bg-[position:center_top,center_280px,center_bottom] lg:px-20 lg:pb-10 lg:pt-20"
             v-if="interventions.length"
           >
             <div>
@@ -207,9 +226,9 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
                 Interventies
               </h2>
               <p class="max-w-2xl text-sm text-gray-500 md:text-base lg:my-4">
-                Dit zijn alle methodes die we toepassen in de trajecten, trainingen,
+                Dit zijn alle methodes die ik toepas in de trajecten, trainingen,
                 activiteiten en informatieavonden. Als een bepaalde interventie je
-                aanspreekt, is het ook mogelijk ze als losse sessies te boeken!
+                aanspreekt, is het ook mogelijk om ze als losse sessies te boeken!
               </p>
               <ul class="mt-5 lg:mt-6">
                 <PaperRow
@@ -235,8 +254,8 @@ const { data: trainings = [] } = await find<ApiTrainingTraining>('trainings', {
         <p
           class="mx-auto my-12 max-w-sm px-4 text-center font-bold text-white md:mb-20 md:text-lg lg:mt-16 xl:mt-20"
         >
-          Geen idee waarmee jij geholpen zou zijn? Leg je vraag gratis voor aan onze
-          coaches en krijg een advies op maat!
+          Geen idee waarmee jij geholpen zou zijn? Leg je vraag gratis voor aan Annet en
+          krijg een advies op maat!
           <Button
             label="Neem contact op"
             class="mx-auto mt-5"

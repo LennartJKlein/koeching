@@ -38,7 +38,7 @@ const colorClasses: { [key: string]: string } = {
   <component
     :is="to ? NuxtLink : 'button'"
     :class="[
-      'border-x-none border-t-none group relative z-10 flex cursor-pointer select-none items-center justify-center border-b-transparent outline-none focus-visible:outline-dotted focus-visible:outline-black active:border-b-[4px]',
+      'border-x-none border-t-none group relative z-10 flex w-fit cursor-pointer select-none items-center justify-center border-b-transparent outline-none focus-visible:outline-dotted focus-visible:outline-black active:border-b-[4px]',
       squared ? 'rounded-lg' : 'rounded-3xl',
     ]"
     :to="to"

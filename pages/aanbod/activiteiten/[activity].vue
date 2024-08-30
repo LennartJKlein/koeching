@@ -142,7 +142,7 @@ const { trimImgSrc } = useImgUtils()
           <h4
             class="mb-3 mt-14 font-display text-2xl font-bold leading-none text-sky-400"
           >
-            Interventies die we toepassen
+            Interventies die ik toepas
           </h4>
           <div
             class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"

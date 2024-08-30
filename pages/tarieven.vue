@@ -155,7 +155,7 @@ const toggleDetails = (description: string) => {
           <p class="mb-8 mt-4 text-white">
             De beroepsvereniging heeft overzichten opgesteld waarop u kunt zien welke
             ziektekostenverzekeraars de kosten van de therapeut (gedeeltelijk) vergoeden.
-            Aan deze lijsten kunnen geen rechten worden ontleend. We raden aan om voor
+            Aan deze lijsten kunnen geen rechten worden ontleend. Ik raad aan om voor
             aanmelding te informeren bij uw zorgverzekeraar.
           </p>
           <Button

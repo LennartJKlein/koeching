@@ -110,7 +110,7 @@ const { trimImgSrc } = useImgUtils()
       />
       <template v-if="coach.attributes.programs.data.length">
         <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
-          Trajecten met deze coach
+          Deze trajecten begeleid ik
         </h4>
         <div
           class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
@@ -130,7 +130,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <template v-if="coach.attributes.trainings.data.length">
         <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
-          Trainingen door deze coach
+          Deze trainingen geef ik
         </h4>
         <div
           class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
@@ -150,7 +150,7 @@ const { trimImgSrc } = useImgUtils()
       </template>
       <template v-if="coach.attributes.seminars.data.length">
         <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-brown-200">
-          Informatieavonden met deze coach
+          Mijn informatieavonden
         </h4>
         <div
           class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"
@@ -171,7 +171,7 @@ const { trimImgSrc } = useImgUtils()
       <Divider color="sky-100" />
       <template v-if="coach.attributes.interventions.data.length">
         <h4 class="mb-3 mt-8 font-display text-2xl font-bold leading-none text-sky-400">
-          Interventies met deze coach
+          Ik beheers deze interventies
         </h4>
         <div
           class="mb-12 flex flex-wrap items-start justify-start gap-2 md:mt-4 md:gap-4"

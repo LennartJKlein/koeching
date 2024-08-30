@@ -149,9 +149,9 @@ const nextVideo = () => {
       <h2 class="mb-8 w-full text-center font-display text-4xl font-bold text-white">
         Een kijkje nemen bij Koeching
       </h2>
-      <div class="flex flex-wrap items-center justify-around gap-10 sm:flex-nowrap">
+      <div class="flex flex-wrap items-center justify-around gap-10 md:flex-nowrap">
         <Button
-          class="order-1 sm:order-none"
+          class="order-1 md:order-none"
           color="sky-400"
           label="Vorige video"
           squared
@@ -163,24 +163,19 @@ const nextVideo = () => {
           />
           vorige
         </Button>
-        <div class="relative w-full max-w-md overflow-hidden">
+        <div
+          class="relative aspect-video w-full max-w-2xl overflow-hidden rounded-xl border-2 border-black"
+        >
           <Transition name="static">
             <YouTube
-              class="absolute left-[7%] right-[6%] top-[27%] aspect-video overflow-hidden [&>iframe]:aspect-video [&>iframe]:w-full"
-              height="auto"
+              class="absolute inset-0 !h-full !w-full [&>iframe]:!h-full [&>iframe]:!w-full"
               :key="content.attributes.videos[activeVideo].url"
               :src="content.attributes.videos[activeVideo].url"
-              width="auto"
-              style="position: absolute"
             />
           </Transition>
-          <img
-            class="pointer-events-none relative w-full object-contain"
-            src="~/assets/svg/tv.svg"
-          />
         </div>
         <Button
-          class="order-2 sm:order-none"
+          class="order-2 md:order-none"
           color="sky-400"
           label="Volgende video"
           squared
