@@ -50,17 +50,17 @@ const nextVideo = () => {
       :images="heroImages"
       class="bg-sky-300"
     >
-      <figure class="relative z-10 mx-auto mb-16 w-9/12 max-w-[45vh] px-8 md:mb-24">
+      <figure class="relative z-10 mx-auto w-9/12 max-w-sm translate-y-1/2 px-8">
         <img
           class="w-full"
-          src="~/assets/svg/logo-plate.svg"
+          src="~/assets/svg/logo-full.svg"
           alt="Logo van Koeching"
         />
       </figure>
     </HeroSlider>
     <section
       v-if="content.attributes.sales_text[0]"
-      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
+      class="relative bg-brown-300 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat pb-32 pt-64 text-xl text-brown-700 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
@@ -85,7 +85,7 @@ const nextVideo = () => {
     </section>
     <section
       v-if="content.attributes.sales_text[1]"
-      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-600 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
+      class="relative bg-brown-500 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat py-32 text-xl text-brown-50 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <p v-html="$sanitize(content.attributes.sales_text[1].body)" />
