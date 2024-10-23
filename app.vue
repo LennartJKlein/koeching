@@ -115,11 +115,7 @@ const viewportYCenter = ref(0)
     ]"
   >
     <div class="relative z-10 bg-[url(~/assets/svg/cow-spots.svg)] bg-cover">
-      <img
-        src="~/assets/svg/logo.svg"
-        class="mx-auto w-40 opacity-60 brightness-75 drop-shadow-2xl sepia"
-      />
-      <nav class="pb-16 pt-10">
+      <nav class="pb-10">
         <ul class="mx-auto max-w-3xl px-3 text-center">
           <li v-for="link in footerLinks">
             <NuxtLink
@@ -131,6 +127,10 @@ const viewportYCenter = ref(0)
           </li>
         </ul>
       </nav>
+      <img
+        src="~/assets/svg/logo-full-mono.svg"
+        class="mx-auto w-40 pb-10 opacity-50 brightness-50 drop-shadow-2xl sepia"
+      />
     </div>
     <div class="bg-brown-700 pb-28 pt-10 text-center sm:pb-32 md:pb-40">
       <nav>

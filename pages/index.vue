@@ -60,12 +60,12 @@ const nextVideo = () => {
     </HeroSlider>
     <section
       v-if="content.attributes.sales_text[0]"
-      class="relative bg-brown-300 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat pb-32 pt-64 text-xl text-brown-700 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
+      class="relative bg-brown-100 bg-[url(~/assets/svg/mud-steps.svg)] bg-[length:auto_100%] bg-left-bottom bg-no-repeat pb-32 pt-64 text-xl text-brown-800 after:absolute after:-bottom-0.5 after:left-0 after:block after:h-2 after:w-full after:bg-[url(~/assets/svg/line-black.svg)] after:bg-[length:100%_100%] sm:bg-[length:100%_auto] 2xl:text-2xl"
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
-          class="order-1 mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
-          src="~/assets/sketch-frames.png"
+          class="order-1 mb-auto mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
+          src="~/assets/webp/sketch-frames.webp"
         />
         <p v-html="$sanitize(content.attributes.sales_text[0].body)" />
       </div>
@@ -91,7 +91,7 @@ const nextVideo = () => {
         <p v-html="$sanitize(content.attributes.sales_text[1].body)" />
         <img
           class="mr-10 w-1/2 max-w-xs object-contain sm:mr-0 sm:w-1/4"
-          src="~/assets/sketch-puzzle.png"
+          src="~/assets/webp/sketch-puzzle.webp"
         />
       </div>
     </section>
@@ -114,8 +114,8 @@ const nextVideo = () => {
     >
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
-          class="order-1 mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
-          src="~/assets/sketch-animals.png"
+          class="order-1 mb-auto mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
+          src="~/assets/svg/dog-donkey-brick.svg"
         />
         <p v-html="$sanitize(content.attributes.sales_text[2].body)" />
       </div>
