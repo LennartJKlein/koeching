@@ -115,7 +115,7 @@ const nextVideo = () => {
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-10 px-8 sm:flex-row">
         <img
           class="order-1 mb-auto mr-10 w-1/2 max-w-xs object-contain sm:order-none sm:mr-0 sm:w-1/4"
-          src="~/assets/svg/dog-donkey-brick.svg"
+          src="~/assets/svg/dog-donkey.svg"
         />
         <p v-html="$sanitize(content.attributes.sales_text[2].body)" />
       </div>
